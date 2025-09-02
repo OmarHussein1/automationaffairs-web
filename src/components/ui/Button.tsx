@@ -24,7 +24,7 @@ export function Button({
   const baseClasses = 'inline-flex items-center justify-center font-medium transition-colors focus-ring disabled:opacity-50 disabled:pointer-events-none';
   
   const variants = {
-    primary: 'bg-primary text-white hover:bg-primary/90',
+    primary: 'bg-primary text-white hover:bg-primary/90 dark:bg-[#f3ff5a] dark:text-black dark:hover:bg-[#f3ff5a]/90',
     secondary: 'bg-accent text-neutral-ink hover:bg-accent/90',
     outline: 'border border-neutral-ink/20 text-neutral-ink hover:bg-neutral-ink/5 dark:border-dark-text/20 dark:text-dark-text dark:hover:bg-dark-text/5',
     ghost: 'text-neutral-ink hover:bg-neutral-ink/5 dark:text-dark-text dark:hover:bg-dark-text/5',

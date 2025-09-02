@@ -25,7 +25,7 @@ const resources = {
           youtube: 'YouTube',
         },
         legal: {
-          impressum: 'Impressum',
+          impressum: 'Imprint',
           privacy: 'Privacy Policy',
           cookies: 'Cookie Settings',
         },
@@ -147,9 +147,9 @@ const resources = {
         ]
       },
       cta: {
-        title: 'Tell us where you\'re at.',
-        subtitle: 'Ready to explore what\'s possible? Let\'s start the conversation.',
-        button: 'Get in Touch',
+        title: 'Let\'s future-proof your business',
+        subtitle: 'and build Clear, secure automation — with us as your partner.',
+        button: 'Start the conversation',
       },
       kpis: {
         hoursSaved: '10,000+',
@@ -306,10 +306,58 @@ const resources = {
     },
     legal: {
       impressum: {
-        title: 'Impressum',
+        title: 'Legal Notice - Imprint',
+        brandDescription: 'Automation Affairs is a brand operated by two independent sole proprietors.',
+        address: 'Address',
+        court: 'Court of jurisdiction',
+        vatId: 'VAT ID',
+        phone: 'Phone',
+        email: 'Email',
+        registeredTrade: 'Registered Trade',
+        disclaimer: 'Legal Disclaimer',
+        disclaimerText: 'Both proprietors operate independently under their own legal responsibility. The shared brand identity "Automation Affairs" represents a collaborative business relationship but does not constitute a legal partnership or joint liability.',
+        darioTrade: 'IT Consulting and Data Processing Services',
+        maxTrade: 'Services in automatic data processing and information technology'
       },
       privacy: {
         title: 'Privacy Policy',
+        lastUpdated: 'Last updated',
+        overview: {
+          title: 'Data Protection Overview',
+          content: 'The following gives a simple overview of what happens to your personal information when you visit our website. Personal information is any data with which you could be personally identified. Detailed information on the subject of data protection can be found in our privacy policy found below.'
+        },
+        controllers: {
+          title: 'Data Controllers',
+          content: 'This website is jointly operated by two independent data controllers:'
+        },
+        collection: {
+          title: 'Data Collection on Our Website',
+          whoCollects: {
+            title: 'Who is responsible for the data collection on this website?',
+            content: 'The data collected on this website are processed by the website operators. Their contact details can be found in the website\'s required legal notice.'
+          },
+          howCollect: {
+            title: 'How do we collect your data?',
+            content: 'Some data are collected when you provide it to us. This could, for example, be data you enter on a contact form. Other data are collected automatically by our IT systems when you visit the website. These data are primarily technical data such as the browser and operating system you are using or when you accessed the page.'
+          },
+          whatFor: {
+            title: 'What do we use your data for?',
+            content: 'Part of the data is collected to ensure the proper functioning of the website. Other data can be used to analyze how visitors use the site.'
+          }
+        },
+        rights: {
+          title: 'Your Rights',
+          content: 'You have the right to receive information about the origin, recipient, and purpose of your stored personal data at any time without charge. You also have the right to request that it be corrected, blocked, or deleted. You can contact us at any time using the address given in the legal notice if you have further questions about the issue of privacy and data protection.'
+        },
+        cookies: {
+          title: 'Cookies and Tracking',
+          content: 'This website uses cookies and similar tracking technologies to enhance user experience and analyze website usage. You can manage your cookie preferences through your browser settings.'
+        },
+        contact: {
+          title: 'Contact Information',
+          content: 'If you have questions about data protection, please contact us using the contact information provided in our legal notice.',
+          authority: 'You also have the right to file a complaint with the competent supervisory authority.'
+        }
       },
     },
   },
@@ -329,7 +377,7 @@ const resources = {
         closeMenu: 'Menü schließen',
       },
       footer: {
-        email: 'hallo@automationaffairs.com',
+        email: 'hello@automationaffairs.com',
         social: {
           linkedin: 'LinkedIn',
           youtube: 'YouTube',
@@ -457,9 +505,9 @@ const resources = {
         ]
       },
       cta: {
-        title: 'Sagen Sie uns, wo Sie stehen.',
-        subtitle: 'Bereit, Möglichkeiten zu erkunden? Lassen Sie uns das Gespräch beginnen.',
-        button: 'Kontakt aufnehmen',
+        title: 'Lassen Sie uns Ihr Unternehmen zukunftssicher machen',
+        subtitle: 'und klare, sichere Automatisierung aufbauen — mit uns als Ihrem Partner.',
+        button: 'Das Gespräch beginnen',
       },
       kpis: {
         hoursSaved: '10.000+',
@@ -554,7 +602,7 @@ const resources = {
         subtitle: 'Bereit, einen Anwendungsfall zu erkunden? Erzählen Sie uns, wo Sie stehen.',
       },
       info: {
-        title: 'Kontaktinformationen',
+        title: 'Kontakt',
         email: {
           title: 'E-Mail',
         },
@@ -617,9 +665,57 @@ const resources = {
     legal: {
       impressum: {
         title: 'Impressum',
+        brandDescription: 'Automation Affairs ist eine Marke, die von zwei unabhängigen Einzelunternehmern betrieben wird.',
+        address: 'Adresse',
+        court: 'Zuständiges Gericht',
+        vatId: 'Umsatzsteuer-ID',
+        phone: 'Telefon',
+        email: 'E-Mail',
+        registeredTrade: 'Eingetragenes Gewerbe',
+        disclaimer: 'Rechtlicher Hinweis',
+        disclaimerText: 'Beide Unternehmer agieren unabhängig unter ihrer eigenen rechtlichen Verantwortung. Die gemeinsame Markenidentität "Automation Affairs" stellt eine kollaborative Geschäftsbeziehung dar, begründet aber keine rechtliche Partnerschaft oder gemeinsame Haftung.',
+        darioTrade: 'IT-Beratung und Datenverarbeitungsdienstleistungen',
+        maxTrade: 'Dienstleistungen in der automatischen Datenverarbeitung und Informationstechnik'
       },
       privacy: {
         title: 'Datenschutzerklärung',
+        lastUpdated: 'Zuletzt aktualisiert',
+        overview: {
+          title: 'Datenschutz auf einen Blick',
+          content: 'Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.'
+        },
+        controllers: {
+          title: 'Verantwortliche Stellen',
+          content: 'Diese Website wird gemeinsam von zwei unabhängigen Verantwortlichen betrieben:'
+        },
+        collection: {
+          title: 'Datenerfassung auf unserer Website',
+          whoCollects: {
+            title: 'Wer ist verantwortlich für die Datenerfassung auf dieser Website?',
+            content: 'Die Datenverarbeitung auf dieser Website erfolgt durch die Websitebetreiber. Deren Kontaktdaten können Sie dem Impressum dieser Website entnehmen.'
+          },
+          howCollect: {
+            title: 'Wie erfassen wir Ihre Daten?',
+            content: 'Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).'
+          },
+          whatFor: {
+            title: 'Wofür nutzen wir Ihre Daten?',
+            content: 'Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.'
+          }
+        },
+        rights: {
+          title: 'Ihre Rechte',
+          content: 'Sie haben jederzeit das Recht unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung, Sperrung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.'
+        },
+        cookies: {
+          title: 'Cookies und Tracking',
+          content: 'Diese Website verwendet Cookies und ähnliche Tracking-Technologien, um die Benutzererfahrung zu verbessern und die Website-Nutzung zu analysieren. Sie können Ihre Cookie-Präferenzen über Ihre Browser-Einstellungen verwalten.'
+        },
+        contact: {
+          title: 'Kontaktinformationen',
+          content: 'Bei Fragen zum Datenschutz wenden Sie sich bitte an uns unter den im Impressum angegebenen Kontaktdaten.',
+          authority: 'Sie haben außerdem das Recht, sich bei der zuständigen Aufsichtsbehörde zu beschweren.'
+        }
       },
     },
   },

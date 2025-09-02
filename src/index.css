@@ -24,7 +24,7 @@
 
   /* Custom focus ring */
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-[#f3ff5a] focus:ring-offset-2;
   }
 
   .dark .focus-ring {
@@ -35,6 +35,51 @@
   .skip-link {
     @apply absolute -top-10 left-4 z-50 bg-primary text-white px-4 py-2 rounded transition-all duration-200;
     @apply focus:top-4;
+  }
+
+  /* Technical Grid Background for Hero Section */
+  .hero-grid-bg {
+    background-image: 
+      /* Fine grid pattern - vertical lines (Cobalt) */
+      linear-gradient(to right, rgba(59, 91, 219, 0.3) 1px, transparent 1px),
+      /* Fine grid pattern - horizontal lines (Cobalt) */
+      linear-gradient(to bottom, rgba(59, 91, 219, 0.3) 1px, transparent 1px),
+      /* Secondary grid - vertical lines with neutral gray */
+      linear-gradient(to right, rgba(209, 213, 219, 0.2) 1px, transparent 1px),
+      /* Secondary grid - horizontal lines with neutral gray */
+      linear-gradient(to bottom, rgba(209, 213, 219, 0.2) 1px, transparent 1px);
+    background-size: 
+      20px 20px,
+      20px 20px,
+      80px 80px,
+      80px 80px;
+    background-position:
+      0 0,
+      0 0,
+      10px 10px,
+      10px 10px;
+  }
+
+  .dark .hero-grid-bg {
+    background-image: 
+      /* Fine grid pattern - vertical lines (Yellow) */
+      linear-gradient(to right, rgba(243, 255, 90, 0.3) 1px, transparent 1px),
+      /* Fine grid pattern - horizontal lines (Yellow) */
+      linear-gradient(to bottom, rgba(243, 255, 90, 0.3) 1px, transparent 1px),
+      /* Secondary grid - vertical lines with vibrant soft lemon */
+      linear-gradient(to right, rgba(243, 255, 90, 0.15) 1px, transparent 1px),
+      /* Secondary grid - horizontal lines with vibrant soft lemon */
+      linear-gradient(to bottom, rgba(243, 255, 90, 0.15) 1px, transparent 1px);
+    background-size: 
+      20px 20px,
+      20px 20px,
+      80px 80px,
+      80px 80px;
+    background-position:
+      0 0,
+      0 0,
+      10px 10px,
+      10px 10px;
   }
 
   /* Reduced motion support */

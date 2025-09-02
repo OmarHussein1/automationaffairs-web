@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Check, Send } from 'lucide-react';
+import { Mail, Phone, Check, Send } from 'lucide-react';
 import { Button } from '../components/ui/Button';
-import { GeometricBackground } from '../assets/svg/GeometricBackground';
 import { SEO } from '../components/SEO';
 
 interface FormData {
@@ -75,12 +74,34 @@ export function Contact() {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
+      
+      if (!webhookUrl) {
+        throw new Error('Webhook URL not configured');
+      }
+
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+          source: 'website_contact_form'
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       setIsSubmitted(true);
-      console.log('Form submitted:', formData);
+      console.log('Form submitted successfully to n8n');
     } catch (error) {
       console.error('Form submission error:', error);
+      // Show error to user - you might want to add error state management here
+      alert('Es gab einen Fehler beim Senden des Formulars. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.');
     } finally {
       setIsSubmitting(false);
     }
@@ -114,8 +135,8 @@ export function Contact() {
   if (isSubmitted) {
     return (
       <div className="overflow-hidden">
-        <section className="relative py-section-mobile md:py-section-desktop">
-          <GeometricBackground variant="lines" className="text-neutral-ink/5 dark:text-dark-text/5" />
+        <section className="relative py-section-mobile md:py-section-desktop hero-grid-bg">
+          <div className="absolute inset-0 bg-neutral-bg/70 dark:bg-dark-bg/70"></div>
           
           <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <motion.div
@@ -151,8 +172,8 @@ export function Contact() {
         keywords={t('common:seo.contact.keywords')}
       />
       {/* Hero Section */}
-      <section className="relative py-section-mobile md:py-section-desktop">
-        <GeometricBackground variant="lines" className="text-neutral-ink/5 dark:text-dark-text/5" />
+      <section className="relative py-section-mobile md:py-section-desktop hero-grid-bg">
+        <div className="absolute inset-0 bg-neutral-bg/70 dark:bg-dark-bg/70"></div>
         
         <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -172,8 +193,9 @@ export function Contact() {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-section-mobile md:py-section-desktop bg-neutral-paper dark:bg-dark-surface">
-        <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-section-mobile md:py-section-desktop hero-grid-bg">
+        <div className="absolute inset-0 bg-neutral-bg/70 dark:bg-dark-bg/70"></div>
+        <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
             {/* Contact Info */}
             <motion.div
@@ -192,9 +214,12 @@ export function Contact() {
                     <h3 className="font-semibold text-neutral-ink dark:text-dark-text mb-1">
                       {t('contact:info.email.title')}
                     </h3>
-                    <p className="text-neutral-ink/70 dark:text-dark-text/70">
+                    <a 
+                      href="mailto:hello@automationaffairs.com"
+                      className="text-neutral-ink/70 dark:text-dark-text/70 hover:text-primary-cobalt dark:hover:text-[#f3ff5a] transition-colors focus-ring rounded"
+                    >
                       hello@automationaffairs.com
-                    </p>
+                    </a>
                   </div>
                 </div>
                 
@@ -204,23 +229,15 @@ export function Contact() {
                     <h3 className="font-semibold text-neutral-ink dark:text-dark-text mb-1">
                       {t('contact:info.phone.title')}
                     </h3>
-                    <p className="text-neutral-ink/70 dark:text-dark-text/70">
-                      +49 (0) 123 456 789
-                    </p>
+                    <a 
+                      href="tel:+436605358688"
+                      className="text-neutral-ink/70 dark:text-dark-text/70 hover:text-primary-cobalt dark:hover:text-[#f3ff5a] transition-colors focus-ring rounded"
+                    >
+                      +43 660 535 8688
+                    </a>
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4">
-                  <MapPin className="w-6 h-6 text-primary-cobalt mt-1" />
-                  <div>
-                    <h3 className="font-semibold text-neutral-ink dark:text-dark-text mb-1">
-                      {t('contact:info.location.title')}
-                    </h3>
-                    <p className="text-neutral-ink/70 dark:text-dark-text/70">
-                      {t('contact:info.location.address')}
-                    </p>
-                  </div>
-                </div>
               </div>
             </motion.div>
 

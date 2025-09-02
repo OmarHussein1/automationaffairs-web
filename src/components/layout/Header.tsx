@@ -71,9 +71,28 @@ export function Header() {
           {/* Logo */}
           <Link 
             to={getLocalizedPath('/')}
-            className="flex items-center space-x-2 focus-ring rounded-lg"
+            className="flex items-center space-x-3 focus-ring rounded-full"
           >
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+            <img 
+              src="/logo.svg" 
+              alt="Automation Affairs Logo" 
+              className="w-8 h-8 object-contain filter dark:invert"
+              onError={(e) => {
+                // Fallback to PNG if SVG fails
+                const target = e.target as HTMLImageElement;
+                if (target.src.includes('.svg')) {
+                  target.src = '/logo.png';
+                } else {
+                  // Final fallback to AA text
+                  target.style.display = 'none';
+                  const fallback = target.nextElementSibling as HTMLElement;
+                  if (fallback) {
+                    fallback.style.display = 'flex';
+                  }
+                }
+              }}
+            />
+            <div className="w-8 h-8 bg-primary rounded-lg items-center justify-center hidden">
               <span className="text-white font-heading text-sm font-bold">AA</span>
             </div>
             <span className="font-heading text-lg font-semibold text-neutral-ink dark:text-dark-text">
@@ -124,7 +143,7 @@ export function Header() {
             </button>
 
             {/* CTA Button */}
-            <Button asChild>
+            <Button className="bg-primary dark:bg-[#f3ff5a] hover:bg-primary/90 dark:hover:bg-[#f3ff5a]/90 text-white dark:text-black" asChild>
               <Link to={getLocalizedPath('/contact')}>
                 {t('nav.getInTouch')}
               </Link>
@@ -190,7 +209,7 @@ export function Header() {
                     </button>
                   </div>
 
-                  <Button asChild onClick={() => setIsMenuOpen(false)}>
+                  <Button className="bg-primary dark:bg-[#f3ff5a] hover:bg-primary/90 dark:hover:bg-[#f3ff5a]/90 text-white dark:text-black" asChild onClick={() => setIsMenuOpen(false)}>
                     <Link to={getLocalizedPath('/contact')}>
                       {t('nav.getInTouch')}
                     </Link>
