@@ -103,7 +103,7 @@ const resources = {
           },
           identify: {
             title: 'Identify',
-            description: 'Spot inefficiencies and set priorities.',
+            description: 'Spot opportunities and set priorities.',
             icon: '🔍'
           },
           build: {
@@ -274,6 +274,7 @@ const resources = {
         submit: 'Send Message',
         submitting: 'Sending...',
         required: 'This field is required',
+        error: 'There was an error sending the form. Please try again or contact us directly.',
         namePlaceholder: 'Your full name',
         emailPlaceholder: 'your.email@company.com',
         companyPlaceholder: 'Your company name',
@@ -446,7 +447,7 @@ const resources = {
     home: {
       hero: {
         title: 'AUTOMATION\nAFFAIRS',
-        subtitle: 'Durchbrechen Sie den Lärm & bauen Sie was zählt.',
+        subtitle: 'Durchbreche den Lärm. Baue was zählt.',
         primaryCta: 'Kontakt aufnehmen',
         secondaryCta: 'Unsere Arbeitsweise',
       },
@@ -636,6 +637,7 @@ const resources = {
         submit: 'Nachricht senden',
         submitting: 'Wird gesendet...',
         required: 'Dieses Feld ist erforderlich',
+        error: 'Es gab einen Fehler beim Senden des Formulars. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.',
         namePlaceholder: 'Ihr vollständiger Name',
         emailPlaceholder: 'ihre.email@unternehmen.de',
         companyPlaceholder: 'Ihr Unternehmensname',

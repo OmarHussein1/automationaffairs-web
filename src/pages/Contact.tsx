@@ -24,6 +24,9 @@ interface FormErrors {
 
 export function Contact() {
   const { t } = useTranslation();
+  
+
+
   const [formData, setFormData] = useState<FormData>({
     name: '',
     company: '',
@@ -76,32 +79,69 @@ export function Contact() {
     try {
       const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
       
+      console.log('=== FORM SUBMISSION DEBUG ===');
+      console.log('Webhook URL:', webhookUrl);
+      console.log('Environment check:', import.meta.env);
+      
       if (!webhookUrl) {
         throw new Error('Webhook URL not configured');
       }
 
+      const headers: HeadersInit = {
+        'Content-Type': 'application/json',
+      };
+
+      const payload = {
+        ...formData,
+        timestamp: new Date().toISOString(),
+        source: 'website_contact_form'
+      };
+
+      console.log('Sending payload:', payload); // Debug log
+      console.log('Using headers:', headers); // Debug log
+
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
       const response = await fetch(webhookUrl, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          timestamp: new Date().toISOString(),
-          source: 'website_contact_form'
-        })
+        headers,
+        body: JSON.stringify(payload),
+        signal: controller.signal
       });
 
+      clearTimeout(timeoutId);
+
+      console.log('Response status:', response.status); // Debug log
+      console.log('Response headers:', response.headers); // Debug log
+
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const responseText = await response.text();
+        console.error('Response error:', responseText); // Debug log
+        throw new Error(`HTTP error! status: ${response.status}, message: ${responseText}`);
       }
 
+      const responseData = await response.text();
+      console.log('Response data:', responseData); // Debug log
+
       setIsSubmitted(true);
-      console.log('Form submitted successfully to n8n');
+      console.log('Form submitted successfully to webhook');
     } catch (error) {
       console.error('Form submission error:', error);
-      // Show error to user - you might want to add error state management here
-      alert('Es gab einen Fehler beim Senden des Formulars. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.');
+      
+      let errorMessage = t('contact:form.error');
+      
+      if (error instanceof Error) {
+        if (error.message === 'Webhook URL not configured') {
+          errorMessage = 'Contact form is not configured. Please email us directly at info@automationaffairs.com';
+        } else if (error.name === 'AbortError') {
+          errorMessage = 'Request timed out. Please try again or contact us directly.';
+        } else if (error.message.includes('NetworkError') || error.message.includes('Failed to fetch')) {
+          errorMessage = 'Network error. Please check your connection and try again.';
+        }
+      }
+      
+      alert(errorMessage);
     } finally {
       setIsSubmitting(false);
     }

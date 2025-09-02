@@ -32,7 +32,7 @@ export function Home() {
       ScrollTrigger.create({
         trigger: valuesRef.current,
         start: "top top",
-        end: "+=800%",
+        end: "+=500%",
         pin: ".values-content",
         pinSpacing: true,
         onUpdate: (self) => {
@@ -207,7 +207,7 @@ export function Home() {
               ].map((step, index) => (
                 <motion.div
                   key={step.key}
-                  className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600"
+                  className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 flex flex-col items-center text-center"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
@@ -215,7 +215,7 @@ export function Home() {
                   whileHover={{ y: -5, scale: 1.02 }}
                 >
                   {/* Step Number */}
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center justify-center mb-6 w-full">
                     <span className="text-sm font-medium text-primary dark:text-[#f3ff5a] bg-primary/10 dark:bg-[#f3ff5a]/10 px-3 py-1 rounded-full">
                       Step {index + 1}
                     </span>
