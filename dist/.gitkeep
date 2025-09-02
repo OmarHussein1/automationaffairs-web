@@ -1,0 +1,5 @@
+# Add dist folder to git (normally ignored)
+# Built files for production deployment
+
+# Built application
+dist/

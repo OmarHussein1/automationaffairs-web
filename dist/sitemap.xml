@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- English Pages -->
+  <url>
+    <loc>https://automationaffairs.com/</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://automationaffairs.com/de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://automationaffairs.com/" />
+  </url>
+  
+  <url>
+    <loc>https://automationaffairs.com/about</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://automationaffairs.com/de/uber-uns" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://automationaffairs.com/about" />
+  </url>
+  
+  <url>
+    <loc>https://automationaffairs.com/contact</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://automationaffairs.com/de/kontakt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://automationaffairs.com/contact" />
+  </url>
+  
+  <url>
+    <loc>https://automationaffairs.com/impressum</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://automationaffairs.com/de/impressum" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://automationaffairs.com/impressum" />
+  </url>
+  
+  <url>
+    <loc>https://automationaffairs.com/privacy</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://automationaffairs.com/de/datenschutz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://automationaffairs.com/privacy" />
+  </url>
+  
+  <!-- German Pages -->
+  <url>
+    <loc>https://automationaffairs.com/de</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://automationaffairs.com/de" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://automationaffairs.com/" />
+  </url>
+  
+  <url>
+    <loc>https://automationaffairs.com/de/uber-uns</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://automationaffairs.com/de/uber-uns" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://automationaffairs.com/about" />
+  </url>
+  
+  <url>
+    <loc>https://automationaffairs.com/de/kontakt</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://automationaffairs.com/de/kontakt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://automationaffairs.com/contact" />
+  </url>
+  
+  <url>
+    <loc>https://automationaffairs.com/de/impressum</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://automationaffairs.com/de/impressum" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://automationaffairs.com/impressum" />
+  </url>
+  
+  <url>
+    <loc>https://automationaffairs.com/de/datenschutz</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://automationaffairs.com/de/datenschutz" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://automationaffairs.com/privacy" />
+  </url>
+</urlset>
