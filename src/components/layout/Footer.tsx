@@ -67,7 +67,7 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-4 text-neutral-ink-muted dark:text-dark-text/70 max-w-md">
-              Transforming businesses through intelligent automation solutions.
+              {t('footer.description')}
             </p>
             <div className="mt-6">
               <a 

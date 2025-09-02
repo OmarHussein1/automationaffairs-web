@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight, Users, Target, Zap, Lock, Handshake, Search, Wrench } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, ArrowDown, ArrowUp, Target, Search, Wrench } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '../components/ui/Button';
 import { SEO } from '../components/SEO';
 import { useGSAPScrollAnimations } from '../hooks/useGSAPScrollAnimations';
+import { ValuesWheel } from '../components/ValuesWheel';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -13,9 +14,7 @@ export function Home() {
   const { t, i18n } = useTranslation();
   const isGerman = i18n.language === 'de';
   const containerRef = useGSAPScrollAnimations();
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const processRef = useRef<HTMLDivElement>(null);
-  const [currentStep, setCurrentStep] = useState(0);
   const valuesRef = useRef<HTMLDivElement>(null);
   const [currentValueIndex, setCurrentValueIndex] = useState(0);
   
@@ -24,33 +23,6 @@ export function Home() {
     gsap.registerPlugin(ScrollTrigger);
   }, []);
 
-  // GSAP ScrollTrigger for sticky process section
-  useEffect(() => {
-    if (!processRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Pin the process section
-      ScrollTrigger.create({
-        trigger: processRef.current,
-        start: "top top",
-        end: "+=400%",
-        pin: ".process-content",
-        pinSpacing: true,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          if (progress < 0.33) {
-            setCurrentStep(0);
-          } else if (progress < 0.66) {
-            setCurrentStep(1);
-          } else {
-            setCurrentStep(2);
-          }
-        }
-      });
-    }, processRef);
-
-    return () => ctx.revert();
-  }, []);
 
   // GSAP ScrollTrigger for values section
   useEffect(() => {
@@ -94,19 +66,6 @@ export function Home() {
     document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Auto-rotate testimonials
-  useEffect(() => {
-    const testimonials = t('home:testimonials.items', { returnObjects: true });
-    const testimonialsArray = Array.isArray(testimonials) ? testimonials : [];
-    
-    if (testimonialsArray.length > 1) {
-      const interval = setInterval(() => {
-        setCurrentTestimonial((prev) => (prev + 1) % testimonialsArray.length);
-      }, 5000); // Change every 5 seconds
-      
-      return () => clearInterval(interval);
-    }
-  }, [t]);
 
   return (
     <div className="min-h-screen overflow-x-hidden" ref={containerRef}>
@@ -126,12 +85,12 @@ export function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="flex justify-center mb-6 md:mb-8"
+              className="flex justify-center mb-4 sm:mb-6 lg:mb-8"
             >
               <img 
                 src="/logo.svg" 
                 alt="Automation Affairs Logo" 
-                className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 object-contain filter dark:invert"
+                className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 object-contain filter dark:invert"
                 onError={(e) => {
                   // Fallback to PNG if SVG fails
                   const target = e.target as HTMLImageElement;
@@ -149,25 +108,25 @@ export function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="hero-title text-3xl md:text-5xl lg:text-6xl font-bold text-neutral-ink dark:text-dark-text mb-4 md:mb-6 whitespace-pre-line uppercase"
+              className="hero-title text-xl xs:text-2xl sm:text-3xl lg:text-5xl xl:text-6xl font-bold text-neutral-ink dark:text-dark-text mb-4 lg:mb-6 whitespace-pre-line uppercase"
               style={{ fontFamily: 'Lexend Tera, system-ui, sans-serif' }}
             >
               {t('home:hero.title')}
             </motion.h1>
             
-            <p className="hero-subtitle text-base md:text-lg lg:text-xl text-neutral-ink-muted dark:text-dark-text/70 mb-6 md:mb-8 max-w-2xl mx-auto px-2">
+            <p className="hero-subtitle text-sm sm:text-base lg:text-lg xl:text-xl text-neutral-ink-muted dark:text-dark-text/70 mb-6 lg:mb-8 max-w-2xl mx-auto px-2">
               {t('home:hero.subtitle')}
             </p>
             
-            <div className="hero-buttons flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-2">
-              <Button size="md" className="sm:size-lg bg-primary dark:bg-[#f3ff5a] hover:bg-primary/90 dark:hover:bg-[#f3ff5a]/90 text-white dark:text-black" asChild>
+            <div className="hero-buttons flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center px-2 items-center">
+              <Button size="md" className="lg:size-lg bg-primary dark:bg-[#f3ff5a] hover:bg-primary/90 dark:hover:bg-[#f3ff5a]/90 text-white dark:text-black w-full sm:w-auto" asChild>
                 <Link to={getLocalizedPath('/contact')}>
                   {t('home:hero.primaryCta')}
-                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
+                  <ArrowRight className="ml-2 w-4 h-4 lg:w-5 lg:h-5" />
                 </Link>
               </Button>
               
-              <Button variant="outline" size="md" className="sm:size-lg border-primary dark:border-[#f3ff5a] text-primary dark:text-[#f3ff5a] hover:bg-primary/10 dark:hover:bg-[#f3ff5a]/10" onClick={scrollToProcess}>
+              <Button variant="outline" size="md" className="lg:size-lg border-primary dark:border-[#f3ff5a] text-primary dark:text-[#f3ff5a] hover:bg-primary/10 dark:hover:bg-[#f3ff5a]/10 w-full sm:w-auto" onClick={scrollToProcess}>
                 {t('home:hero.secondaryCta')}
               </Button>
             </div>
@@ -219,85 +178,69 @@ export function Home() {
           <div className="absolute inset-0 bg-neutral-bg/70 dark:bg-dark-bg/70"></div>
           <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center mb-16">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-neutral-ink dark:text-dark-text mb-4">
+              <motion.h2 
+                className="text-2xl md:text-3xl font-bold text-neutral-ink dark:text-dark-text mb-6"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
                 {t('home:process.title')}
-              </h2>
-              <p className="text-lg text-neutral-ink-muted dark:text-dark-text/70 max-w-2xl mx-auto">
+              </motion.h2>
+              <motion.p 
+                className="text-xl text-neutral-ink/70 dark:text-dark-text/70 max-w-2xl mx-auto"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
                 {t('home:process.subtitle')}
-              </p>
+              </motion.p>
             </div>
 
-            {/* Sequential Process Steps */}
-            <div className="relative flex items-center justify-center min-h-[400px]">
+            {/* Process Steps - 3 Tiles */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {[
                 { key: 'scope', icon: Target, index: 0 },
                 { key: 'identify', icon: Search, index: 1 },
                 { key: 'build', icon: Wrench, index: 2 }
-              ].map((step) => (
+              ].map((step, index) => (
                 <motion.div
                   key={step.key}
-                  className="absolute inset-0 flex items-center justify-center"
-                  initial={{ opacity: 0, x: 100, scale: 0.8 }}
-                  animate={{
-                    opacity: currentStep === step.index ? 1 : 0,
-                    x: currentStep === step.index ? 0 : currentStep > step.index ? -100 : 100,
-                    scale: currentStep === step.index ? 1 : 0.8
-                  }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -5, scale: 1.02 }}
                 >
-                  <div className="text-center max-w-md">
-                    <motion.div 
-                      className="w-24 h-24 bg-gradient-to-br from-primary/10 to-primary/20 dark:from-accent/10 dark:to-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-6"
-                      animate={{
-                        scale: currentStep === step.index ? [0.8, 1.1, 1] : 0.8,
-                        rotate: currentStep === step.index ? [0, 5, 0] : 0
-                      }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                    >
-                      <step.icon 
-                        size={32} 
-                        className="text-primary dark:text-accent"
-                      />
-                    </motion.div>
-                    <motion.h3 
-                      className="text-2xl font-heading font-semibold text-neutral-ink dark:text-dark-text mb-4"
-                      animate={{
-                        y: currentStep === step.index ? [20, 0] : 20,
-                        opacity: currentStep === step.index ? 1 : 0
-                      }}
-                      transition={{ duration: 0.6, delay: 0.2 }}
-                    >
-                      {t(`home:process.steps.${step.key}.title`)}
-                    </motion.h3>
-                    <motion.p 
-                      className="text-lg text-neutral-ink/70 dark:text-dark-text/70 leading-relaxed"
-                      animate={{
-                        y: currentStep === step.index ? [20, 0] : 20,
-                        opacity: currentStep === step.index ? 1 : 0
-                      }}
-                      transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                      {t(`home:process.steps.${step.key}.description`)}
-                    </motion.p>
+                  {/* Step Number */}
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="text-sm font-medium text-primary dark:text-[#f3ff5a] bg-primary/10 dark:bg-[#f3ff5a]/10 px-3 py-1 rounded-full">
+                      Step {index + 1}
+                    </span>
                   </div>
+
+                  {/* Icon */}
+                  <motion.div 
+                    className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/20 dark:from-[#f3ff5a]/10 dark:to-[#f3ff5a]/20 rounded-xl flex items-center justify-center mb-6"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <step.icon className="w-8 h-8 text-primary dark:text-[#f3ff5a]" />
+                  </motion.div>
+                  
+                  {/* Title */}
+                  <h3 className="text-xl font-bold text-neutral-ink dark:text-dark-text mb-4">
+                    {t(`home:process.steps.${step.key}.title`)}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-neutral-ink/70 dark:text-dark-text/70 leading-relaxed">
+                    {t(`home:process.steps.${step.key}.description`)}
+                  </p>
                 </motion.div>
               ))}
-
-              {/* Progress Indicator */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4">
-                {[0, 1, 2].map((index) => (
-                  <motion.div
-                    key={index}
-                    className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                      currentStep === index ? 'bg-primary dark:bg-[#f3ff5a]' : 'bg-neutral-ink/20 dark:bg-dark-text/20'
-                    }`}
-                    animate={{
-                      scale: currentStep === index ? [1, 1.3, 1] : 1
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                ))}
-              </div>
             </div>
           </div>
         </div>
@@ -305,10 +248,10 @@ export function Home() {
 
       {/* Values Section */}
       <section ref={valuesRef} className="relative">
-        <div className="values-content hero-grid-bg min-h-screen flex items-center justify-center">
+        <div className="values-content hero-grid-bg min-h-screen flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 bg-neutral-bg/70 dark:bg-dark-bg/70"></div>
-          <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-16">
+          <div className="w-full mx-auto relative z-10">
+            <div className="text-center mb-8 px-4 sm:px-6 lg:px-8">
               <h2 className="text-2xl md:text-3xl font-heading font-bold text-neutral-ink dark:text-dark-text mb-4">
                 {t('home:values.title')}
               </h2>
@@ -317,172 +260,61 @@ export function Home() {
               </p>
             </div>
 
-            {/* Sequential Individual Values */}
-            <div className="relative flex items-center justify-center min-h-[400px]">
-              {[
-                { key: 'humanLed', icon: Users, index: 0 },
-                { key: 'outcomes', icon: Target, index: 1 },
-                { key: 'precision', icon: Zap, index: 2 },
-                { key: 'privacy', icon: Lock, index: 3 },
-                { key: 'partner', icon: Handshake, index: 4 }
-              ].map((value) => (
-                <motion.div
-                  key={value.key}
-                  className="absolute inset-0 flex items-center justify-center"
-                  initial={{ opacity: 0, x: 100, scale: 0.8 }}
-                  animate={{
-                    opacity: currentValueIndex === value.index ? 1 : 0,
-                    x: currentValueIndex === value.index ? 0 : currentValueIndex > value.index ? -100 : 100,
-                    scale: currentValueIndex === value.index ? 1 : 0.8
+            {/* Values Wheel Animation */}
+            <div className="relative">
+              <ValuesWheel 
+              currentValueIndex={currentValueIndex} 
+              onValueChange={setCurrentValueIndex}
+            />
+              
+              {/* Navigation buttons - Desktop only */}
+              <div className="hidden md:flex absolute right-8 top-1/2 transform -translate-y-1/2 flex-col space-y-4 z-50">
+                {/* Up arrow - go to previous section */}
+                <motion.button
+                  onClick={() => {
+                    const processSection = document.getElementById('process');
+                    if (processSection) {
+                      processSection.scrollIntoView({ behavior: 'smooth' });
+                    }
                   }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="w-12 h-12 bg-white dark:bg-gray-700 rounded-full shadow-lg border border-gray-200 dark:border-gray-500 flex items-center justify-center text-primary dark:text-[#f3ff5a] hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2 }}
+                  style={{ pointerEvents: 'auto' }}
                 >
-                  <div className="text-center max-w-md">
-                    <motion.div 
-                      className="w-24 h-24 bg-gradient-to-br from-primary/10 to-primary/20 dark:from-accent/10 dark:to-accent/20 rounded-2xl flex items-center justify-center mx-auto mb-6"
-                      animate={{
-                        scale: currentValueIndex === value.index ? [0.8, 1.1, 1] : 0.8,
-                        rotate: currentValueIndex === value.index ? [0, 5, 0] : 0
-                      }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                    >
-                      <value.icon 
-                        size={32} 
-                        className="text-primary dark:text-accent"
-                      />
-                    </motion.div>
-                    <motion.h3 
-                      className="text-2xl font-heading font-semibold text-neutral-ink dark:text-dark-text mb-4"
-                      animate={{
-                        y: currentValueIndex === value.index ? [20, 0] : 20,
-                        opacity: currentValueIndex === value.index ? 1 : 0
-                      }}
-                      transition={{ duration: 0.6, delay: 0.2 }}
-                    >
-                      {t(`home:values.items.${value.key}.title`)}
-                    </motion.h3>
-                    <motion.p 
-                      className="text-lg text-neutral-ink/70 dark:text-dark-text/70 leading-relaxed"
-                      animate={{
-                        y: currentValueIndex === value.index ? [20, 0] : 20,
-                        opacity: currentValueIndex === value.index ? 1 : 0
-                      }}
-                      transition={{ duration: 0.6, delay: 0.4 }}
-                    >
-                      {t(`home:values.items.${value.key}.description`)}
-                    </motion.p>
-                  </div>
-                </motion.div>
-              ))}
+                  <ArrowUp size={20} />
+                </motion.button>
 
-              {/* Progress Indicator */}
-              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-4">
-                {[0, 1, 2, 3, 4].map((index) => (
-                  <motion.div
-                    key={index}
-                    className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                      currentValueIndex === index ? 'bg-primary dark:bg-[#f3ff5a]' : 'bg-neutral-ink/20 dark:bg-dark-text/20'
-                    }`}
-                    animate={{
-                      scale: currentValueIndex === index ? [1, 1.3, 1] : 1
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                ))}
+                {/* Down arrow - go to next section */}
+                <motion.button
+                  onClick={() => {
+                    const ctaSection = document.getElementById('cta');
+                    if (ctaSection) {
+                      ctaSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                  className="w-12 h-12 bg-white dark:bg-gray-700 rounded-full shadow-lg border border-gray-200 dark:border-gray-500 flex items-center justify-center text-primary dark:text-[#f3ff5a] hover:shadow-xl transition-all duration-300 cursor-pointer"
+                  whileHover={{ scale: 1.1, y: 3 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1 }}
+                  style={{ pointerEvents: 'auto' }}
+                >
+                  <ArrowDown size={20} />
+                </motion.button>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section - Hidden */}
-      {/* <section className="py-section-mobile md:py-section-desktop bg-neutral-surface dark:bg-dark-surface">
-        <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold text-neutral-ink dark:text-dark-text mb-4">
-              {t('home:testimonials.title')}
-            </h2>
-            <p className="text-lg text-neutral-ink-muted dark:text-dark-text/70 max-w-2xl mx-auto">
-              {t('home:testimonials.subtitle')}
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto relative">
-            <AnimatePresence mode="wait">
-              {(() => {
-                const testimonials = t('home:testimonials.items', { returnObjects: true });
-                const testimonialsArray = Array.isArray(testimonials) ? testimonials : [];
-                
-                if (testimonialsArray.length === 0) return null;
-                
-                const testimonial = testimonialsArray[currentTestimonial];
-                
-                return (
-                  <motion.div
-                    key={currentTestimonial}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    transition={{ duration: 0.5 }}
-                    className="bg-white dark:bg-dark-surface rounded-2xl p-8 md:p-12 border border-neutral-stroke/50 dark:border-dark-stroke/50 shadow-lg"
-                  >
-                    <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
-                      <div className="flex-shrink-0">
-                        <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-primary-azure/20 dark:from-primary/30 dark:to-primary-azure/30 rounded-full flex items-center justify-center">
-                          <div className="w-16 h-16 bg-gradient-to-br from-primary/40 to-primary-azure/40 rounded-full flex items-center justify-center text-white font-heading text-xl">
-                            {testimonial.name?.charAt(0) || 'A'}
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="flex-grow text-center md:text-left">
-                        <blockquote className="text-lg md:text-xl text-neutral-ink dark:text-dark-text leading-relaxed mb-6">
-                          "{testimonial.quote}"
-                        </blockquote>
-                        
-                        <div className="space-y-1">
-                          <div className="font-heading font-semibold text-neutral-ink dark:text-dark-text">
-                            {testimonial.name}
-                          </div>
-                          <div className="text-primary font-medium">
-                            {testimonial.position}
-                          </div>
-                          <div className="text-neutral-ink-muted dark:text-dark-text/70">
-                            {testimonial.company} • {testimonial.location}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })()}
-            </AnimatePresence>
-            
-            <div className="flex justify-center mt-8 space-x-2 px-4">
-              {(() => {
-                const testimonials = t('home:testimonials.items', { returnObjects: true });
-                const testimonialsArray = Array.isArray(testimonials) ? testimonials : [];
-                
-                return testimonialsArray.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                      index === currentTestimonial
-                        ? 'bg-primary'
-                        : 'bg-neutral-ink/20 dark:bg-dark-text/20 hover:bg-primary/50'
-                    }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ));
-              })()}
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       {/* CTA Section */}
-      <section className="py-section-mobile md:py-section-desktop relative parallax-section bg-[#3b5bdb] dark:bg-[#f3ff5a]">
+      <section id="cta" className="py-section-mobile md:py-section-desktop relative parallax-section bg-[#3b5bdb] dark:bg-[#f3ff5a]">
         
         <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto">

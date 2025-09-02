@@ -95,7 +95,7 @@ export function Header() {
             <div className="w-8 h-8 bg-primary rounded-lg items-center justify-center hidden">
               <span className="text-white font-heading text-sm font-bold">AA</span>
             </div>
-            <span className="font-heading text-lg font-semibold text-neutral-ink dark:text-dark-text">
+            <span className="font-heading text-sm sm:text-base lg:text-lg font-semibold text-neutral-ink dark:text-dark-text">
               AUTOMATION AFFAIRS
             </span>
           </Link>
@@ -144,7 +144,14 @@ export function Header() {
 
             {/* CTA Button */}
             <Button className="bg-primary dark:bg-[#f3ff5a] hover:bg-primary/90 dark:hover:bg-[#f3ff5a]/90 text-white dark:text-black" asChild>
-              <Link to={getLocalizedPath('/contact')}>
+              <Link 
+                to={getLocalizedPath('/contact')}
+                onClick={() => {
+                  setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }, 100);
+                }}
+              >
                 {t('nav.getInTouch')}
               </Link>
             </Button>
@@ -210,7 +217,14 @@ export function Header() {
                   </div>
 
                   <Button className="bg-primary dark:bg-[#f3ff5a] hover:bg-primary/90 dark:hover:bg-[#f3ff5a]/90 text-white dark:text-black" asChild onClick={() => setIsMenuOpen(false)}>
-                    <Link to={getLocalizedPath('/contact')}>
+                    <Link 
+                      to={getLocalizedPath('/contact')}
+                      onClick={() => {
+                        setTimeout(() => {
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }, 100);
+                      }}
+                    >
                       {t('nav.getInTouch')}
                     </Link>
                   </Button>

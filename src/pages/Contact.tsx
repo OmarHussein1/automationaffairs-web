@@ -202,15 +202,16 @@ export function Contact() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-center lg:text-left"
             >
               <h2 className="font-heading text-3xl font-bold text-neutral-ink dark:text-dark-text mb-8">
                 {t('contact:info.title')}
               </h2>
               
               <div className="space-y-6">
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-4 justify-center lg:justify-start">
                   <Mail className="w-6 h-6 text-primary-cobalt mt-1" />
-                  <div>
+                  <div className="text-center lg:text-left">
                     <h3 className="font-semibold text-neutral-ink dark:text-dark-text mb-1">
                       {t('contact:info.email.title')}
                     </h3>
@@ -223,9 +224,9 @@ export function Contact() {
                   </div>
                 </div>
                 
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-4 justify-center lg:justify-start">
                   <Phone className="w-6 h-6 text-primary-cobalt mt-1" />
-                  <div>
+                  <div className="text-center lg:text-left">
                     <h3 className="font-semibold text-neutral-ink dark:text-dark-text mb-1">
                       {t('contact:info.phone.title')}
                     </h3>

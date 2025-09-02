@@ -19,6 +19,7 @@ const resources = {
         closeMenu: 'Close menu',
       },
       footer: {
+        description: 'Transforming businesses through intelligent automation solutions.',
         email: 'hello@automationaffairs.com',
         social: {
           linkedin: 'LinkedIn',
@@ -89,10 +90,10 @@ const resources = {
       },
       whatWeDo: {
         title: 'Make AI a tool, not a gamble.',
-        description: 'We cut through the AI noise and focus on what matters: More efficient workflows. We map critical processes, connect the right tools, and ship automations and agents that augment your team. Clean builds, clear docs, and privacy-conscious delivery—reliable systems, not experiments.',
+        description: 'Ignore the AI hype and focus on what matters: streamlined workflows. By mapping processes, connecting the right tools, and deploying agents that support your team, we deliver automation that works. Clean builds, clear docs, and privacy-first delivery—reliable systems, never experiments.',
       },
       process: {
-        title: 'How we Work',
+        title: 'How we work',
         subtitle: 'Three focused steps to transform your operations',
         steps: {
           scope: {
@@ -147,9 +148,9 @@ const resources = {
         ]
       },
       cta: {
-        title: 'Let\'s future-proof your business',
-        subtitle: 'and build Clear, secure automation — with us as your partner.',
-        button: 'Start the conversation',
+        title: "Let's build your vision",
+        subtitle: "Let's build clear, secure automations together - with privacy-first delivery.",
+        button: "Get Started"
       },
       kpis: {
         hoursSaved: '10,000+',
@@ -190,6 +191,9 @@ const resources = {
     },
     about: {
       title: 'About Us',
+      hero: {
+        subtitle: 'Discover our mindset, meet our team and understand our Vision.',
+      },
       intro: {
         paragraphs: [
           'We bridge business and technology - turning needs into systems, making clear decisions, and shipping what truly moves the needle.',
@@ -377,6 +381,7 @@ const resources = {
         closeMenu: 'Menü schließen',
       },
       footer: {
+        description: 'Unternehmen durch intelligente Automatisierungslösungen transformieren.',
         email: 'hello@automationaffairs.com',
         social: {
           linkedin: 'LinkedIn',
@@ -441,31 +446,31 @@ const resources = {
     home: {
       hero: {
         title: 'AUTOMATION\nAFFAIRS',
-        subtitle: 'Durchbrechen Sie das Rauschen. Bauen Sie, was zählt.',
+        subtitle: 'Durchbrechen Sie den Lärm & bauen Sie was zählt.',
         primaryCta: 'Kontakt aufnehmen',
         secondaryCta: 'Unsere Arbeitsweise',
       },
       whatWeDo: {
         title: 'KI als Werkzeug, nicht als Glücksspiel.',
-        description: 'Wir durchbrechen das KI-Rauschen und konzentrieren uns auf das Wesentliche: Effizientere Arbeitsabläufe. Wir kartieren kritische Prozesse, verbinden die richtigen Tools und liefern Automatisierungen und Agenten, die Ihr Team verstärken. Saubere Builds, klare Dokumentation und datenschutzbewusste Lieferung—zuverlässige Systeme, keine Experimente.',
+        description: 'Durchdringen Sie den KI-Hype und konzentrieren Sie sich auf das Wesentliche: optimierte Arbeitsabläufe. Durch das Kartieren von Prozessen, das Verbinden der richtigen Tools und das Bereitstellen von Agenten, die Ihr Team unterstützen, liefern wir Automatisierungen, die funktionieren. Saubere Builds, klare Dokumentation und datenschutzorientierte Verwaltung - zuverlässige Systeme statt Experimenten.',
       },
       process: {
         title: 'Wie wir arbeiten',
         subtitle: 'Drei fokussierte Schritte zur Transformation Ihrer Abläufe',
         steps: {
           scope: {
-            title: 'Umfang',
+            title: 'Überblick',
             description: 'Ziele definieren und Arbeitsabläufe kartieren.',
             icon: '🎯'
           },
           identify: {
-            title: 'Identifizieren',
-            description: 'Ineffizienzen erkennen und Prioritäten setzen.',
+            title: 'Identifikation',
+            description: 'Chancen erkennen und Prioritäten setzen.',
             icon: '🔍'
           },
           build: {
-            title: 'Bauen',
-            description: 'Automatisierung entwerfen, verbinden und liefern.',
+            title: 'Entwicklung',
+            description: 'Prozessoptimierungen entwerfen, bauen und liefern.',
             icon: '🔧'
           },
         },
@@ -505,8 +510,8 @@ const resources = {
         ]
       },
       cta: {
-        title: 'Lassen Sie uns Ihr Unternehmen zukunftssicher machen',
-        subtitle: 'und klare, sichere Automatisierung aufbauen — mit uns als Ihrem Partner.',
+        title: 'Lassen Sie uns Ihre Vision bauen',
+        subtitle: 'und klare, sichere Automationen implementieren. Mit uns als Ihren Partner',
         button: 'Das Gespräch beginnen',
       },
       kpis: {
@@ -524,44 +529,47 @@ const resources = {
         subtitle: 'Die Prinzipien, die alles leiten, was wir entwickeln',
         items: {
           humanLed: {
-            title: 'Menschengeführte Automatisierung',
-            description: 'KI erweitert unsere Fähigkeiten, ersetzt sie aber nicht. Wir bauen Leitplanken, halten Menschen im Prozess und entwerfen für Vertrauen.',
+            title: 'Orientierung am Menschen',
+            description: 'KI erweitert unsere Fähigkeiten, ersetzt sie aber nicht. Wir bauen Richtlinien, halten Ihr Team im Prozess und erweitern Ihr Potential.',
           },
           outcomes: {
             title: 'Ergebnisse statt Hype',
-            description: 'Wir messen Erfolg an gesparter Zeit, reduzierten Kosten und minimiertem Risiko - nicht an Schlagworten. Jedes Engagement führt zu einem konkreten Geschäftsergebnis.',
+            description: 'Wir messen Erfolg an gesparter Zeit, reduzierten Kosten und minimiertem Risiko - nicht mit "Buzzwords". Jedes Investment führt zu einem konkreten Mehrwert.',
           },
           partner: {
-            title: 'Partner, nicht Lieferant',
-            description: 'Wir kartieren Arbeitsabläufe gemeinsam, stimmen Entscheidungen ab und übernehmen Verantwortung für Ergebnisse. Ihr Team behält die Kontrolle; wir verstärken ihre Fähigkeiten.',
+            title: 'Partner statt Agentur',
+            description: 'Wir optimieren Ihren Betrieb gemeinsam, stimmen Entscheidungen ab und übernehmen Verantwortung für unsere Ergebnisse. Ihr Team behält die Kontrolle - wir unterstützen ihre Fähigkeiten.',
           },
           privacy: {
-            title: 'Datenschutzbewusst',
-            description: 'Wir setzen standardmäßig auf DSGVO-konforme, verantwortungsvolle Datenverarbeitung und können bei Bedarf selbst hosten - Compliance mit Praktikabilität balancierend.',
+            title: 'Bewusstsein für Ihre Daten',
+            description: 'Wir setzen standardmäßig auf DSGVO-konforme, verantwortungsvolle Datenverarbeitung und können bei Bedarf selbst hosten - Compliance und Praktikabilität bleibt in Balance.',
           },
           precision: {
             title: 'Präzision & Klarheit',
-            description: 'Wir entwerfen Systeme, die funktionieren: einfach, robust und skalierbar. Mit klarer Abgrenzung und zugänglicher Dokumentation durchbrechen wir das Rauschen.',
+            description: 'Wir entwerfen Systeme, die funktionieren: einfach, robust und skalierbar. Mit klarer Abgrenzung und zugänglicher Dokumentation schaffen wir System und Ordnung.',
           },
         },
       },
     },
     about: {
       title: 'Über uns',
+      hero: {
+        subtitle: 'Entdecken Sie was uns bewegt und lernen Sie unser Team kennen.',
+      },
       intro: {
         paragraphs: [
-          'Wir verbinden Geschäft und Technologie - verwandeln Bedürfnisse in Systeme, treffen klare Entscheidungen und liefern das, was wirklich den Unterschied macht.',
-          'Wir stellen Menschen in den Mittelpunkt - durch Design, Kommunikation und Sorgfalt für Ihre Daten und Privatsphäre. Deshalb sind wir der Partner für Ihre Reise.',
-          'Wir sind Schöpfer im Herzen: praktisch, direkt und hands-on. Bei Automation Affairs schöpfen wir aus einem breiten Spektrum an Fähigkeiten, um mit Klarheit zu entwerfen, zu bauen und zu lösen - immer das liefernd, was zählt.'
+          'Wir verbinden Wirtschaft mit IT und unterstützen Ihr Angebot mit System. Das Ergebnis: klare Entscheidungen und messbare Ergebnisse.',
+          'Wir stellen Menschen in den Mittelpunkt - durch Design, Kommunikation und Sorgfalt für Ihre Daten und Privatsphäre. Deshalb sind wir der Partner für Ihre Transformation.',
+          'Wir sind Gründer im Herzen: praktisch, direkt und hands-on. Bei Automation Affairs schöpfen wir aus einem breiten Spektrum an Fähigkeiten, um mit Klarheit zu entwerfen, zu bauen und zu lösen.'
         ]
       },
       mission: {
         title: 'Unsere Mission',
-        description: 'Als Ihr Transformationspartner vereinfachen wir die KI-Einführung und treiben intelligente Automatisierungen in Ihrem Unternehmen voran. Wir optimieren kritische Arbeitsabläufe, setzen KI dort ein, wo sie echten Wert schafft, und liefern End-to-End-Automatisierungen, die Kosten reduzieren und Ihren Teams Zeit für das Wesentliche verschaffen.',
+        description: 'Als Ihr Transformationspartner vereinfachen wir die KI Implementierung und treiben smarte Automatisierungen in Ihrem Unternehmen voran. Wir optimieren kritische Arbeitsabläufe, setzen KI nur dort ein, wo sie echten Wert schafft, und liefern End-to-End-Automatisierungen, die Kosten reduzieren und Ihrem Team Zeit für das Wesentliche geben.',
       },
       vision: {
         title: 'Unsere Vision',
-        description: 'Für Unternehmen in ganz Europa bedeutet Erfolg, zuverlässige KI und Automatisierungen zu nutzen, denen sie vertrauen können. Automation Affairs sorgt dafür, dass die Einführung klar, sicher und effektiv ist - damit Unternehmen in einer datengetriebenen Welt die Nase vorn behalten.',
+        description: 'Für Unternehmen in ganz Europa bedeutet zukünftiger Erfolg, zuverlässige KI und Automatisierungen zu nutzen, denen sie vertrauen können. Automation Affairs sorgt dafür, dass die Einführung klar, sicher und effektiv ist - damit unsere Partnerunternehmen in einer datengetriebenen Welt die Nase vorn behalten.',
       },
       values: {
         title: 'Unsere Werte',
