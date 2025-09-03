@@ -21,7 +21,7 @@ export function About() {
     },
     {
       name: 'Omar Hussein',
-      title: 'Principal Full-Stack Engineer',
+      title: 'Solution Architect',
       email: 'omar@automationaffairs.com',
     },
   ];
