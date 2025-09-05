@@ -90,7 +90,7 @@ export function Home() {
               <img 
                 src="/logo.svg" 
                 alt="Automation Affairs Logo" 
-                className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48 object-contain filter dark:invert"
+                className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 object-contain filter dark:invert"
                 onError={(e) => {
                   // Fallback to PNG if SVG fails
                   const target = e.target as HTMLImageElement;

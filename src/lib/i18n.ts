@@ -149,7 +149,7 @@ const resources = {
       },
       cta: {
         title: "Let's build your vision",
-        subtitle: "Let's build clear, secure automations together - with privacy-first delivery.",
+        subtitle: "Partner with us for tailored, trusted, privacy-first automations.",
         button: "Get Started"
       },
       kpis: {
@@ -192,7 +192,7 @@ const resources = {
     about: {
       title: 'About Us',
       hero: {
-        subtitle: 'Discover our mindset, meet our team and understand our Vision.',
+        subtitle: 'Discover our mindset, meet our team and understand our vision.',
       },
       intro: {
         paragraphs: [
@@ -512,7 +512,7 @@ const resources = {
       },
       cta: {
         title: 'Lassen Sie uns Ihre Vision bauen',
-        subtitle: 'und klare, sichere Automationen implementieren. Mit uns als Ihren Partner',
+        subtitle: 'Werden Sie unser Partner für maßgeschneiderte, vertrauensvolle, datenschutzorientierte Automationen.',
         button: 'Das Gespräch beginnen',
       },
       kpis: {
