@@ -1,8 +1,8 @@
 name: Build and Deploy to Hostinger
 
 on:
-  push:
-    branches: [ main ]
+  # Disable automatic deployment - using Hostinger's Git integration instead
+  workflow_dispatch: # Manual trigger only
 
 jobs:
   build-and-deploy:
