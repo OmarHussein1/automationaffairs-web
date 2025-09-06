@@ -29,3 +29,10 @@ dist-ssr
 
 # Build output
 build/
+# Ignore build output
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.production
