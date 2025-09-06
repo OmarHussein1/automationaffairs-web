@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Layout } from './components/layout/Layout';
 import { Home } from './pages/Home';
@@ -31,8 +30,7 @@ function LanguageWrapper({ children, lang }: { children: React.ReactNode; lang?:
 
 function App() {
   return (
-    <HelmetProvider>
-      <Router>
+    <Router>
         <Routes>
           {/* English routes */}
           <Route path="/" element={<LanguageWrapper><Home /></LanguageWrapper>} />
@@ -54,7 +52,6 @@ function App() {
           <Route path="/de/privacy" element={<Navigate to="/de/datenschutz" replace />} />
         </Routes>
       </Router>
-    </HelmetProvider>
   );
 }
 

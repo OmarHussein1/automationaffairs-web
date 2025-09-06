@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
@@ -95,53 +95,95 @@ export function SEO({
     }
   }
 
-  return (
-    <Helmet>
-      {/* Basic Meta Tags */}
-      <title>{finalTitle}</title>
-      <meta name="description" content={finalDescription} />
-      <meta name="keywords" content={finalKeywords} />
-      <meta name="author" content="Automation Affairs" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      
-      {/* Language and Locale */}
-      <html lang={currentLang} />
-      <meta property="og:locale" content={isGerman ? 'de_DE' : 'en_US'} />
-      
-      {/* Canonical URL */}
-      <link rel="canonical" href={currentUrl} />
-      
-      {/* Alternate Language URLs */}
-      <link rel="alternate" hrefLang="en" href={siteUrl + location.pathname.replace('/de', '')} />
-      <link rel="alternate" hrefLang="de" href={siteUrl + '/de' + location.pathname.replace('/de', '')} />
-      <link rel="alternate" hrefLang="x-default" href={siteUrl + location.pathname.replace('/de', '')} />
-      
-      {/* Open Graph Tags */}
-      <meta property="og:title" content={finalTitle} />
-      <meta property="og:description" content={finalDescription} />
-      <meta property="og:type" content={type} />
-      <meta property="og:url" content={currentUrl} />
-      <meta property="og:image" content={`${siteUrl}${image}`} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:site_name" content="Automation Affairs" />
-      
-      {/* Twitter Card Tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={finalTitle} />
-      <meta name="twitter:description" content={finalDescription} />
-      <meta name="twitter:image" content={`${siteUrl}${image}`} />
-      
-      {/* Robots */}
-      {noIndex && <meta name="robots" content="noindex, nofollow" />}
-      
-      {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(breadcrumbStructuredData)}
-      </script>
-    </Helmet>
-  );
+  useEffect(() => {
+    // Update document title
+    document.title = finalTitle;
+    
+    // Update or create meta tags
+    const updateMetaTag = (name: string, content: string, property = false) => {
+      const selector = property ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+      let meta = document.querySelector(selector) as HTMLMetaElement;
+      if (!meta) {
+        meta = document.createElement('meta');
+        if (property) {
+          meta.setAttribute('property', name);
+        } else {
+          meta.setAttribute('name', name);
+        }
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    // Update or create link tags
+    const updateLinkTag = (rel: string, href: string, hrefLang?: string) => {
+      const selector = hrefLang ? `link[rel="${rel}"][hreflang="${hrefLang}"]` : `link[rel="${rel}"]`;
+      let link = document.querySelector(selector) as HTMLLinkElement;
+      if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', rel);
+        if (hrefLang) {
+          link.setAttribute('hreflang', hrefLang);
+        }
+        document.head.appendChild(link);
+      }
+      link.setAttribute('href', href);
+    };
+
+    // Basic meta tags
+    updateMetaTag('description', finalDescription);
+    updateMetaTag('keywords', finalKeywords);
+    updateMetaTag('author', 'Automation Affairs');
+    
+    // Language and locale
+    document.documentElement.setAttribute('lang', currentLang);
+    updateMetaTag('og:locale', isGerman ? 'de_DE' : 'en_US', true);
+    
+    // Canonical URL
+    updateLinkTag('canonical', currentUrl);
+    
+    // Alternate language URLs
+    updateLinkTag('alternate', siteUrl + location.pathname.replace('/de', ''), 'en');
+    updateLinkTag('alternate', siteUrl + '/de' + location.pathname.replace('/de', ''), 'de');
+    updateLinkTag('alternate', siteUrl + location.pathname.replace('/de', ''), 'x-default');
+    
+    // Open Graph tags
+    updateMetaTag('og:title', finalTitle, true);
+    updateMetaTag('og:description', finalDescription, true);
+    updateMetaTag('og:type', type, true);
+    updateMetaTag('og:url', currentUrl, true);
+    updateMetaTag('og:image', `${siteUrl}${image}`, true);
+    updateMetaTag('og:image:width', '1200', true);
+    updateMetaTag('og:image:height', '630', true);
+    updateMetaTag('og:site_name', 'Automation Affairs', true);
+    
+    // Twitter Card tags
+    updateMetaTag('twitter:card', 'summary_large_image');
+    updateMetaTag('twitter:title', finalTitle);
+    updateMetaTag('twitter:description', finalDescription);
+    updateMetaTag('twitter:image', `${siteUrl}${image}`);
+    
+    // Robots
+    if (noIndex) {
+      updateMetaTag('robots', 'noindex, nofollow');
+    }
+    
+    // Structured data
+    const updateStructuredData = (id: string, data: object) => {
+      let script = document.querySelector(`script[data-id="${id}"]`) as HTMLScriptElement;
+      if (!script) {
+        script = document.createElement('script');
+        script.setAttribute('type', 'application/ld+json');
+        script.setAttribute('data-id', id);
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(data);
+    };
+    
+    updateStructuredData('organization', structuredData);
+    updateStructuredData('breadcrumb', breadcrumbStructuredData);
+    
+  }, [finalTitle, finalDescription, finalKeywords, currentLang, isGerman, currentUrl, siteUrl, location.pathname, image, type, noIndex, structuredData, breadcrumbStructuredData]);
+
+  return null;
 }
