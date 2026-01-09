@@ -1,0 +1,542 @@
+/* =====================================================
+   ASSET LIBRARY PAGE - Automation Affairs Client Portal
+   Industrial Blue/White Theme
+   ===================================================== */
+
+.asset-library-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f7f8fa;
+    color: #0a0a0a;
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+.asset-library-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-logo {
+    height: 32px;
+    width: auto;
+}
+
+.header-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.header-brand-name {
+    font-family: 'Lexend Tera', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+}
+
+.brand-accent {
+    color: #3b5bdb;
+}
+
+.header-brand-tagline {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.5625rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: #6b7280;
+}
+
+/* Buttons */
+.btn-secondary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #4b5563;
+}
+
+.btn-secondary:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+    color: #0a0a0a;
+}
+
+/* =====================================================
+   MAIN CONTENT
+   ===================================================== */
+.asset-library-main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Page Header */
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.page-header-content h1 {
+    font-family: 'Lexend Tera', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+    margin-bottom: 0.5rem;
+}
+
+.page-header-content p {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.9375rem;
+    color: #6b7280;
+}
+
+/* =====================================================
+   FILTER BAR
+   ===================================================== */
+.filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #0a0a0a;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.search-box input::placeholder {
+    color: #9ca3af;
+}
+
+.search-box input:focus {
+    border-color: rgba(59, 91, 219, 0.5);
+    box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.1);
+}
+
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.project-filter {
+    padding: 0.5rem 1rem;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.project-filter:hover {
+    background: #f3f4f6;
+    color: #0a0a0a;
+}
+
+.project-filter.active {
+    background: rgba(59, 91, 219, 0.1);
+    border-color: rgba(59, 91, 219, 0.3);
+    color: #3b5bdb;
+}
+
+/* =====================================================
+   ASSETS GRID
+   ===================================================== */
+.assets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.asset-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.asset-card:hover {
+    border-color: rgba(59, 91, 219, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.asset-card-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(59, 91, 219, 0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b5bdb;
+    flex-shrink: 0;
+}
+
+.asset-card-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.asset-card-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0a0a0a;
+    line-height: 1.3;
+    word-break: break-word;
+}
+
+.asset-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+.asset-card-type {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #6b7280;
+}
+
+.asset-card-divider {
+    color: #d1d5db;
+}
+
+.asset-card-date {
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+.asset-card-project {
+    font-size: 0.75rem;
+    color: #3b5bdb;
+    margin-top: 4px;
+}
+
+.asset-card-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.asset-btn {
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.asset-btn:hover {
+    background: rgba(59, 91, 219, 0.08);
+    border-color: rgba(59, 91, 219, 0.3);
+    color: #3b5bdb;
+}
+
+/* =====================================================
+   EMPTY STATE
+   ===================================================== */
+.assets-empty {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.assets-empty .empty-icon {
+    color: #d1d5db;
+    margin-bottom: 1rem;
+}
+
+.assets-empty h3 {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.assets-empty p {
+    font-size: 0.875rem;
+    color: #6b7280;
+    max-width: 300px;
+}
+
+/* =====================================================
+   LOADING & ERROR
+   ===================================================== */
+.asset-library-loading,
+.asset-library-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 4rem 2rem;
+    color: #6b7280;
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+    color: #3b5bdb;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =====================================================
+   PREVIEW MODAL
+   ===================================================== */
+.preview-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+}
+
+.preview-content {
+    width: 100%;
+    max-width: 1000px;
+    max-height: 90vh;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.preview-title {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0a0a0a;
+}
+
+.preview-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.preview-btn {
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.preview-btn:hover {
+    background: #f9fafb;
+    color: #0a0a0a;
+}
+
+.preview-close:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.preview-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow: auto;
+    background: #f9fafb;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.preview-pdf {
+    width: 100%;
+    height: 70vh;
+    border: none;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+.asset-library-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: #9ca3af;
+}
+
+.footer-logo {
+    height: 20px;
+    opacity: 0.5;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.75rem;
+}
+
+.footer-links a {
+    font-family: 'Lexend Deca', sans-serif;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #4b5563;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1200px) {
+    .assets-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .asset-library-header {
+        padding: 0.75rem 1rem;
+    }
+
+    .header-brand-text {
+        display: none;
+    }
+
+    .header-logo {
+        height: 28px;
+    }
+
+    .asset-library-main {
+        padding: 1.5rem 1rem;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+    }
+
+    .assets-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .asset-library-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

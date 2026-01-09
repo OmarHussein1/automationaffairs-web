@@ -9,7 +9,7 @@ const resources = {
         home: 'Home',
         about: 'About',
         contact: 'Contact',
-        getInTouch: 'Get in Touch',
+        getInTouch: 'Client Login',
       },
       a11y: {
         skipToContent: 'Skip to main content',
@@ -372,7 +372,7 @@ const resources = {
         home: 'Startseite',
         about: 'Über uns',
         contact: 'Kontakt',
-        getInTouch: 'Kontakt aufnehmen',
+        getInTouch: 'Client Login',
       },
       a11y: {
         skipToContent: 'Zum Hauptinhalt springen',
@@ -740,7 +740,7 @@ i18n
     debug: false,
     ns: ['common', 'home', 'about', 'contact', 'legal'],
     defaultNS: 'common',
-    
+
     detection: {
       order: ['path', 'localStorage', 'navigator'],
       lookupFromPathIndex: 0,

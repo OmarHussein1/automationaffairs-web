@@ -1,0 +1,1096 @@
+/* =====================================================
+   PROJECT DETAIL PAGE - Automation Affairs Client Portal
+   Industrial Blue/White Theme
+   ===================================================== */
+
+.project-detail-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f7f8fa;
+    color: #0a0a0a;
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+.project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-logo {
+    height: 32px;
+    width: auto;
+}
+
+.header-brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.header-brand-name {
+    font-family: 'Lexend Tera', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+}
+
+.header-brand-name .brand-accent {
+    color: #3b5bdb;
+}
+
+.header-brand-tagline {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.5625rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: #6b7280;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header-user {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.user-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #0a0a0a;
+}
+
+.user-role {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.5625rem;
+    letter-spacing: 0.1em;
+    color: #3b5bdb;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b5bdb 0%, #364fc7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid rgba(59, 91, 219, 0.3);
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-avatar span {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.header-logout {
+    padding: 0.625rem;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.header-logout:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+    color: #0a0a0a;
+}
+
+/* =====================================================
+   MAIN CONTENT
+   ===================================================== */
+.project-main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    background: transparent;
+    border: none;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    margin-bottom: 1.5rem;
+}
+
+.back-button:hover {
+    color: #3b5bdb;
+}
+
+/* =====================================================
+   PROJECT TITLE SECTION
+   ===================================================== */
+.project-title-section {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.project-title-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+}
+
+.status-badge.active {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+}
+
+.status-badge.planning {
+    background: rgba(168, 85, 247, 0.1);
+    color: #a855f7;
+}
+
+.status-badge.done {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+}
+
+.status-badge.archived {
+    background: rgba(107, 114, 128, 0.1);
+    color: #6b7280;
+}
+
+.project-title {
+    font-family: 'Lexend Tera', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0a0a0a;
+    margin: 0 0 0.5rem 0;
+}
+
+.project-description {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0 0 1.5rem 0;
+}
+
+/* Timeline */
+.timeline-section {
+    margin-bottom: 1.5rem;
+}
+
+.timeline-bar {
+    height: 8px;
+    background: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.timeline-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b5bdb 0%, #4c6ef5 50%, #5c7cfa 100%);
+    border-radius: 4px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.timeline-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.4) 50%,
+            transparent 100%);
+    animation: progress-shimmer 2s infinite;
+}
+
+@keyframes progress-shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Completion Info */
+.completion-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.completion-label {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: #9ca3af;
+}
+
+.completion-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #0a0a0a;
+}
+
+.completion-date svg {
+    color: #3b5bdb;
+}
+
+.progress-percent {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #3b5bdb;
+}
+
+/* =====================================================
+   PROJECT GRID
+   ===================================================== */
+.project-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.grid-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    min-width: 0;
+    width: 100%;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.card-header h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0a0a0a;
+    margin: 0;
+}
+
+.card-header h2 svg {
+    color: #3b5bdb;
+}
+
+.btn-link {
+    background: transparent;
+    border: none;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #3b5bdb;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.btn-link:hover {
+    color: #364fc7;
+}
+
+/* =====================================================
+   ASSETS CARD
+   ===================================================== */
+.assets-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.asset-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: #f9fafb;
+    border: 1px solid #f3f4f6;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.asset-item:hover {
+    border-color: rgba(59, 91, 219, 0.2);
+    background: #fafbfc;
+}
+
+.asset-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(59, 91, 219, 0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b5bdb;
+}
+
+.asset-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.asset-name {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #0a0a0a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.asset-meta {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.6875rem;
+    color: #9ca3af;
+}
+
+.asset-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.asset-btn {
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.asset-btn:hover {
+    background: rgba(59, 91, 219, 0.08);
+    border-color: rgba(59, 91, 219, 0.3);
+    color: #3b5bdb;
+}
+
+.assets-empty {
+    text-align: center;
+    padding: 2rem;
+    color: #9ca3af;
+}
+
+/* =====================================================
+   TASKS CARD
+   ===================================================== */
+.tasks-counter {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #22c55e;
+    padding: 0.25rem 0.5rem;
+    background: rgba(34, 197, 94, 0.1);
+    border-radius: 4px;
+}
+
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.task-item {
+    padding: 1rem;
+    background: #f9fafb;
+    border: 1px solid #f3f4f6;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.task-item:hover {
+    border-color: #e5e7eb;
+}
+
+.task-item.done {
+    opacity: 0.7;
+}
+
+.task-main-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.task-status-icon {
+    flex-shrink: 0;
+}
+
+.task-status-icon .status-done {
+    color: #22c55e;
+}
+
+.task-status-icon .status-review {
+    color: #f59e0b;
+}
+
+.task-status-icon .status-in-progress {
+    color: #3b82f6;
+}
+
+.task-status-icon .status-todo {
+    color: #9ca3af;
+}
+
+.task-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.task-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #0a0a0a;
+}
+
+.task-title.done {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+.task-priority {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.125rem 0.375rem;
+    border-radius: 3px;
+}
+
+.task-priority.priority-high {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.task-priority.priority-medium {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.task-priority.priority-low {
+    background: rgba(107, 114, 128, 0.1);
+    color: #6b7280;
+}
+
+.task-status-label {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.task-status-label.status-done {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+}
+
+.task-status-label.status-review {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.task-status-label.status-in_progress {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+}
+
+.task-status-label.status-todo {
+    background: rgba(107, 114, 128, 0.1);
+    color: #6b7280;
+}
+
+.task-description {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.task-item:hover .task-description {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f3f4f6;
+    max-height: 200px;
+    opacity: 1;
+}
+
+.task-description p {
+    font-size: 0.8125rem;
+    color: #6b7280;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* =====================================================
+   CONTACT CARD
+   ===================================================== */
+.contact-card {
+    background: linear-gradient(135deg, #3b5bdb 0%, #364fc7 100%);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    padding: 1.25rem 0.75rem;
+    width: 270px;
+}
+
+.contact-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 0 1rem;
+    height: 100%;
+    transition: opacity 0.3s ease;
+}
+
+.contact-content.fading {
+    opacity: 0;
+}
+
+.contact-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+}
+
+.contact-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-info h3 {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 0.25rem 0;
+}
+
+.contact-role {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.contact-btn.btn-primary {
+    background: #ffffff;
+    border: none;
+    color: #3b5bdb;
+}
+
+.contact-btn.btn-primary:hover {
+    background: #f9fafb;
+    transform: translateY(-1px);
+}
+
+.contact-btn.btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+.contact-btn.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Carousel Navigation */
+.contact-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.carousel-nav:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.carousel-prev {
+    left: 0.5rem;
+}
+
+.carousel-next {
+    right: 0.5rem;
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 0.5rem 0;
+}
+
+.carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.carousel-dot.active {
+    background: #ffffff;
+    transform: scale(1.2);
+}
+
+.contact-avatar {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+}
+
+.contact-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.avatar-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+.btn-primary,
+.btn-secondary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3b5bdb 0%, #364fc7 100%);
+    border: none;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 4px 12px rgba(59, 91, 219, 0.25);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #4b5563;
+}
+
+.btn-secondary:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+    color: #0a0a0a;
+}
+
+/* =====================================================
+   LOADING & ERROR STATES
+   ===================================================== */
+.project-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 4rem 2rem;
+    min-height: 50vh;
+    color: #6b7280;
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+    color: #3b5bdb;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.project-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 3rem 2rem;
+    min-height: 50vh;
+}
+
+.project-error p {
+    color: #dc2626;
+    font-size: 0.875rem;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+.project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+}
+
+.footer-logo {
+    height: 20px;
+    opacity: 0.5;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #4b5563;
+}
+
+/* =====================================================
+   PREVIEW MODAL
+   ===================================================== */
+.preview-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.preview-content {
+    background: #ffffff;
+    border-radius: 12px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.preview-title {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0a0a0a;
+}
+
+.preview-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.preview-btn {
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.preview-btn:hover {
+    background: #f9fafb;
+    color: #0a0a0a;
+}
+
+.preview-close:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.preview-body {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+.preview-pdf {
+    width: 100%;
+    height: 70vh;
+    border: none;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1024px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        grid-column: span 1;
+    }
+
+    .contact-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .contact-btn {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-header {
+        padding: 0.75rem 1rem;
+    }
+
+    .header-brand-text {
+        display: none;
+    }
+
+    .header-user {
+        display: none;
+    }
+
+    .project-main {
+        padding: 1.5rem 1rem;
+    }
+
+    .project-title-section {
+        padding: 1.25rem;
+    }
+
+    .project-title {
+        font-size: 1.25rem;
+    }
+
+    .completion-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .project-footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+}

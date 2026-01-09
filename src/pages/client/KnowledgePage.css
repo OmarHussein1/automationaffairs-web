@@ -1,0 +1,506 @@
+/* =====================================================
+   KNOWLEDGE PAGE - Automation Affairs Client Portal
+   Industrial Blue/White Theme
+   ===================================================== */
+
+.knowledge-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f7f8fa;
+    color: #0a0a0a;
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+.knowledge-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-logo {
+    height: 32px;
+}
+
+.header-brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-brand-name {
+    font-family: 'Lexend Tera', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+}
+
+.brand-accent {
+    color: #3b5bdb;
+}
+
+.header-brand-tagline {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.5625rem;
+    letter-spacing: 0.12em;
+    color: #6b7280;
+}
+
+/* =====================================================
+   MAIN
+   ===================================================== */
+.knowledge-main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Page Header */
+.page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.page-header-content h1 {
+    font-family: 'Lexend Tera', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #0a0a0a;
+    margin-bottom: 0.5rem;
+}
+
+.page-header-content p {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.9375rem;
+    color: #6b7280;
+}
+
+.btn-link {
+    background: none;
+    border: none;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #3b5bdb;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.btn-link:hover {
+    opacity: 0.8;
+}
+
+/* Filter Bar */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    padding: 1rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.search-box {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 3rem;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #0a0a0a;
+    outline: none;
+    transition: all 0.2s ease;
+}
+
+.search-box input:focus {
+    border-color: rgba(59, 91, 219, 0.5);
+    box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.1);
+}
+
+.search-box input::placeholder {
+    color: #9ca3af;
+}
+
+.tag-filters {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag-filter {
+    padding: 0.5rem 1rem;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tag-filter:hover {
+    border-color: #d1d5db;
+    color: #0a0a0a;
+}
+
+.tag-filter.active {
+    background: rgba(59, 91, 219, 0.1);
+    border-color: rgba(59, 91, 219, 0.3);
+    color: #3b5bdb;
+}
+
+/* =====================================================
+   ARTICLES GRID
+   ===================================================== */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.article-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.article-card:hover {
+    border-color: rgba(59, 91, 219, 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.article-cover {
+    position: relative;
+    height: 160px;
+    background: #f3f4f6;
+    overflow: hidden;
+}
+
+.article-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover .article-cover img {
+    transform: scale(1.05);
+}
+
+.article-cover-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(59, 91, 219, 0.1) 0%, rgba(59, 91, 219, 0.05) 100%);
+    color: #3b5bdb;
+}
+
+.article-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.article-tag {
+    padding: 0.25rem 0.625rem;
+    border-radius: 4px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.5625rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.article-content {
+    padding: 1.5rem;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+.article-divider {
+    color: #d1d5db;
+}
+
+.article-title {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #0a0a0a;
+    margin-bottom: 0.75rem;
+}
+
+.article-excerpt {
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: #6b7280;
+    margin: 0;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.article-card-footer {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+    padding-top: 0;
+    border: none;
+    background: transparent;
+}
+
+.read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: rgba(59, 91, 219, 0.08);
+    border: 1px solid rgba(59, 91, 219, 0.2);
+    border-radius: 4px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #3b5bdb;
+    transition: all 0.2s ease;
+}
+
+.article-card:hover .read-more {
+    background: #3b5bdb;
+    color: #ffffff;
+    border-color: #3b5bdb;
+    gap: 0.5rem;
+}
+
+/* Empty State */
+.articles-empty {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.empty-icon {
+    color: #d1d5db;
+    margin-bottom: 1rem;
+}
+
+.articles-empty h3 {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.articles-empty p {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Loading & Error */
+.knowledge-loading,
+.knowledge-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    gap: 1rem;
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+    color: #3b5bdb;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.knowledge-error {
+    color: #dc2626;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+.knowledge-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+.footer-logo {
+    height: 20px;
+    opacity: 0.5;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.75rem;
+}
+
+.footer-links a {
+    font-family: 'Lexend Deca', sans-serif;
+    color: #9ca3af;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #4b5563;
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+.btn-secondary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: #f9fafb;
+    border-color: #d1d5db;
+    color: #0a0a0a;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1024px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .knowledge-header {
+        padding: 0.75rem 1rem;
+    }
+
+    .header-brand-text {
+        display: none;
+    }
+
+    .header-logo {
+        height: 28px;
+    }
+
+    .knowledge-main {
+        padding: 1.5rem 1rem;
+    }
+
+    .page-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box {
+        max-width: none;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .knowledge-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

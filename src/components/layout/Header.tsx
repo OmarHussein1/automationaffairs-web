@@ -38,13 +38,13 @@ export function Header() {
   const toggleLanguage = () => {
     const newLang = isGerman ? 'en' : 'de';
     const currentPath = location.pathname;
-    
+
     // Remove language prefix if exists
     const pathWithoutLang = currentPath.replace(/^\/(de|en)/, '') || '/';
-    
+
     // Add new language prefix
     const newPath = newLang === 'de' ? `/de${pathWithoutLang}` : pathWithoutLang;
-    
+
     i18n.changeLanguage(newLang);
     window.history.pushState({}, '', newPath);
   };
@@ -62,20 +62,20 @@ export function Header() {
   return (
     <header className={cn(
       "sticky top-0 z-40 backdrop-blur-md border-b transition-all duration-300",
-      isScrolled 
-        ? "bg-neutral-bg/95 dark:bg-dark-bg/95 border-neutral-stroke dark:border-dark-stroke shadow-sm" 
+      isScrolled
+        ? "bg-neutral-bg/95 dark:bg-dark-bg/95 border-neutral-stroke dark:border-dark-stroke shadow-sm"
         : "bg-neutral-bg/80 dark:bg-dark-bg/80 border-neutral-stroke/50 dark:border-dark-stroke/50"
     )}>
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link 
+          <Link
             to={getLocalizedPath('/')}
             className="flex items-center space-x-3 focus-ring rounded-full"
           >
-            <img 
-              src="/logo.svg" 
-              alt="Automation Affairs Logo" 
+            <img
+              src="/logo.svg"
+              alt="Automation Affairs Logo"
               className="w-8 h-8 object-contain filter dark:invert"
               onError={(e) => {
                 // Fallback to PNG if SVG fails
@@ -144,8 +144,8 @@ export function Header() {
 
             {/* CTA Button */}
             <Button className="bg-primary dark:bg-[#f3ff5a] hover:bg-primary/90 dark:hover:bg-[#f3ff5a]/90 text-white dark:text-black" asChild>
-              <Link 
-                to={getLocalizedPath('/contact')}
+              <Link
+                to="/login"
                 onClick={() => {
                   setTimeout(() => {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -193,7 +193,7 @@ export function Header() {
                     {item.name}
                   </Link>
                 ))}
-                
+
                 <div className="flex items-center justify-between pt-4 border-t border-neutral-ink/10 dark:border-dark-text/10">
                   <div className="flex items-center space-x-4">
                     <button
@@ -217,8 +217,8 @@ export function Header() {
                   </div>
 
                   <Button className="bg-primary dark:bg-[#f3ff5a] hover:bg-primary/90 dark:hover:bg-[#f3ff5a]/90 text-white dark:text-black" asChild onClick={() => setIsMenuOpen(false)}>
-                    <Link 
-                      to={getLocalizedPath('/contact')}
+                    <Link
+                      to="/login"
                       onClick={() => {
                         setTimeout(() => {
                           window.scrollTo({ top: 0, behavior: 'smooth' });
