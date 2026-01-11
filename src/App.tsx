@@ -13,6 +13,7 @@ import './lib/i18n';
 import { AuthProvider } from './context/AuthContext';
 import RequireAuth from './components/auth/RequireAuth';
 import LoginPage from './pages/client/LoginPage';
+import SetPasswordPage from './pages/client/SetPasswordPage';
 import DashboardPage from './pages/client/DashboardPage';
 import ProjectDetailPage from './pages/client/ProjectDetailPage';
 import AssetLibraryPage from './pages/client/AssetLibraryPage';
@@ -68,6 +69,7 @@ function App() {
 
           {/* Public: Login */}
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/set-password" element={<SetPasswordPage />} />
 
           {/* Protected: All other client portal routes */}
           <Route element={<RequireAuth />}>
