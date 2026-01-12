@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark">
+    <title>Welcome to Automation Affairs Client Portal</title>
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <![endif]-->
+    <style>
+        /* Reset & Base - compatible with .MailBody for Apple Mail, Office 365 */
+        :root {
+            color-scheme: light dark;
+            supported-color-schemes: light dark;
+        }
+
+        body,
+        .MailBody,
+        table,
+        td,
+        a {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        table,
+        td {
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+        }
+
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+        }
+
+        /* Google Font Import */
+        @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&family=Lexend+Tera:wght@400;500;600;700&display=swap');
+
+        /* Client Support */
+        .ReadMsgBody,
+        .ExternalClass {
+            width: 100%;
+        }
+
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass td,
+        .ExternalClass div {
+            line-height: 100%;
+        }
+
+        /* iOS Blue Links Override */
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+            text-decoration: none !important;
+        }
+
+        /* =====================================================
+           LIGHT MODE (DEFAULT)
+           ===================================================== */
+        .wrapper-bg {
+            background-color: #f7f8fa;
+        }
+
+        .card-bg {
+            background-color: #ffffff;
+            border: 1px solid rgba(59, 91, 219, 0.12);
+        }
+
+        .logo-dark {
+            display: inline-block !important;
+        }
+
+        .logo-light {
+            display: none !important;
+        }
+
+        .brand-text {
+            color: #0a0a0a;
+        }
+
+        .headline-text {
+            color: #0a0a0a;
+        }
+
+        .headline-accent {
+            color: #3b5bdb;
+        }
+
+        .body-text {
+            color: #4b5563;
+        }
+
+        .muted-text {
+            color: #6b7280;
+        }
+
+        .badge-style {
+            background: rgba(59, 91, 219, 0.08);
+            color: #3b5bdb;
+            border: none;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #3b5bdb 0%, #364fc7 100%);
+            color: #ffffff;
+        }
+
+        .divider {
+            background: linear-gradient(90deg, transparent, rgba(59, 91, 219, 0.2), transparent);
+        }
+
+        .note-box {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+        }
+
+        .note-strong {
+            color: #374151;
+        }
+
+        .note-text {
+            color: #6b7280;
+        }
+
+        .footer-text {
+            color: #9ca3af;
+        }
+
+        .footer-link {
+            color: #3b5bdb;
+        }
+
+        /* =====================================================
+           DARK MODE OVERRIDES
+           Works in Apple Mail, iOS Mail, Outlook.com, Gmail (Android)
+           ===================================================== */
+        @media (prefers-color-scheme: dark) {
+            .wrapper-bg {
+                background-color: #0d0f12 !important;
+            }
+
+            .card-bg {
+                background-color: #121418 !important;
+                border-color: rgba(243, 255, 90, 0.15) !important;
+                box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 60px rgba(243, 255, 90, 0.05) !important;
+            }
+
+            .logo-dark {
+                display: none !important;
+            }
+
+            .logo-light {
+                display: inline-block !important;
+            }
+
+            .brand-text {
+                color: #ffffff !important;
+            }
+
+            .headline-text {
+                color: #ffffff !important;
+            }
+
+            .headline-accent {
+                color: #f3ff5a !important;
+            }
+
+            .body-text {
+                color: #a1a1aa !important;
+            }
+
+            .muted-text {
+                color: #71717a !important;
+            }
+
+            .badge-style {
+                background: rgba(243, 255, 90, 0.12) !important;
+                color: #f3ff5a !important;
+                border: 1px solid rgba(243, 255, 90, 0.2) !important;
+            }
+
+            .cta-btn {
+                background: #f3ff5a !important;
+                color: #0a0a0a !important;
+                box-shadow: 0 4px 20px rgba(243, 255, 90, 0.3), 0 0 40px rgba(243, 255, 90, 0.15) !important;
+            }
+
+            .divider {
+                background: linear-gradient(90deg, transparent, rgba(243, 255, 90, 0.3), transparent) !important;
+            }
+
+            .note-box {
+                background: rgba(255, 255, 255, 0.03) !important;
+                border-color: rgba(255, 255, 255, 0.08) !important;
+            }
+
+            .note-strong {
+                color: #a1a1aa !important;
+            }
+
+            .note-text {
+                color: #71717a !important;
+            }
+
+            .footer-text {
+                color: #52525b !important;
+            }
+
+            .footer-link {
+                color: #f3ff5a !important;
+            }
+
+            /* Invert logo for dark mode */
+            .logo-img {
+                filter: invert(1) !important;
+            }
+        }
+
+        /* Dark mode body text (for clients that support :target pseudo) */
+        [data-ogsc] .wrapper-bg {
+            background-color: #0d0f12 !important;
+        }
+
+        [data-ogsc] .card-bg {
+            background-color: #121418 !important;
+        }
+
+        [data-ogsc] .headline-text {
+            color: #ffffff !important;
+        }
+
+        [data-ogsc] .headline-accent {
+            color: #f3ff5a !important;
+        }
+
+        [data-ogsc] .cta-btn {
+            background: #f3ff5a !important;
+            color: #0a0a0a !important;
+        }
+
+        /* Mobile Responsive */
+        @media only screen and (max-width: 600px) {
+            .wrapper {
+                padding: 20px !important;
+            }
+
+            .main-container {
+                width: 100% !important;
+            }
+
+            .content-cell {
+                padding: 32px 24px !important;
+            }
+
+            .headline {
+                font-size: 24px !important;
+                line-height: 1.3 !important;
+            }
+
+            .cta-button {
+                padding: 16px 32px !important;
+                font-size: 12px !important;
+            }
+        }
+    </style>
+</head>
+
+<body style="margin: 0; padding: 0; font-family: 'Lexend Deca', Arial, sans-serif;">
+    <!--
+    =========================================================
+    AUTOMATION AFFAIRS CLIENT PORTAL INVITATION
+    Theme: Adaptive (Light/Dark Mode Auto-Switch)
+    Brand: Industrial Blue → Electric Yellow
+    =========================================================
+    
+    This template automatically switches between:
+    - LIGHT MODE: Industrial Blue (#3b5bdb) on white
+    - DARK MODE: Electric Yellow (#f3ff5a) on dark surface
+    
+    Supported clients: Apple Mail, iOS Mail, Outlook.com, Gmail (Android), 
+    Outlook for Mac, Windows Mail, and some webmail clients.
+    =========================================================
+    -->
+
+    <!-- Background Wrapper -->
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" class="wrapper-bg"
+        style="background-color: #f7f8fa;">
+        <tr>
+            <td align="center" class="wrapper" style="padding: 40px 20px;">
+
+                <!-- Main Container -->
+                <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"
+                    class="main-container" style="max-width: 560px; margin: 0 auto;">
+
+                    <!-- Logo Header -->
+                    <tr>
+                        <td align="center" style="padding-bottom: 32px;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td valign="middle" style="padding-right: 12px;">
+                                        <a href="https://automationaffairs.com" target="_blank"
+                                            style="text-decoration: none;">
+                                            <img src="https://automationaffairs.com/logo.svg" alt="Automation Affairs"
+                                                width="36" height="36" class="logo-img"
+                                                style="display: block; width: 36px; height: 36px;">
+                                        </a>
+                                    </td>
+                                    <td valign="middle">
+                                        <a href="https://automationaffairs.com" target="_blank"
+                                            style="text-decoration: none;">
+                                            <span class="brand-text"
+                                                style="font-family: 'Lexend Tera', Arial, sans-serif; font-size: 14px; font-weight: 600; color: #0a0a0a; letter-spacing: 0.02em; text-transform: uppercase;">AUTOMATION
+                                                AFFAIRS</span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Main Card -->
+                    <tr>
+                        <td>
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"
+                                class="card-bg"
+                                style="background-color: #ffffff; border: 1px solid rgba(59, 91, 219, 0.12); border-radius: 16px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);">
+                                <tr>
+                                    <td class="content-cell" style="padding: 48px 40px;">
+
+                                        <!-- Status Badge -->
+                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0"
+                                            width="100%">
+                                            <tr>
+                                                <td align="center" style="padding-bottom: 24px;">
+                                                    <span class="badge-style"
+                                                        style="display: inline-block; background: rgba(59, 91, 219, 0.08); color: #3b5bdb; font-family: 'Lexend Deca', Arial, sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; padding: 8px 16px; border-radius: 24px;">
+                                                        ⚡ SYSTEM ACCESS GRANTED
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Headline -->
+                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0"
+                                            width="100%">
+                                            <tr>
+                                                <td align="center" style="padding-bottom: 16px;">
+                                                    <h1 class="headline"
+                                                        style="font-family: 'Lexend Tera', Arial, sans-serif; font-size: 28px; font-weight: 700; margin: 0; line-height: 1.25; letter-spacing: -0.02em;">
+                                                        <span class="headline-text" style="color: #0a0a0a;">Welcome to
+                                                            the</span><br>
+                                                        <span class="headline-accent" style="color: #3b5bdb;">Client
+                                                            Portal</span>
+                                                    </h1>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Subheadline -->
+                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0"
+                                            width="100%">
+                                            <tr>
+                                                <td align="center" style="padding-bottom: 32px;">
+                                                    <p class="body-text"
+                                                        style="font-family: 'Lexend Deca', Arial, sans-serif; font-size: 15px; color: #4b5563; margin: 0; line-height: 1.6;">
+                                                        Your gateway to project transparency, real-time updates, and
+                                                        direct collaboration with our automation experts.
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Divider -->
+                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0"
+                                            width="100%">
+                                            <tr>
+                                                <td style="padding-bottom: 32px;">
+                                                    <div class="divider"
+                                                        style="height: 1px; background: linear-gradient(90deg, transparent, rgba(59, 91, 219, 0.2), transparent);">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Instruction Text -->
+                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0"
+                                            width="100%">
+                                            <tr>
+                                                <td align="center" style="padding-bottom: 32px;">
+                                                    <p class="muted-text"
+                                                        style="font-family: 'Lexend Deca', Arial, sans-serif; font-size: 14px; color: #6b7280; margin: 0; line-height: 1.7;">
+                                                        Click the button below to set up your secure password and
+                                                        complete your account activation. You'll be redirected to our
+                                                        portal where you can finish setting up your profile.
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- CTA Button -->
+                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0"
+                                            width="100%">
+                                            <tr>
+                                                <td align="center" style="padding-bottom: 32px;">
+                                                    <a href="{{ .ConfirmationURL }}" target="_blank"
+                                                        class="cta-btn cta-button"
+                                                        style="display: inline-block; background: linear-gradient(135deg, #3b5bdb 0%, #364fc7 100%); color: #ffffff; font-family: 'Lexend Deca', Arial, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; padding: 18px 40px; border-radius: 8px; box-shadow: 0 4px 16px rgba(59, 91, 219, 0.3);">
+                                                        ACTIVATE YOUR ACCESS →
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!-- Security Note -->
+                                        <table role="presentation" cellpadding="0" cellspacing="0" border="0"
+                                            width="100%" class="note-box"
+                                            style="background: #f9fafb; border-radius: 8px; border: 1px solid #e5e7eb;">
+                                            <tr>
+                                                <td style="padding: 16px 20px;">
+                                                    <table role="presentation" cellpadding="0" cellspacing="0"
+                                                        border="0">
+                                                        <tr>
+                                                            <td valign="top" style="padding-right: 12px;">
+                                                                <span style="font-size: 16px;">🔐</span>
+                                                            </td>
+                                                            <td>
+                                                                <p class="note-text"
+                                                                    style="font-family: 'Lexend Deca', Arial, sans-serif; font-size: 12px; color: #6b7280; margin: 0; line-height: 1.6;">
+                                                                    <strong class="note-strong"
+                                                                        style="color: #374151;">Security
+                                                                        Notice:</strong> This link is unique to you and
+                                                                    expires after first use. Never share it with anyone.
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding-top: 32px;">
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                                <tr>
+                                    <td align="center">
+                                        <p class="footer-text"
+                                            style="font-family: 'Lexend Deca', Arial, sans-serif; font-size: 11px; color: #9ca3af; margin: 0 0 8px 0; letter-spacing: 0.05em;">
+                                            AUTOMATION AFFAIRS · Industrial Automation Solutions
+                                        </p>
+                                        <p class="footer-text"
+                                            style="font-family: 'Lexend Deca', Arial, sans-serif; font-size: 11px; color: #9ca3af; margin: 0;">
+                                            <a href="https://automationaffairs.com" target="_blank" class="footer-link"
+                                                style="color: #3b5bdb; text-decoration: none;">automationaffairs.com</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

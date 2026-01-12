@@ -40,10 +40,7 @@ interface Task {
     priority?: string
 }
 
-interface Client {
-    company_name?: string
-    avatar_url?: string
-}
+
 
 interface Article {
     id: string
@@ -58,7 +55,7 @@ export default function DashboardPage() {
     const { user, profile, signOut } = useAuth()
     const navigate = useNavigate()
     const [projects, setProjects] = useState<Project[]>([])
-    const [client, setClient] = useState<Client | null>(null)
+
     const [projectTasks, setProjectTasks] = useState<Record<string, Task[]>>({})
     const [stats, setStats] = useState({
         activeProjects: 0,
@@ -124,21 +121,7 @@ export default function DashboardPage() {
                 uniqueArticles.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
                 setLatestArticles(uniqueArticles.slice(0, 3))
 
-                // Try to fetch client details (optional - may not exist)
-                // Note: This table might not exist in all Supabase setups
-                try {
-                    const { data: clientData } = await supabase
-                        .from('clients')
-                        .select('company_name, avatar_url')
-                        .eq('user_id', user.id)
-                        .maybeSingle()
 
-                    if (clientData) {
-                        setClient(clientData as Client)
-                    }
-                } catch {
-                    // Silently ignore - clients table may not exist
-                }
 
                 // Calculate stats
                 const fetchedProjects = projectsData || []
@@ -331,7 +314,6 @@ export default function DashboardPage() {
     }
 
     const getGreetingName = () => {
-        if (client?.company_name) return client.company_name
         if (profile?.full_name) return profile.full_name
         if (user?.email) return user.email.split('@')[0]
         return 'Client'
@@ -387,8 +369,8 @@ export default function DashboardPage() {
                     </div>
 
                     <div className="user-avatar">
-                        {client?.avatar_url || profile?.avatar_url ? (
-                            <img src={client?.avatar_url || profile?.avatar_url} alt="Avatar" />
+                        {profile?.avatar_url ? (
+                            <img src={profile.avatar_url} alt="Avatar" />
                         ) : (
                             <span>{getGreetingName()[0].toUpperCase()}</span>
                         )}
