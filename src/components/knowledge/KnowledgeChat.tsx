@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, type FormEvent, type ChangeEvent, type KeyboardEvent } from 'react'
-import { X, Send, Sparkles, Trash2 } from 'lucide-react'
+import { X, Send, Sparkles, Trash2, ShieldAlert } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import './KnowledgeChat.css'
 
@@ -22,6 +22,9 @@ export default function KnowledgeChat({ isOpen, onToggle, articleContent, articl
     const [messages, setMessages] = useState<Message[]>([])
     const [inputValue, setInputValue] = useState('')
     const [isLoading, setIsLoading] = useState(false)
+    const [hasConsented, setHasConsented] = useState(() => {
+        return localStorage.getItem('ai_chat_consent') === 'true'
+    })
     const messagesEndRef = useRef<HTMLDivElement>(null)
     const inputRef = useRef<HTMLTextAreaElement>(null)
 
@@ -172,6 +175,11 @@ export default function KnowledgeChat({ isOpen, onToggle, articleContent, articl
         }
     }
 
+    const handleConsent = () => {
+        localStorage.setItem('ai_chat_consent', 'true')
+        setHasConsented(true)
+    }
+
     if (!isOpen) {
         return (
             <div className="knowledge-chat-container collapsed">
@@ -179,6 +187,46 @@ export default function KnowledgeChat({ isOpen, onToggle, articleContent, articl
                     <Sparkles size={16} />
                     <span>Discuss with AI</span>
                 </button>
+            </div>
+        )
+    }
+
+    // Show consent screen if user hasn't accepted yet
+    if (!hasConsented) {
+        return (
+            <div className="knowledge-chat-container expanded">
+                <div className="chat-header">
+                    <div className="chat-title">
+                        <ShieldAlert size={14} />
+                        <span>HINWEIS</span>
+                    </div>
+                    <button className="chat-close-btn" onClick={onToggle}>
+                        <X size={16} />
+                    </button>
+                </div>
+                <div className="chat-consent">
+                    <div className="consent-icon">
+                        <ShieldAlert size={32} />
+                    </div>
+                    <h3>Bevor Sie fortfahren</h3>
+                    <div className="consent-content">
+                        <p>
+                            Dieser KI-Assistent nutzt die <strong>Google Gemini API</strong> zur Verarbeitung
+                            Ihrer Anfragen. Ihre Eingaben werden an Google-Server übermittelt.
+                        </p>
+                        <p>
+                            <strong>Datenschutz-Hinweis:</strong> Bitte geben Sie keine personenbezogenen
+                            Daten Dritter ein, es sei denn, Sie haben deren ausdrückliche Einwilligung.
+                        </p>
+                        <p>
+                            <strong>Wichtig:</strong> KI-Modelle wie Gemini 3.0 können Fehler machen.
+                            Überprüfen Sie wichtige Informationen stets unabhängig.
+                        </p>
+                    </div>
+                    <button className="consent-btn" onClick={handleConsent}>
+                        Verstanden & Fortfahren
+                    </button>
+                </div>
             </div>
         )
     }

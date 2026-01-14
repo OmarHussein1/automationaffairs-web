@@ -8,7 +8,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import {
     ArrowLeft, Calendar, Clock, Loader2,
-    ChevronRight, FileText, Copy, Check, LogOut
+    ChevronRight, ChevronUp, FileText, Copy, Check, LogOut
 } from 'lucide-react'
 import GridBackground from '../../components/layout/GridBackground'
 import './KnowledgeArticlePage.css'
@@ -76,6 +76,9 @@ export default function KnowledgeArticlePage() {
     const [prevArticle, setPrevArticle] = useState<NavArticle | null>(null)
     const [copied, setCopied] = useState(false)
     const [isChatOpen, setIsChatOpen] = useState(false)
+    const [isMobileTocOpen, setIsMobileTocOpen] = useState(false)
+    const [isMobileChatOpen, setIsMobileChatOpen] = useState(false)
+    const [activeHeadingIndex, setActiveHeadingIndex] = useState(0)
 
     useEffect(() => {
         const fetchArticle = async () => {
@@ -180,6 +183,29 @@ export default function KnowledgeArticlePage() {
         }
         return headings
     }
+
+    // Scroll tracking for active heading (mobile)
+    useEffect(() => {
+        if (!article?.content) return
+
+        const headingElements = document.querySelectorAll('.article-content h2, .article-content h3')
+        if (headingElements.length === 0) return
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const index = Array.from(headingElements).indexOf(entry.target as Element)
+                        if (index !== -1) setActiveHeadingIndex(index)
+                    }
+                })
+            },
+            { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+        )
+
+        headingElements.forEach((el) => observer.observe(el))
+        return () => observer.disconnect()
+    }, [article?.content])
 
     const handleCopy = async () => {
         if (!article?.content) return
@@ -490,6 +516,79 @@ export default function KnowledgeArticlePage() {
                     <a href="/impressum">TERMS</a>
                 </div>
             </footer>
+
+            {/* Mobile Navigation - Bottom Bar */}
+            {headings.length > 0 && (
+                <div className="mobile-nav-bar">
+                    <button
+                        className="mobile-toc-trigger"
+                        onClick={() => setIsMobileTocOpen(!isMobileTocOpen)}
+                    >
+                        <span className="mobile-current-chapter">
+                            {headings[activeHeadingIndex]?.text || 'Navigation'}
+                        </span>
+                        <ChevronUp
+                            size={18}
+                            className={`mobile-toc-arrow ${isMobileTocOpen ? 'open' : ''}`}
+                        />
+                    </button>
+                    <button
+                        className={`mobile-ai-btn ${isMobileChatOpen ? 'active' : ''}`}
+                        onClick={() => {
+                            setIsMobileChatOpen(!isMobileChatOpen)
+                            setIsMobileTocOpen(false)
+                        }}
+                    >
+                        AI
+                    </button>
+                </div>
+            )}
+
+            {/* Mobile TOC Drawer */}
+            {isMobileTocOpen && (
+                <>
+                    <div
+                        className="mobile-overlay"
+                        onClick={() => setIsMobileTocOpen(false)}
+                    />
+                    <div className="mobile-toc-drawer">
+                        <div className="mobile-toc-header">
+                            <span>INHALTSVERZEICHNIS</span>
+                            <button onClick={() => setIsMobileTocOpen(false)}>×</button>
+                        </div>
+                        <nav className="mobile-toc-list">
+                            {headings.map((heading, index) => (
+                                <a
+                                    key={index}
+                                    href={`#${heading.id}`}
+                                    className={`mobile-toc-item level-${heading.level} ${index === activeHeadingIndex ? 'active' : ''}`}
+                                    onClick={() => setIsMobileTocOpen(false)}
+                                >
+                                    {heading.text}
+                                </a>
+                            ))}
+                        </nav>
+                    </div>
+                </>
+            )}
+
+            {/* Mobile Chat Overlay */}
+            {isMobileChatOpen && (
+                <>
+                    <div
+                        className="mobile-overlay"
+                        onClick={() => setIsMobileChatOpen(false)}
+                    />
+                    <div className="mobile-chat-drawer">
+                        <KnowledgeChat
+                            isOpen={true}
+                            onToggle={() => setIsMobileChatOpen(false)}
+                            articleContent={article.content}
+                            articleId={article.id}
+                        />
+                    </div>
+                </>
+            )}
         </div>
     )
 }

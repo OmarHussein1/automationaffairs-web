@@ -482,6 +482,9 @@ export default function DashboardPage() {
                                                 </div>
                                                 <div className="project-info">
                                                     <span className="project-name">{project.title || project.name}</span>
+                                                    <span className={`status-badge mobile-only ${statusConfig.class}`}>
+                                                        ● {statusConfig.label}
+                                                    </span>
                                                 </div>
                                             </div>
                                             <div className="col-status">
