@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import {
     Briefcase, CheckCircle2, BookOpen, MessageCircle,
-    Mail, ArrowRight, HelpCircle
+    Mail, ArrowRight, HelpCircle, Rocket
 } from 'lucide-react'
 import './OnboardingModal.css'
 
@@ -104,6 +104,42 @@ export default function OnboardingModal({ isOpen, onClose, userName }: Onboardin
                             Zugang zu projektrelevanten Artikeln, Dokumentationen und Insights.
                             Wir teilen hier Wissen, das für Ihre Projekte wichtig ist –
                             von technischen Details bis zu Best Practices.
+                        </p>
+                    </div>
+
+                    <div className="onboarding-divider" />
+
+                    {/* Coming Soon */}
+                    <div className="onboarding-section coming-soon">
+                        <h2>
+                            <Rocket size={20} />
+                            Coming Soon
+                        </h2>
+                        <p className="coming-soon-intro">
+                            Wir arbeiten kontinuierlich an der Weiterentwicklung Ihres Client Portals.
+                            Folgende Features sind bereits in Planung:
+                        </p>
+                        <ul className="coming-soon-list">
+                            <li>
+                                <strong>Status & Error Logs</strong> – Echtzeit-Monitoring Ihrer
+                                Automation Affairs Softwarelösungen direkt im Portal
+                            </li>
+                            <li>
+                                <strong>Ticketing System</strong> – Projekt- und Taskanfragen
+                                strukturiert einreichen und verfolgen
+                            </li>
+                            <li>
+                                <strong>Stundenkontingent-Management</strong> – Arbeitszeit-Kontingente
+                                freigeben und transparent nachverfolgen, wofür wir Ihre Zeit einsetzen
+                            </li>
+                            <li>
+                                <strong>Custom Client Agent</strong> – Ihr persönlicher KI-Assistent,
+                                der Sie zu allen Ihren AA-Projekten berät
+                            </li>
+                        </ul>
+                        <p className="coming-soon-feedback">
+                            <strong>Haben Sie Vorschläge oder Ideen?</strong> Wir freuen uns über
+                            Ihr Feedback zur Weiterentwicklung des Portals!
                         </p>
                     </div>
 

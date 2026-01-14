@@ -251,8 +251,8 @@
 }
 
 .status-badge.planning {
-    background: rgba(168, 85, 247, 0.1);
-    color: #a855f7;
+    background: rgba(243, 255, 90, 0.25);
+    color: #8a6d00;
 }
 
 .status-badge.done {
