@@ -5,6 +5,7 @@ import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import {
     ArrowLeft, Calendar, Clock, Loader2,
     ChevronRight, FileText, Copy, Check, LogOut
@@ -349,6 +350,7 @@ export default function KnowledgeArticlePage() {
                     <div className="article-content prose">
                         <ReactMarkdown
                             remarkPlugins={[remarkGfm]}
+                            rehypePlugins={[rehypeRaw]}
                             components={{
                                 // Custom code block styling
                                 code({ inline, className, children, ...props }: { inline?: boolean; className?: string; children?: React.ReactNode }) {

@@ -5,7 +5,7 @@ import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
 import {
     ArrowLeft, Calendar, Download, FileText,
-    Image, FileSpreadsheet, File,
+    Image, FileSpreadsheet, File, BookOpen,
     CheckCircle2, Circle, Loader2,
     MessageCircle, Mail, Eye, X, LogOut, ChevronLeft, ChevronRight
 } from 'lucide-react'
@@ -79,6 +79,14 @@ interface Task {
     project_id: string
 }
 
+interface LinkedArticle {
+    id: string
+    title: string
+    slug?: string
+    tags?: string[]
+    created_at: string
+}
+
 // File icon based on type
 const getFileIcon = (filename?: string) => {
     const ext = filename?.split('.').pop()?.toLowerCase()
@@ -107,6 +115,7 @@ export default function ProjectDetailPage() {
     const [project, setProject] = useState<Project | null>(null)
     const [assets, setAssets] = useState<Asset[]>([])
     const [tasks, setTasks] = useState<Task[]>([])
+    const [linkedArticles, setLinkedArticles] = useState<LinkedArticle[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
     const [previewAsset, setPreviewAsset] = useState<(Asset & { url: string }) | null>(null)
@@ -178,6 +187,21 @@ export default function ProjectDetailPage() {
                 } catch (taskErr) {
                     console.warn('Tasks fetch skipped:', taskErr)
                     setTasks([])
+                }
+
+                // Fetch linked knowledge articles
+                try {
+                    const { data: articlesData } = await supabase
+                        .from('knowledge_entries')
+                        .select('id, title, slug, tags, created_at')
+                        .eq('project_id', id)
+                        .eq('is_public_to_client', true)
+                        .order('created_at', { ascending: false })
+
+                    setLinkedArticles((articlesData as LinkedArticle[]) || [])
+                } catch (articleErr) {
+                    console.warn('Linked articles fetch skipped:', articleErr)
+                    setLinkedArticles([])
                 }
 
             } catch (err) {
@@ -440,159 +464,44 @@ export default function ProjectDetailPage() {
                     Back to Projects
                 </button>
 
-                {/* Project Title Section */}
-                <div className="project-title-section">
-                    <div className="project-title-row">
-                        <span className={`status-badge ${statusConfig.class}`}>● {statusConfig.label}</span>
-                    </div>
-                    <h1 className="project-title">
-                        {project.title || project.name || 'Project Details'}
-                    </h1>
-                    <p className="project-description">
-                        {project.description || 'System Integration & Workflow Logic'}
-                    </p>
+                {/* Project Header Row: Info + Contact */}
+                <div className="project-header-row">
+                    {/* Project Title Section */}
+                    <div className="project-title-section">
+                        <div className="project-title-row">
+                            <span className={`status-badge ${statusConfig.class}`}>● {statusConfig.label}</span>
+                        </div>
+                        <h1 className="project-title">
+                            {project.title || project.name || 'Project Details'}
+                        </h1>
+                        <p className="project-description">
+                            {project.description || 'System Integration & Workflow Logic'}
+                        </p>
 
-                    {/* Timeline Progress */}
-                    <div className="timeline-section">
-                        <div className="timeline-bar">
-                            <div
-                                className="timeline-fill"
-                                style={{ width: `${displayProgress}%` }}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Completion Info */}
-                    <div className="completion-info">
-                        <span className="completion-label">ESTIMATED COMPLETION</span>
-                        <div className="completion-date">
-                            <Calendar size={18} />
-                            <span>{formatDate(project.deadline || project.end_date)}</span>
-                        </div>
-                        <div className="completion-progress">
-                            <span className="progress-percent">{displayProgress}%</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Content Grid */}
-                <div className="project-grid">
-                    {/* Project Assets */}
-                    <div className="grid-card assets-card">
-                        <div className="card-header">
-                            <h2>
-                                <File size={20} />
-                                Project Assets
-                            </h2>
-                            <button className="btn-link" onClick={() => navigate('/assets')}>VIEW ALL</button>
-                        </div>
-                        <div className="assets-list">
-                            {assets.length > 0 ? (
-                                assets.slice(0, 4).map((asset) => {
-                                    const FileIcon = getFileIcon(asset.file_name)
-                                    const canPreview = isPreviewable(asset.file_name)
-                                    return (
-                                        <div key={asset.id} className="asset-item">
-                                            <div className="asset-icon">
-                                                <FileIcon size={20} />
-                                            </div>
-                                            <div className="asset-info">
-                                                <span className="asset-name">{asset.file_name}</span>
-                                                <span className="asset-meta">
-                                                    {asset.file_type?.toUpperCase() || 'FILE'} • {formatDate(asset.created_at)}
-                                                </span>
-                                            </div>
-                                            <div className="asset-actions">
-                                                {canPreview && (
-                                                    <button
-                                                        className="asset-btn asset-preview"
-                                                        onClick={() => handlePreview(asset)}
-                                                        title="Vorschau"
-                                                    >
-                                                        <Eye size={18} />
-                                                    </button>
-                                                )}
-                                                <button
-                                                    className="asset-btn asset-download"
-                                                    onClick={() => handleDownload(asset)}
-                                                    title="Download"
-                                                >
-                                                    <Download size={18} />
-                                                </button>
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                            ) : (
-                                <div className="assets-empty">
-                                    <p>Noch keine Dateien vorhanden</p>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Project Tasks */}
-                    {tasks.length > 0 && (
-                        <div className="grid-card tasks-card">
-                            <div className="card-header">
-                                <h2>
-                                    <CheckCircle2 size={20} />
-                                    Project Tasks
-                                </h2>
-                                <span className="tasks-counter">
-                                    {tasks.filter(t => t.status === 'done').length}/{tasks.length} DONE
-                                </span>
-                            </div>
-                            <div className="tasks-list">
-                                {tasks.map((task) => {
-                                    const statusLabels: Record<string, string> = {
-                                        'todo': 'TODO',
-                                        'in_progress': 'IN PROGRESS',
-                                        'review': 'REVIEW',
-                                        'done': 'DONE'
-                                    }
-                                    return (
-                                        <div
-                                            key={task.id}
-                                            className={`task-item ${task.status}`}
-                                        >
-                                            <div className="task-main-row">
-                                                <div className="task-status-icon">
-                                                    {task.status === 'done' ? (
-                                                        <CheckCircle2 size={18} className="status-done" />
-                                                    ) : task.status === 'review' ? (
-                                                        <CheckCircle2 size={18} className="status-review" />
-                                                    ) : task.status === 'in_progress' ? (
-                                                        <Circle size={18} className="status-in-progress" />
-                                                    ) : (
-                                                        <Circle size={18} className="status-todo" />
-                                                    )}
-                                                </div>
-                                                <div className="task-info">
-                                                    <span className={`task-title ${task.status === 'done' ? 'done' : ''}`}>
-                                                        {task.title}
-                                                    </span>
-                                                    <span className={`task-priority priority-${task.priority}`}>
-                                                        {task.priority?.toUpperCase()}
-                                                    </span>
-                                                </div>
-                                                <span className={`task-status-label status-${task.status}`}>
-                                                    {statusLabels[task.status] || task.status?.toUpperCase()}
-                                                </span>
-                                            </div>
-                                            {task.description && (
-                                                <div className="task-description">
-                                                    <p>{task.description}</p>
-                                                </div>
-                                            )}
-                                        </div>
-                                    )
-                                })}
+                        {/* Timeline Progress */}
+                        <div className="timeline-section">
+                            <div className="timeline-bar">
+                                <div
+                                    className="timeline-fill"
+                                    style={{ width: `${displayProgress}%` }}
+                                />
                             </div>
                         </div>
-                    )}
 
-                    {/* Contact Card - Team Carousel */}
+                        {/* Completion Info */}
+                        <div className="completion-info">
+                            <span className="completion-label">ESTIMATED COMPLETION</span>
+                            <div className="completion-date">
+                                <Calendar size={18} />
+                                <span>{formatDate(project.deadline || project.end_date)}</span>
+                            </div>
+                            <div className="completion-progress">
+                                <span className="progress-percent">{displayProgress}%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Contact Card - Team Carousel (moved here) */}
                     <div className="grid-card contact-card">
                         <button
                             className="carousel-nav carousel-prev"
@@ -654,6 +563,178 @@ export default function ProjectDetailPage() {
                         >
                             <ChevronRight size={18} />
                         </button>
+                    </div>
+                </div>
+
+                {/* Content Grid */}
+                <div className="project-grid">
+                    {/* Project Assets */}
+                    <div className="grid-card assets-card">
+                        <div className="card-header">
+                            <h2>
+                                <File size={20} />
+                                Project Assets
+                            </h2>
+                            <button className="btn-link" onClick={() => navigate('/assets')}>VIEW ALL</button>
+                        </div>
+                        <div className="assets-list">
+                            {assets.length > 0 ? (
+                                assets.slice(0, 4).map((asset) => {
+                                    const FileIcon = getFileIcon(asset.file_name)
+                                    const canPreview = isPreviewable(asset.file_name)
+                                    return (
+                                        <div key={asset.id} className="asset-item">
+                                            <div className="asset-icon">
+                                                <FileIcon size={20} />
+                                            </div>
+                                            <div className="asset-info">
+                                                <span className="asset-name">{asset.file_name}</span>
+                                                <span className="asset-meta">
+                                                    {asset.file_type?.toUpperCase() || 'FILE'} • {formatDate(asset.created_at)}
+                                                </span>
+                                            </div>
+                                            <div className="asset-actions">
+                                                {canPreview && (
+                                                    <button
+                                                        className="asset-btn asset-preview"
+                                                        onClick={() => handlePreview(asset)}
+                                                        title="Vorschau"
+                                                    >
+                                                        <Eye size={18} />
+                                                    </button>
+                                                )}
+                                                <button
+                                                    className="asset-btn asset-download"
+                                                    onClick={() => handleDownload(asset)}
+                                                    title="Download"
+                                                >
+                                                    <Download size={18} />
+                                                </button>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            ) : (
+                                <div className="assets-empty">
+                                    <p>Noch keine Dateien vorhanden</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Linked Knowledge Articles */}
+                    <div className="grid-card articles-card">
+                        <div className="card-header">
+                            <h2>
+                                <BookOpen size={20} />
+                                Linked Articles
+                            </h2>
+                            {linkedArticles.length > 0 && (
+                                <span className="articles-counter">
+                                    {linkedArticles.length} {linkedArticles.length === 1 ? 'ARTICLE' : 'ARTICLES'}
+                                </span>
+                            )}
+                        </div>
+                        <div className="articles-list">
+                            {linkedArticles.length > 0 ? (
+                                linkedArticles.map((article) => (
+                                    <div
+                                        key={article.id}
+                                        className="article-item"
+                                        onClick={() => navigate(`/knowledge/${article.slug || article.id}`)}
+                                    >
+                                        <div className="article-icon">
+                                            <BookOpen size={18} />
+                                        </div>
+                                        <div className="article-info">
+                                            <span className="article-title">{article.title}</span>
+                                            <span className="article-meta">
+                                                {formatDate(article.created_at)}
+                                                {article.tags && article.tags.length > 0 && (
+                                                    <span className="article-tags">
+                                                        {article.tags.slice(0, 2).map(tag => (
+                                                            <span key={tag} className="article-tag">{tag}</span>
+                                                        ))}
+                                                    </span>
+                                                )}
+                                            </span>
+                                        </div>
+                                        <ChevronRight size={16} className="article-arrow" />
+                                    </div>
+                                ))
+                            ) : (
+                                <div className="articles-empty">
+                                    <p>Keine verknüpften Artikel</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Project Tasks */}
+                    <div className="grid-card tasks-card">
+                        <div className="card-header">
+                            <h2>
+                                <CheckCircle2 size={20} />
+                                Project Tasks
+                            </h2>
+                            {tasks.length > 0 && (
+                                <span className="tasks-counter">
+                                    {tasks.filter(t => t.status === 'done').length}/{tasks.length} DONE
+                                </span>
+                            )}
+                        </div>
+                        <div className="tasks-list">
+                            {tasks.length > 0 ? (
+                                tasks.map((task) => {
+                                    const statusLabels: Record<string, string> = {
+                                        'todo': 'TODO',
+                                        'in_progress': 'IN PROGRESS',
+                                        'review': 'REVIEW',
+                                        'done': 'DONE'
+                                    }
+                                    return (
+                                        <div
+                                            key={task.id}
+                                            className={`task-item ${task.status}`}
+                                        >
+                                            <div className="task-main-row">
+                                                <div className="task-status-icon">
+                                                    {task.status === 'done' ? (
+                                                        <CheckCircle2 size={18} className="status-done" />
+                                                    ) : task.status === 'review' ? (
+                                                        <CheckCircle2 size={18} className="status-review" />
+                                                    ) : task.status === 'in_progress' ? (
+                                                        <Circle size={18} className="status-in-progress" />
+                                                    ) : (
+                                                        <Circle size={18} className="status-todo" />
+                                                    )}
+                                                </div>
+                                                <div className="task-info">
+                                                    <span className={`task-title ${task.status === 'done' ? 'done' : ''}`}>
+                                                        {task.title}
+                                                    </span>
+                                                    <span className={`task-priority priority-${task.priority}`}>
+                                                        {task.priority?.toUpperCase()}
+                                                    </span>
+                                                </div>
+                                                <span className={`task-status-label status-${task.status}`}>
+                                                    {statusLabels[task.status] || task.status?.toUpperCase()}
+                                                </span>
+                                            </div>
+                                            {task.description && (
+                                                <div className="task-description">
+                                                    <p>{task.description}</p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    )
+                                })
+                            ) : (
+                                <div className="tasks-empty">
+                                    <p>Noch keine Tasks vorhanden</p>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </main>
