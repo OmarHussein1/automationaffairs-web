@@ -6,6 +6,7 @@ import {
     ArrowLeft, FolderOpen, Download, Search,
     Loader2, FileText, Image, FileSpreadsheet, File, Eye, X
 } from 'lucide-react'
+import GridBackground from '../../components/layout/GridBackground'
 import './AssetLibraryPage.css'
 
 // Storage bucket name
@@ -168,6 +169,7 @@ export default function AssetLibraryPage() {
 
     return (
         <div className="asset-library-page">
+            <GridBackground />
             {/* Header */}
             <header className="asset-library-header">
                 <div

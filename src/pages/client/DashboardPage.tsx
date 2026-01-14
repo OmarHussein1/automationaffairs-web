@@ -5,8 +5,10 @@ import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
 import {
     LogOut, Briefcase, Clock, FolderOpen, ArrowRight,
-    Mail, MessageCircle, Loader2
+    Mail, MessageCircle, Loader2, Info, Newspaper
 } from 'lucide-react'
+import GridBackground from '../../components/layout/GridBackground'
+import OnboardingModal, { hasCompletedOnboarding } from '../../components/onboarding/OnboardingModal'
 import './DashboardPage.css'
 
 // Status mapping for display
@@ -66,6 +68,22 @@ export default function DashboardPage() {
     const [loading, setLoading] = useState(true)
     const [latestArticles, setLatestArticles] = useState<Article[]>([])
     const [error, setError] = useState<string | null>(null)
+    const [showOnboarding, setShowOnboarding] = useState(false)
+
+    // Check for onboarding on mount
+    useEffect(() => {
+        // Check URL params for onboarding trigger (from password reset)
+        const urlParams = new URLSearchParams(window.location.search)
+        const fromOnboarding = urlParams.get('welcome') === 'true'
+
+        if (fromOnboarding || !hasCompletedOnboarding()) {
+            setShowOnboarding(true)
+            // Clean up URL
+            if (fromOnboarding) {
+                window.history.replaceState({}, '', window.location.pathname)
+            }
+        }
+    }, [])
 
     // Fetch projects and client data
     useEffect(() => {
@@ -96,7 +114,7 @@ export default function DashboardPage() {
                     .select('*')
                     .eq('is_public_to_client', true)
                     .order('created_at', { ascending: false })
-                    .limit(3)
+                    .limit(6)
 
                 const { data: accessEntries } = await supabase
                     .from('knowledge_access')
@@ -111,15 +129,15 @@ export default function DashboardPage() {
                         .select('*')
                         .in('id', entryIds)
                         .order('created_at', { ascending: false })
-                        .limit(3)
+                        .limit(6)
                     assignedArticles = (assignedData as Article[]) || []
                 }
 
-                // Merge, Dedup, Sort, Limit 3
+                // Merge, Dedup, Sort, Limit 6
                 const allArticles = [...(publicArticles || []), ...assignedArticles] as Article[]
                 const uniqueArticles = Array.from(new Map(allArticles.map(item => [item.id, item])).values())
                 uniqueArticles.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
-                setLatestArticles(uniqueArticles.slice(0, 3))
+                setLatestArticles(uniqueArticles.slice(0, 6))
 
 
 
@@ -348,6 +366,7 @@ export default function DashboardPage() {
 
     return (
         <div className="client-dashboard">
+            <GridBackground />
             {/* Header */}
             <header className="dashboard-header">
                 <div className="header-brand">
@@ -391,6 +410,14 @@ export default function DashboardPage() {
                         <p>Monitor progress, review milestones, and access project files in real-time.</p>
                     </div>
                     <div className="page-header-actions">
+                        <button
+                            className="btn-secondary"
+                            onClick={() => setShowOnboarding(true)}
+                            title="Info & Hilfe"
+                        >
+                            <Info size={16} />
+                            INFO
+                        </button>
                         <a href="mailto:hello@automationaffairs.com" className="btn-secondary">
                             <Mail size={16} />
                             E-MAIL
@@ -455,7 +482,6 @@ export default function DashboardPage() {
                                                 </div>
                                                 <div className="project-info">
                                                     <span className="project-name">{project.title || project.name}</span>
-                                                    <span className="project-ref">REF: {project.reference_id || `AA-${project.id?.slice(0, 6).toUpperCase()}`}</span>
                                                 </div>
                                             </div>
                                             <div className="col-status">
@@ -558,32 +584,28 @@ export default function DashboardPage() {
                             {latestArticles.map((article) => (
                                 <div
                                     key={article.id}
-                                    className="article-tile"
+                                    className="article-tile-compact"
                                     onClick={() => navigate(`/knowledge/${article.slug || article.id}`)}
                                 >
-                                    <div className="tile-cover">
+                                    <div className="article-tile-icon">
                                         {article.cover_image ? (
-                                            <img src={article.cover_image} alt={article.title} />
+                                            <img src={article.cover_image} alt="" />
                                         ) : (
-                                            <div className="tile-icon-placeholder">
-                                                <FolderOpen size={32} />
-                                            </div>
+                                            <Newspaper size={20} />
                                         )}
                                     </div>
-
-                                    <div className="tile-content">
-                                        <div className="tile-meta">
-                                            <span className="tile-date">
+                                    <div className="article-tile-content">
+                                        <div className="article-tile-meta">
+                                            <span className="article-tile-date">
                                                 {new Date(article.created_at).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: '2-digit' })}
                                             </span>
                                             {article.tags?.[0] && (
-                                                <span className="tile-tag">{article.tags[0].toUpperCase()}</span>
+                                                <span className="article-tile-tag">{article.tags[0].toUpperCase()}</span>
                                             )}
                                         </div>
-                                        <h3 className="tile-title">{article.title}</h3>
+                                        <h3 className="article-tile-title">{article.title}</h3>
                                     </div>
-
-                                    <div className="tile-arrow">
+                                    <div className="article-tile-arrow">
                                         <ArrowRight size={16} />
                                     </div>
                                 </div>
@@ -618,6 +640,13 @@ export default function DashboardPage() {
                     <a href="/imprint">TERMS</a>
                 </div>
             </footer>
+
+            {/* Onboarding Modal */}
+            <OnboardingModal
+                isOpen={showOnboarding}
+                onClose={() => setShowOnboarding(false)}
+                userName={profile?.full_name}
+            />
         </div>
     )
 }

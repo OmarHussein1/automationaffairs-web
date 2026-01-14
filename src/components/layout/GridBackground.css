@@ -1,0 +1,41 @@
+/* =====================================================
+   GRID BACKGROUND - Reusable Technical Grid Pattern
+   ===================================================== */
+
+.grid-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-color: #f7f8fa;
+    background-image:
+        /* Fine grid pattern - vertical lines (Cobalt) */
+        linear-gradient(to right, rgba(59, 91, 219, 0.15) 1px, transparent 1px),
+        /* Fine grid pattern - horizontal lines (Cobalt) */
+        linear-gradient(to bottom, rgba(59, 91, 219, 0.15) 1px, transparent 1px),
+        /* Secondary grid - vertical lines */
+        linear-gradient(to right, rgba(59, 91, 219, 0.08) 1px, transparent 1px),
+        /* Secondary grid - horizontal lines */
+        linear-gradient(to bottom, rgba(59, 91, 219, 0.08) 1px, transparent 1px);
+    background-size:
+        20px 20px,
+        20px 20px,
+        80px 80px,
+        80px 80px;
+    background-position:
+        0 0,
+        0 0,
+        10px 10px,
+        10px 10px;
+}
+
+/* Subtle gradient overlay */
+.grid-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 91, 219, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(59, 91, 219, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+}

@@ -7,8 +7,50 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: #f7f8fa;
+    position: relative;
     color: #0a0a0a;
+    color-scheme: light only;
+}
+
+/* =====================================================
+   FADE IN ANIMATIONS
+   ===================================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.project-header {
+    animation: fadeIn 0.4s ease-out;
+}
+
+.project-header-row {
+    animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.project-grid {
+    animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.project-detail-footer {
+    animation: fadeIn 0.5s ease-out 0.3s both;
 }
 
 /* =====================================================
@@ -236,6 +278,8 @@
     font-size: 1rem;
     color: #6b7280;
     margin: 0 0 1.5rem 0;
+    white-space: pre-line;
+    line-height: 1.6;
 }
 
 /* Timeline */
@@ -330,7 +374,7 @@
 }
 
 /* Layout positioning */
-.assets-card {
+.contact-card.grid-card {
     grid-column: 1;
     grid-row: 1;
 }
@@ -432,6 +476,7 @@
 
 .asset-info {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 2px;
@@ -761,9 +806,13 @@
     position: relative;
     overflow: hidden;
     padding: 1.25rem 0.75rem;
-    width: 270px;
     flex-shrink: 0;
-    align-self: stretch;
+}
+
+/* Assets in header row */
+.header-assets {
+    width: 320px;
+    flex-shrink: 0;
 }
 
 .contact-content {
@@ -1183,7 +1232,7 @@
         flex-direction: column;
     }
 
-    .contact-card {
+    .header-assets {
         width: 100%;
     }
 
@@ -1191,8 +1240,11 @@
         grid-template-columns: 1fr;
     }
 
-    .articles-card {
-        grid-column: span 1;
+    .contact-card.grid-card,
+    .articles-card,
+    .tasks-card {
+        grid-column: 1;
+        grid-row: auto;
     }
 
     .contact-content {

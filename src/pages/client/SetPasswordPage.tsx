@@ -107,9 +107,9 @@ export default function SetPasswordPage() {
             console.log('[SetPassword] Password set successfully')
             setPageState('success')
 
-            // Redirect to dashboard after a short delay
+            // Redirect to dashboard with onboarding trigger
             setTimeout(() => {
-                navigate('/dashboard', { replace: true })
+                navigate('/dashboard?welcome=true', { replace: true })
             }, 2000)
         } catch (err) {
             console.error('[SetPassword] Unexpected error:', err)

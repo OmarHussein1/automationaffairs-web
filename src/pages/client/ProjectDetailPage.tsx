@@ -9,6 +9,7 @@ import {
     CheckCircle2, Circle, Loader2,
     MessageCircle, Mail, Eye, X, LogOut, ChevronLeft, ChevronRight
 } from 'lucide-react'
+import GridBackground from '../../components/layout/GridBackground'
 import './ProjectDetailPage.css'
 
 // Storage bucket name
@@ -422,6 +423,7 @@ export default function ProjectDetailPage() {
 
     return (
         <div className="project-detail-page">
+            <GridBackground />
             {/* Header */}
             <header className="project-header">
                 <div className="header-brand" onClick={() => navigate('/dashboard')} style={{ cursor: 'pointer' }}>
@@ -501,7 +503,64 @@ export default function ProjectDetailPage() {
                         </div>
                     </div>
 
-                    {/* Contact Card - Team Carousel (moved here) */}
+                    {/* Project Assets (moved to header row) */}
+                    <div className="grid-card assets-card header-assets">
+                        <div className="card-header">
+                            <h2>
+                                <File size={20} />
+                                Project Assets
+                            </h2>
+                            <button className="btn-link" onClick={() => navigate('/assets')}>VIEW ALL</button>
+                        </div>
+                        <div className="assets-list">
+                            {assets.length > 0 ? (
+                                assets.slice(0, 4).map((asset) => {
+                                    const FileIcon = getFileIcon(asset.file_name)
+                                    const canPreview = isPreviewable(asset.file_name)
+                                    return (
+                                        <div key={asset.id} className="asset-item">
+                                            <div className="asset-icon">
+                                                <FileIcon size={20} />
+                                            </div>
+                                            <div className="asset-info">
+                                                <span className="asset-name">{asset.file_name}</span>
+                                                <span className="asset-meta">
+                                                    {asset.file_type?.toUpperCase() || 'FILE'} • {formatDate(asset.created_at)}
+                                                </span>
+                                            </div>
+                                            <div className="asset-actions">
+                                                {canPreview && (
+                                                    <button
+                                                        className="asset-btn asset-preview"
+                                                        onClick={() => handlePreview(asset)}
+                                                        title="Vorschau"
+                                                    >
+                                                        <Eye size={18} />
+                                                    </button>
+                                                )}
+                                                <button
+                                                    className="asset-btn asset-download"
+                                                    onClick={() => handleDownload(asset)}
+                                                    title="Download"
+                                                >
+                                                    <Download size={18} />
+                                                </button>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            ) : (
+                                <div className="assets-empty">
+                                    <p>Noch keine Dateien vorhanden</p>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+
+                {/* Content Grid */}
+                <div className="project-grid">
+                    {/* Contact Card - Team Carousel (moved to grid) */}
                     <div className="grid-card contact-card">
                         <button
                             className="carousel-nav carousel-prev"
@@ -563,63 +622,6 @@ export default function ProjectDetailPage() {
                         >
                             <ChevronRight size={18} />
                         </button>
-                    </div>
-                </div>
-
-                {/* Content Grid */}
-                <div className="project-grid">
-                    {/* Project Assets */}
-                    <div className="grid-card assets-card">
-                        <div className="card-header">
-                            <h2>
-                                <File size={20} />
-                                Project Assets
-                            </h2>
-                            <button className="btn-link" onClick={() => navigate('/assets')}>VIEW ALL</button>
-                        </div>
-                        <div className="assets-list">
-                            {assets.length > 0 ? (
-                                assets.slice(0, 4).map((asset) => {
-                                    const FileIcon = getFileIcon(asset.file_name)
-                                    const canPreview = isPreviewable(asset.file_name)
-                                    return (
-                                        <div key={asset.id} className="asset-item">
-                                            <div className="asset-icon">
-                                                <FileIcon size={20} />
-                                            </div>
-                                            <div className="asset-info">
-                                                <span className="asset-name">{asset.file_name}</span>
-                                                <span className="asset-meta">
-                                                    {asset.file_type?.toUpperCase() || 'FILE'} • {formatDate(asset.created_at)}
-                                                </span>
-                                            </div>
-                                            <div className="asset-actions">
-                                                {canPreview && (
-                                                    <button
-                                                        className="asset-btn asset-preview"
-                                                        onClick={() => handlePreview(asset)}
-                                                        title="Vorschau"
-                                                    >
-                                                        <Eye size={18} />
-                                                    </button>
-                                                )}
-                                                <button
-                                                    className="asset-btn asset-download"
-                                                    onClick={() => handleDownload(asset)}
-                                                    title="Download"
-                                                >
-                                                    <Download size={18} />
-                                                </button>
-                                            </div>
-                                        </div>
-                                    )
-                                })
-                            ) : (
-                                <div className="assets-empty">
-                                    <p>Noch keine Dateien vorhanden</p>
-                                </div>
-                            )}
-                        </div>
                     </div>
 
                     {/* Linked Knowledge Articles */}

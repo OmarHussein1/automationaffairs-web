@@ -10,6 +10,7 @@ import {
     ArrowLeft, Calendar, Clock, Loader2,
     ChevronRight, FileText, Copy, Check, LogOut
 } from 'lucide-react'
+import GridBackground from '../../components/layout/GridBackground'
 import './KnowledgeArticlePage.css'
 import KnowledgeChat from '../../components/knowledge/KnowledgeChat'
 
@@ -238,6 +239,7 @@ export default function KnowledgeArticlePage() {
 
     return (
         <div className="article-page">
+            <GridBackground />
             {/* Header */}
             <header className="article-header">
                 <div

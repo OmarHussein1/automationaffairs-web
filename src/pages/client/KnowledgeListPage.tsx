@@ -8,6 +8,7 @@ import {
     ArrowLeft, Book, Search,
     Loader2, ChevronRight
 } from 'lucide-react'
+import GridBackground from '../../components/layout/GridBackground'
 import './KnowledgePage.css'
 
 interface Article {
@@ -129,6 +130,7 @@ export default function KnowledgeListPage() {
 
     return (
         <div className="knowledge-page">
+            <GridBackground />
             {/* Header */}
             <header className="knowledge-header">
                 <div
