@@ -403,6 +403,9 @@
 .project-icon {
     width: 44px;
     height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    flex-shrink: 0;
     background: rgba(59, 91, 219, 0.08);
     border: 1px solid rgba(59, 91, 219, 0.15);
     border-radius: 10px;

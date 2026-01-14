@@ -99,7 +99,7 @@ export default function DashboardPage() {
                     .from('projects')
                     .select('*')
                     .eq('brand', 'aa')
-                    .order('updated_at', { ascending: false })
+                    .order('title', { ascending: true })
 
                 if (projectsError) {
                     console.warn('Projects fetch error:', projectsError)
