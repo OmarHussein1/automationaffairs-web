@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Globe, Sun, Moon } from 'lucide-react';
+import { Globe, Sun, Moon } from '@phosphor-icons/react';
 import { useTheme } from '../../hooks/useTheme';
 import { useState, useEffect } from 'react';
 

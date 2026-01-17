@@ -7,9 +7,9 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import {
-    ArrowLeft, Calendar, Clock, Loader2,
-    ChevronRight, ChevronUp, FileText, Copy, Check, LogOut
-} from 'lucide-react'
+    ArrowLeft, Calendar, Clock, SpinnerGap,
+    CaretRight, CaretUp, FileText, Copy, Check, SignOut
+} from '@phosphor-icons/react'
 import GridBackground from '../../components/layout/GridBackground'
 import './KnowledgeArticlePage.css'
 import KnowledgeChat from '../../components/knowledge/KnowledgeChat'
@@ -240,7 +240,7 @@ export default function KnowledgeArticlePage() {
         return (
             <div className="article-page">
                 <div className="article-loading">
-                    <Loader2 size={32} className="loading-spinner" />
+                    <SpinnerGap size={32} className="loading-spinner" />
                     <p>Artikel wird geladen...</p>
                 </div>
             </div>
@@ -299,7 +299,7 @@ export default function KnowledgeArticlePage() {
                     </div>
 
                     <button className="header-logout" onClick={handleLogout} title="Abmelden">
-                        <LogOut size={20} />
+                        <SignOut size={20} />
                     </button>
                 </div>
             </header>
@@ -307,9 +307,9 @@ export default function KnowledgeArticlePage() {
             {/* Breadcrumb */}
             <div className="breadcrumb-bar">
                 <Link to="/dashboard">HOME</Link>
-                <ChevronRight size={14} />
+                <CaretRight size={14} />
                 <Link to="/knowledge">KNOWLEDGE BASE</Link>
-                <ChevronRight size={14} />
+                <CaretRight size={14} />
                 <span className="breadcrumb-current">ARTICLE</span>
                 <button className="back-link" onClick={() => navigate('/knowledge')}>
                     ← Back to Articles
@@ -527,7 +527,7 @@ export default function KnowledgeArticlePage() {
                         <span className="mobile-current-chapter">
                             {headings[activeHeadingIndex]?.text || 'Navigation'}
                         </span>
-                        <ChevronUp
+                        <CaretUp
                             size={18}
                             className={`mobile-toc-arrow ${isMobileTocOpen ? 'open' : ''}`}
                         />

@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
-import { Lock, Mail, AlertCircle, ArrowRight } from 'lucide-react'
+import { Lock, Envelope, WarningCircle, ArrowRight } from '@phosphor-icons/react'
 import './LoginPage.css'
 
 export default function LoginPage() {
@@ -60,7 +60,7 @@ export default function LoginPage() {
 
                     {error && (
                         <div className="login-error">
-                            <AlertCircle size={18} />
+                            <WarningCircle size={18} />
                             <span>{error}</span>
                         </div>
                     )}
@@ -69,7 +69,7 @@ export default function LoginPage() {
                         <div className="login-field">
                             <label htmlFor="email">E-MAIL</label>
                             <div className="login-input-wrapper">
-                                <Mail size={18} className="login-input-icon" />
+                                <Envelope size={18} className="login-input-icon" />
                                 <input
                                     id="email"
                                     type="email"

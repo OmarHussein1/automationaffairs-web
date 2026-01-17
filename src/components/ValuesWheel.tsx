@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Users, Target, Zap, Lock, Handshake } from 'lucide-react';
+import { Users, Crosshair, Lightning, Lock, Handshake } from '@phosphor-icons/react';
 import { useTranslation } from 'react-i18next';
 
 interface ValuesWheelProps {
@@ -12,8 +12,8 @@ export function ValuesWheel({ currentValueIndex, onValueChange }: ValuesWheelPro
 
   const values = [
     { key: 'humanLed', icon: Users, index: 0 },
-    { key: 'outcomes', icon: Target, index: 1 },
-    { key: 'precision', icon: Zap, index: 2 },
+    { key: 'outcomes', icon: Crosshair, index: 1 },
+    { key: 'precision', icon: Lightning, index: 2 },
     { key: 'privacy', icon: Lock, index: 3 },
     { key: 'partner', icon: Handshake, index: 4 }
   ];

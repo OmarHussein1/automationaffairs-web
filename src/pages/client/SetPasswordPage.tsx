@@ -1,7 +1,7 @@
 import { useState, useEffect, type FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../../lib/supabase'
-import { Lock, AlertCircle, ArrowRight, Check, Eye, EyeOff, ShieldAlert } from 'lucide-react'
+import { Lock, WarningCircle, ArrowRight, Check, Eye, EyeSlash, ShieldWarning } from '@phosphor-icons/react'
 import './SetPasswordPage.css'
 
 type PageState = 'loading' | 'ready' | 'invalid_token' | 'expired_token' | 'success'
@@ -137,7 +137,7 @@ export default function SetPasswordPage() {
                     <div className="setpassword-card">
                         <div className="setpassword-error-state">
                             <div className="error-icon-wrapper">
-                                <ShieldAlert size={48} />
+                                <ShieldWarning size={48} />
                             </div>
                             <h2>Invalid Invitation Link</h2>
                             <p>
@@ -156,7 +156,7 @@ export default function SetPasswordPage() {
                     <div className="setpassword-card">
                         <div className="setpassword-error-state">
                             <div className="error-icon-wrapper expired">
-                                <ShieldAlert size={48} />
+                                <ShieldWarning size={48} />
                             </div>
                             <h2>Link Expired</h2>
                             <p>
@@ -197,7 +197,7 @@ export default function SetPasswordPage() {
 
                         {error && (
                             <div className="setpassword-error">
-                                <AlertCircle size={18} />
+                                <WarningCircle size={18} />
                                 <span>{error}</span>
                             </div>
                         )}
@@ -223,7 +223,7 @@ export default function SetPasswordPage() {
                                         onClick={() => setShowPassword(!showPassword)}
                                         aria-label={showPassword ? 'Hide password' : 'Show password'}
                                     >
-                                        {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                        {showPassword ? <EyeSlash size={18} /> : <Eye size={18} />}
                                     </button>
                                 </div>
                                 {/* Password strength indicators */}
@@ -267,7 +267,7 @@ export default function SetPasswordPage() {
                                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                                         aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
                                     >
-                                        {showConfirmPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                                        {showConfirmPassword ? <EyeSlash size={18} /> : <Eye size={18} />}
                                     </button>
                                 </div>
                                 {confirmPassword.length > 0 && (
@@ -279,7 +279,7 @@ export default function SetPasswordPage() {
                                             </>
                                         ) : (
                                             <>
-                                                <AlertCircle size={14} />
+                                                <WarningCircle size={14} />
                                                 <span>Passwords do not match</span>
                                             </>
                                         )}

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import {
-    Briefcase, CheckCircle2, BookOpen, MessageCircle,
-    Mail, ArrowRight, HelpCircle, Rocket
-} from 'lucide-react'
+    Briefcase, CheckCircle, BookOpen, ChatCircle,
+    Envelope, ArrowRight, Question, Rocket
+} from '@phosphor-icons/react'
 import './OnboardingModal.css'
 
 interface OnboardingModalProps {
@@ -84,7 +84,7 @@ export default function OnboardingModal({ isOpen, onClose, userName }: Onboardin
                     {/* Tasks & Progress */}
                     <div className="onboarding-section">
                         <h2>
-                            <CheckCircle2 size={20} />
+                            <CheckCircle size={20} />
                             Tasks & Fortschritt
                         </h2>
                         <p>
@@ -148,7 +148,7 @@ export default function OnboardingModal({ isOpen, onClose, userName }: Onboardin
                     {/* Contact */}
                     <div className="onboarding-section">
                         <h2>
-                            <HelpCircle size={20} />
+                            <Question size={20} />
                             Fragen? Wir sind für Sie da.
                         </h2>
                         <p>
@@ -159,7 +159,7 @@ export default function OnboardingModal({ isOpen, onClose, userName }: Onboardin
                                 href="mailto:hello@automationaffairs.com"
                                 className="onboarding-contact-item"
                             >
-                                <Mail size={16} />
+                                <Envelope size={16} />
                                 hello@automationaffairs.com
                             </a>
                             <a
@@ -168,7 +168,7 @@ export default function OnboardingModal({ isOpen, onClose, userName }: Onboardin
                                 rel="noopener noreferrer"
                                 className="onboarding-contact-item"
                             >
-                                <MessageCircle size={16} />
+                                <ChatCircle size={16} />
                                 WhatsApp
                             </a>
                         </div>

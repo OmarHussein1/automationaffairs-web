@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, type FormEvent, type ChangeEvent, type KeyboardEvent } from 'react'
-import { X, Send, Sparkles, Trash2, ShieldAlert } from 'lucide-react'
+import { X, PaperPlaneTilt, Sparkle, Trash, ShieldWarning } from '@phosphor-icons/react'
 import ReactMarkdown from 'react-markdown'
 import './KnowledgeChat.css'
 
@@ -184,7 +184,7 @@ export default function KnowledgeChat({ isOpen, onToggle, articleContent, articl
         return (
             <div className="knowledge-chat-container collapsed">
                 <button className="chat-trigger-btn" onClick={onToggle}>
-                    <Sparkles size={16} />
+                    <Sparkle size={16} />
                     <span>Discuss with AI</span>
                 </button>
             </div>
@@ -197,7 +197,7 @@ export default function KnowledgeChat({ isOpen, onToggle, articleContent, articl
             <div className="knowledge-chat-container expanded">
                 <div className="chat-header">
                     <div className="chat-title">
-                        <ShieldAlert size={14} />
+                        <ShieldWarning size={14} />
                         <span>HINWEIS</span>
                     </div>
                     <button className="chat-close-btn" onClick={onToggle}>
@@ -206,7 +206,7 @@ export default function KnowledgeChat({ isOpen, onToggle, articleContent, articl
                 </div>
                 <div className="chat-consent">
                     <div className="consent-icon">
-                        <ShieldAlert size={32} />
+                        <ShieldWarning size={32} />
                     </div>
                     <h3>Bevor Sie fortfahren</h3>
                     <div className="consent-content">
@@ -236,7 +236,7 @@ export default function KnowledgeChat({ isOpen, onToggle, articleContent, articl
             {/* Header */}
             <div className="chat-header">
                 <div className="chat-title">
-                    <Sparkles size={14} />
+                    <Sparkle size={14} />
                     <span>AI ASSISTANT</span>
                 </div>
                 <div className="chat-actions" style={{ display: 'flex', gap: '0.5rem' }}>
@@ -245,7 +245,7 @@ export default function KnowledgeChat({ isOpen, onToggle, articleContent, articl
                         onClick={clearHistory}
                         title="Clear History"
                     >
-                        <Trash2 size={14} />
+                        <Trash size={14} />
                     </button>
                     <button className="chat-close-btn" onClick={onToggle}>
                         <X size={16} />
@@ -297,7 +297,7 @@ export default function KnowledgeChat({ isOpen, onToggle, articleContent, articl
                         className="send-btn"
                         disabled={!inputValue.trim() || isLoading}
                     >
-                        <Send size={14} />
+                        <PaperPlaneTilt size={14} />
                     </button>
                 </form>
             </div>

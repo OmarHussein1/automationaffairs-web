@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { User, Mail, GitBranch, Heart, Settings, ArrowRight } from 'lucide-react';
+import { User, Envelope, GitBranch, Heart, Gear, ArrowRight } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { Button } from '../components/ui/Button';
@@ -74,7 +74,7 @@ export function About() {
             {(() => {
               const paragraphs = t('about:intro.paragraphs', { returnObjects: true });
               const paragraphArray = Array.isArray(paragraphs) ? paragraphs : [];
-              const icons = [GitBranch, Heart, Settings];
+              const icons = [GitBranch, Heart, Gear];
               
               return paragraphArray.map((paragraph: string, index: number) => {
                 const IconComponent = icons[index];
@@ -171,7 +171,7 @@ export function About() {
                   href={`mailto:${member.email}`}
                   className="inline-flex items-center text-primary dark:text-[#f3ff5a] hover:text-primary/80 dark:hover:text-[#f3ff5a]/80 transition-colors text-sm"
                 >
-                  <Mail className="w-4 h-4 mr-2" />
+                  <Envelope className="w-4 h-4 mr-2" />
                   {member.email}
                 </a>
               </motion.div>

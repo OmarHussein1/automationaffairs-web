@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ArrowRight, ArrowDown, ArrowUp, Target, Search, Wrench } from 'lucide-react';
+import { ArrowRight, ArrowDown, ArrowUp } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '../components/ui/Button';
 import { SEO } from '../components/SEO';
 import { useGSAPScrollAnimations } from '../hooks/useGSAPScrollAnimations';
 import { ValuesWheel } from '../components/ValuesWheel';
+import { ProcessSection } from '../components/process/ProcessSection';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -173,78 +174,7 @@ export function Home() {
       </section>
 
       {/* How We Work Process Section */}
-      <section ref={processRef} id="process" className="relative">
-        <div className="process-content hero-grid-bg min-h-screen flex items-center justify-center">
-          <div className="absolute inset-0 bg-neutral-bg/70 dark:bg-dark-bg/70"></div>
-          <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="text-center mb-16">
-              <motion.h2 
-                className="text-2xl md:text-3xl font-bold text-neutral-ink dark:text-dark-text mb-6"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-              >
-                {t('home:process.title')}
-              </motion.h2>
-              <motion.p 
-                className="text-xl text-neutral-ink/70 dark:text-dark-text/70 max-w-2xl mx-auto"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                {t('home:process.subtitle')}
-              </motion.p>
-            </div>
-
-            {/* Process Steps - 3 Tiles */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {[
-                { key: 'scope', icon: Target, index: 0 },
-                { key: 'identify', icon: Search, index: 1 },
-                { key: 'build', icon: Wrench, index: 2 }
-              ].map((step, index) => (
-                <motion.div
-                  key={step.key}
-                  className="bg-white dark:bg-gray-700 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-600 flex flex-col items-center text-center"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5, scale: 1.02 }}
-                >
-                  {/* Step Number */}
-                  <div className="flex items-center justify-center mb-6 w-full">
-                    <span className="text-sm font-medium text-primary dark:text-[#f3ff5a] bg-primary/10 dark:bg-[#f3ff5a]/10 px-3 py-1 rounded-full">
-                      Step {index + 1}
-                    </span>
-                  </div>
-
-                  {/* Icon */}
-                  <motion.div 
-                    className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/20 dark:from-[#f3ff5a]/10 dark:to-[#f3ff5a]/20 rounded-xl flex items-center justify-center mb-6"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <step.icon className="w-8 h-8 text-primary dark:text-[#f3ff5a]" />
-                  </motion.div>
-                  
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-neutral-ink dark:text-dark-text mb-4">
-                    {t(`home:process.steps.${step.key}.title`)}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="text-neutral-ink/70 dark:text-dark-text/70 leading-relaxed">
-                    {t(`home:process.steps.${step.key}.description`)}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <ProcessSection ref={processRef} />
 
       {/* Values Section */}
       <section ref={valuesRef} className="relative">

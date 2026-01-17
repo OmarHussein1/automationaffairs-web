@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
 import {
-    ArrowLeft, FolderOpen, Download, Search,
-    Loader2, FileText, Image, FileSpreadsheet, File, Eye, X
-} from 'lucide-react'
+    ArrowLeft, FolderOpen, DownloadSimple, MagnifyingGlass,
+    SpinnerGap, FileText, Image, FileXls, File, Eye, X
+} from '@phosphor-icons/react'
 import GridBackground from '../../components/layout/GridBackground'
 import './AssetLibraryPage.css'
 
@@ -32,7 +32,7 @@ const getFileIcon = (filename?: string) => {
     const ext = filename?.split('.').pop()?.toLowerCase()
     if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext || '')) return Image
     if (['pdf'].includes(ext || '')) return FileText
-    if (['csv', 'xlsx', 'xls'].includes(ext || '')) return FileSpreadsheet
+    if (['csv', 'xlsx', 'xls'].includes(ext || '')) return FileXls
     return File
 }
 
@@ -206,7 +206,7 @@ export default function AssetLibraryPage() {
                 {/* Search & Filter */}
                 <div className="filter-bar">
                     <div className="search-box">
-                        <Search size={18} className="search-icon" />
+                        <MagnifyingGlass size={18} className="search-icon" />
                         <input
                             type="text"
                             placeholder="Search files..."
@@ -236,7 +236,7 @@ export default function AssetLibraryPage() {
                 {/* Loading State */}
                 {loading && (
                     <div className="asset-library-loading">
-                        <Loader2 size={32} className="loading-spinner" />
+                        <SpinnerGap size={32} className="loading-spinner" />
                         <p>Dateien werden geladen...</p>
                     </div>
                 )}
@@ -293,7 +293,7 @@ export default function AssetLibraryPage() {
                                                 onClick={() => handleDownload(asset)}
                                                 title="Download"
                                             >
-                                                <Download size={18} />
+                                                <DownloadSimple size={18} />
                                             </button>
                                         </div>
                                     </div>
@@ -339,7 +339,7 @@ export default function AssetLibraryPage() {
                                     onClick={() => handleDownload(previewAsset)}
                                     title="Download"
                                 >
-                                    <Download size={18} />
+                                    <DownloadSimple size={18} />
                                 </button>
                                 <button
                                     className="preview-btn preview-close"

@@ -93,3 +93,44 @@
     }
   }
 }
+
+/* CSS Property for animated border gradient angle */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Animated border gradient rotation */
+.animated-border-gradient {
+  animation: border-rotate 4s linear infinite;
+}
+
+@keyframes border-rotate {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Circuit particle floating animation */
+.circuit-particle {
+  animation: particle-float 8s ease-in-out infinite;
+}
+
+@keyframes particle-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(10px, -15px) scale(1.1);
+  }
+  50% {
+    transform: translate(-5px, -25px) scale(0.9);
+  }
+  75% {
+    transform: translate(15px, -10px) scale(1.05);
+  }
+}

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Mail, Phone, Check, Send } from 'lucide-react';
+import { Envelope, Phone, Check, PaperPlaneTilt } from '@phosphor-icons/react';
 import { Button } from '../components/ui/Button';
 import { SEO } from '../components/SEO';
 
@@ -250,7 +250,7 @@ export function Contact() {
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4 justify-center lg:justify-start">
-                  <Mail className="w-6 h-6 text-primary-cobalt mt-1" />
+                  <Envelope className="w-6 h-6 text-primary-cobalt mt-1" />
                   <div className="text-center lg:text-left">
                     <h3 className="font-semibold text-neutral-ink dark:text-dark-text mb-1">
                       {t('contact:info.email.title')}
@@ -495,7 +495,7 @@ export function Contact() {
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5 mr-2" />
+                      <PaperPlaneTilt className="w-5 h-5 mr-2" />
                       {t('contact:form.submit')}
                     </>
                   )}

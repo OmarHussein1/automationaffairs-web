@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
 import {
-    LogOut, Briefcase, Clock, FolderOpen, ArrowRight,
-    Mail, MessageCircle, Loader2, Info, Newspaper
-} from 'lucide-react'
+    SignOut, Briefcase, Clock, FolderOpen, ArrowRight,
+    Envelope, ChatCircle, SpinnerGap, Info, Newspaper
+} from '@phosphor-icons/react'
 import GridBackground from '../../components/layout/GridBackground'
 import OnboardingModal, { hasCompletedOnboarding } from '../../components/onboarding/OnboardingModal'
 import './DashboardPage.css'
@@ -396,7 +396,7 @@ export default function DashboardPage() {
                     </div>
 
                     <button className="header-logout" onClick={handleLogout} title="Abmelden">
-                        <LogOut size={20} />
+                        <SignOut size={20} />
                     </button>
                 </div>
             </header>
@@ -419,11 +419,11 @@ export default function DashboardPage() {
                             INFO
                         </button>
                         <a href="mailto:hello@automationaffairs.com" className="btn-secondary">
-                            <Mail size={16} />
+                            <Envelope size={16} />
                             E-MAIL
                         </a>
                         <a href="https://wa.me/436605358688" target="_blank" rel="noopener noreferrer" className="btn-primary">
-                            <MessageCircle size={16} />
+                            <ChatCircle size={16} />
                             WHATSAPP
                         </a>
                     </div>
@@ -432,7 +432,7 @@ export default function DashboardPage() {
                 {/* Loading State */}
                 {loading && (
                     <div className="dashboard-loading">
-                        <Loader2 size={32} className="loading-spinner" />
+                        <SpinnerGap size={32} className="loading-spinner" />
                         <p>Projekte werden geladen...</p>
                     </div>
                 )}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Settings, Check, Cookie } from 'lucide-react';
+import { X, Gear, Check, Cookie } from '@phosphor-icons/react';
 import { Button } from './ui/Button';
 
 interface CookiePreferences {
@@ -121,7 +121,7 @@ export function CookieConsent() {
                   onClick={() => setShowDetails(true)}
                   className="w-full sm:w-auto"
                 >
-                  <Settings className="w-4 h-4 mr-2" />
+                  <Gear className="w-4 h-4 mr-2" />
                   {t('common:cookies.customize')}
                 </Button>
                 <Button

@@ -4,11 +4,11 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
 import { supabase } from '../../lib/supabase'
 import {
-    ArrowLeft, Calendar, Download, FileText,
-    Image, FileSpreadsheet, File, BookOpen,
-    CheckCircle2, Circle, Loader2,
-    MessageCircle, Mail, Eye, X, LogOut, ChevronLeft, ChevronRight
-} from 'lucide-react'
+    ArrowLeft, Calendar, DownloadSimple, FileText,
+    Image, FileXls, File, BookOpen,
+    CheckCircle, Circle, SpinnerGap,
+    ChatCircle, Envelope, Eye, X, SignOut, CaretLeft, CaretRight
+} from '@phosphor-icons/react'
 import GridBackground from '../../components/layout/GridBackground'
 import './ProjectDetailPage.css'
 
@@ -93,7 +93,7 @@ const getFileIcon = (filename?: string) => {
     const ext = filename?.split('.').pop()?.toLowerCase()
     if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext || '')) return Image
     if (['pdf'].includes(ext || '')) return FileText
-    if (['csv', 'xlsx', 'xls'].includes(ext || '')) return FileSpreadsheet
+    if (['csv', 'xlsx', 'xls'].includes(ext || '')) return FileXls
     return File
 }
 
@@ -392,7 +392,7 @@ export default function ProjectDetailPage() {
         return (
             <div className="project-detail-page">
                 <div className="project-loading">
-                    <Loader2 size={32} className="loading-spinner" />
+                    <SpinnerGap size={32} className="loading-spinner" />
                     <p>Projekt wird geladen...</p>
                 </div>
             </div>
@@ -453,7 +453,7 @@ export default function ProjectDetailPage() {
                     </div>
 
                     <button className="header-logout" onClick={handleLogout} title="Abmelden">
-                        <LogOut size={20} />
+                        <SignOut size={20} />
                     </button>
                 </div>
             </header>
@@ -543,7 +543,7 @@ export default function ProjectDetailPage() {
                                                     onClick={() => handleDownload(asset)}
                                                     title="Download"
                                                 >
-                                                    <Download size={18} />
+                                                    <DownloadSimple size={18} />
                                                 </button>
                                             </div>
                                         </div>
@@ -566,7 +566,7 @@ export default function ProjectDetailPage() {
                             className="carousel-nav carousel-prev"
                             onClick={() => changeTeamMember(activeTeamMember === 0 ? TEAM_MEMBERS.length - 1 : activeTeamMember - 1)}
                         >
-                            <ChevronLeft size={18} />
+                            <CaretLeft size={18} />
                         </button>
 
                         <div className={`contact-content ${isFading ? 'fading' : ''}`}>
@@ -603,14 +603,14 @@ export default function ProjectDetailPage() {
                                     rel="noopener noreferrer"
                                     className="btn-primary contact-btn"
                                 >
-                                    <MessageCircle size={16} />
+                                    <ChatCircle size={16} />
                                     WHATSAPP
                                 </a>
                                 <a
                                     href={`mailto:${TEAM_MEMBERS[activeTeamMember].email}`}
                                     className="btn-secondary contact-btn"
                                 >
-                                    <Mail size={16} />
+                                    <Envelope size={16} />
                                     EMAIL
                                 </a>
                             </div>
@@ -620,7 +620,7 @@ export default function ProjectDetailPage() {
                             className="carousel-nav carousel-next"
                             onClick={() => changeTeamMember((activeTeamMember + 1) % TEAM_MEMBERS.length)}
                         >
-                            <ChevronRight size={18} />
+                            <CaretRight size={18} />
                         </button>
                     </div>
 
@@ -661,7 +661,7 @@ export default function ProjectDetailPage() {
                                                 )}
                                             </span>
                                         </div>
-                                        <ChevronRight size={16} className="article-arrow" />
+                                        <CaretRight size={16} className="article-arrow" />
                                     </div>
                                 ))
                             ) : (
@@ -676,7 +676,7 @@ export default function ProjectDetailPage() {
                     <div className="grid-card tasks-card">
                         <div className="card-header">
                             <h2>
-                                <CheckCircle2 size={20} />
+                                <CheckCircle size={20} />
                                 Project Tasks
                             </h2>
                             {tasks.length > 0 && (
@@ -702,9 +702,9 @@ export default function ProjectDetailPage() {
                                             <div className="task-main-row">
                                                 <div className="task-status-icon">
                                                     {task.status === 'done' ? (
-                                                        <CheckCircle2 size={18} className="status-done" />
+                                                        <CheckCircle size={18} className="status-done" />
                                                     ) : task.status === 'review' ? (
-                                                        <CheckCircle2 size={18} className="status-review" />
+                                                        <CheckCircle size={18} className="status-review" />
                                                     ) : task.status === 'in_progress' ? (
                                                         <Circle size={18} className="status-in-progress" />
                                                     ) : (
@@ -766,7 +766,7 @@ export default function ProjectDetailPage() {
                                     onClick={() => handleDownload(previewAsset)}
                                     title="Download"
                                 >
-                                    <Download size={18} />
+                                    <DownloadSimple size={18} />
                                 </button>
                                 <button
                                     className="preview-btn preview-close"

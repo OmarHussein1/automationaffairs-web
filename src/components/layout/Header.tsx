@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Menu, X, Sun, Moon, Globe } from 'lucide-react';
+import { List, X, Sun, Moon, Globe } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../hooks/useTheme';
 import { Button } from '../ui/Button';
@@ -163,7 +163,7 @@ export function Header() {
             className="md:hidden p-2 text-neutral-ink dark:text-dark-text focus-ring rounded-lg"
             aria-label={isMenuOpen ? t('a11y.closeMenu') : t('a11y.openMenu')}
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-6 h-6" /> : <List className="w-6 h-6" />}
           </button>
         </div>
 

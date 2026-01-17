@@ -5,9 +5,9 @@ import { supabase } from '../../lib/supabase'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import {
-    ArrowLeft, Book, Search,
-    Loader2, ChevronRight
-} from 'lucide-react'
+    ArrowLeft, Book, MagnifyingGlass,
+    SpinnerGap, CaretRight
+} from '@phosphor-icons/react'
 import GridBackground from '../../components/layout/GridBackground'
 import './KnowledgePage.css'
 
@@ -167,7 +167,7 @@ export default function KnowledgeListPage() {
                 {/* Search & Filter */}
                 <div className="filter-bar">
                     <div className="search-box">
-                        <Search size={18} className="search-icon" />
+                        <MagnifyingGlass size={18} className="search-icon" />
                         <input
                             type="text"
                             placeholder="Search articles..."
@@ -202,7 +202,7 @@ export default function KnowledgeListPage() {
                 {/* Loading State */}
                 {loading && (
                     <div className="knowledge-loading">
-                        <Loader2 size={32} className="loading-spinner" />
+                        <SpinnerGap size={32} className="loading-spinner" />
                         <p>Artikel werden geladen...</p>
                     </div>
                 )}
@@ -284,7 +284,7 @@ export default function KnowledgeListPage() {
                                         </div>
                                         <div className="article-card-footer">
                                             <span className="read-more">
-                                                READ ARTICLE <ChevronRight size={14} />
+                                                READ ARTICLE <CaretRight size={14} />
                                             </span>
                                         </div>
                                     </div>
