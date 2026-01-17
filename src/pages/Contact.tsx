@@ -79,10 +79,6 @@ export function Contact() {
     try {
       const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
       
-      console.log('=== FORM SUBMISSION DEBUG ===');
-      console.log('Webhook URL:', webhookUrl);
-      console.log('Environment check:', import.meta.env);
-      
       if (!webhookUrl) {
         throw new Error('Webhook URL not configured');
       }
@@ -428,7 +424,7 @@ export function Contact() {
                     {t('contact:form.interests')}
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {['aiAgents', 'rag', 'workflowAutomation', 'apiIntegrations', 'selfHostedAI'].map((interest) => (
+                    {['aiAgents', 'rag', 'workflowAutomation', 'apiIntegrations', 'selfHostedAI', 'mcps'].map((interest) => (
                       <label key={interest} className="flex items-center space-x-3 cursor-pointer">
                         <input
                           type="checkbox"

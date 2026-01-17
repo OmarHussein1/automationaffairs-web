@@ -35,17 +35,8 @@ export function ProcessCard({ stepKey, index }: ProcessCardProps) {
   const isActive = isHovered || isFocused;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.15,
-        type: 'spring',
-        stiffness: 100,
-        damping: 20,
-      }}
-      viewport={{ once: true, margin: '-50px' }}
+    <div
+      className="process-card opacity-0"
       style={{ perspective: 1000 }}
     >
       <motion.div
@@ -102,6 +93,6 @@ export function ProcessCard({ stepKey, index }: ProcessCardProps) {
           </div>
         </AnimatedBorder>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }

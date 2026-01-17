@@ -1,37 +1,46 @@
-import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { User, Envelope, GitBranch, Heart, Gear, ArrowRight } from '@phosphor-icons/react';
-import { Link } from 'react-router-dom';
-import { SEO } from '../components/SEO';
-import { Button } from '../components/ui/Button';
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import {
+  Envelope,
+  GitBranch,
+  Heart,
+  Gear,
+  ArrowRight,
+} from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
+import { SEO } from "../components/SEO";
+import { Button } from "../components/ui/Button";
 
 export function About() {
   const { t } = useTranslation();
 
   const teamMembers = [
     {
-      name: 'Maximilian Kern',
-      title: 'Client Strategy Lead',
-      email: 'max@automationaffairs.com',
+      name: "Maximilian Kern",
+      title: "Client Strategy Lead",
+      email: "max@automationaffairs.com",
+      image: "/team/Max.jpeg",
     },
     {
-      name: 'Dario Suckfüll',
-      title: 'Automation Engineering Lead',
-      email: 'dario@automationaffairs.com',
+      name: "Dario Suckfüll",
+      title: "Automation Engineering Lead",
+      email: "dario@automationaffairs.com",
+      image: "/team/Dario.jpeg",
     },
     {
-      name: 'Omar Hussein',
-      title: 'Solution Architect',
-      email: 'omar@automationaffairs.com',
+      name: "Omar Hussein",
+      title: "Development Lead",
+      email: "omar@automationaffairs.com",
+      image: "/team/Omar.jpeg",
     },
   ];
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <SEO 
-        title={t('common:seo.about.title')}
-        description={t('common:seo.about.description')}
-        keywords={t('common:seo.about.keywords')}
+      <SEO
+        title={t("common:seo.about.title")}
+        description={t("common:seo.about.description")}
+        keywords={t("common:seo.about.keywords")}
       />
       {/* Hero */}
       <section className="relative py-section-mobile md:py-section-desktop hero-grid-bg">
@@ -41,26 +50,26 @@ export function About() {
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.6, 
-                ease: [0.4, 0.0, 0.2, 1]
+              transition={{
+                duration: 0.6,
+                ease: [0.4, 0.0, 0.2, 1],
               }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-ink dark:text-dark-text mb-6 uppercase"
-              style={{ fontFamily: 'Lexend Tera, system-ui, sans-serif' }}
+              style={{ fontFamily: "Lexend Tera, system-ui, sans-serif" }}
             >
-              {t('about:title')}
+              {t("about:title")}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.6, 
+              transition={{
+                duration: 0.6,
                 delay: 0.2,
-                ease: [0.4, 0.0, 0.2, 1]
+                ease: [0.4, 0.0, 0.2, 1],
               }}
               className="text-lg md:text-xl text-neutral-ink-muted dark:text-dark-text/70 max-w-3xl mx-auto"
             >
-{t('about:hero.subtitle')}
+              {t("about:hero.subtitle")}
             </motion.p>
           </div>
         </div>
@@ -72,10 +81,14 @@ export function About() {
         <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {(() => {
-              const paragraphs = t('about:intro.paragraphs', { returnObjects: true });
-              const paragraphArray = Array.isArray(paragraphs) ? paragraphs : [];
+              const paragraphs = t("about:intro.paragraphs", {
+                returnObjects: true,
+              });
+              const paragraphArray = Array.isArray(paragraphs)
+                ? paragraphs
+                : [];
               const icons = [GitBranch, Heart, Gear];
-              
+
               return paragraphArray.map((paragraph: string, index: number) => {
                 const IconComponent = icons[index];
                 return (
@@ -83,15 +96,15 @@ export function About() {
                     key={index}
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ 
-                      duration: 0.6, 
+                    transition={{
+                      duration: 0.6,
                       delay: index * 0.1,
-                      ease: [0.4, 0.0, 0.2, 1]
+                      ease: [0.4, 0.0, 0.2, 1],
                     }}
                     viewport={{ once: true, margin: "-50px" }}
-                    whileHover={{ 
+                    whileHover={{
                       y: -4,
-                      transition: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] }
+                      transition: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] },
                     }}
                     className="bg-neutral-surface dark:bg-gray-700 p-8 rounded-2xl border border-neutral-ink/10 dark:border-gray-600/50 text-center"
                   >
@@ -104,7 +117,7 @@ export function About() {
                   </motion.div>
                 );
               });
-            })()} 
+            })()}
           </div>
         </div>
       </section>
@@ -116,9 +129,9 @@ export function About() {
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ 
+              transition={{
                 duration: 0.6,
-                ease: [0.4, 0.0, 0.2, 1]
+                ease: [0.4, 0.0, 0.2, 1],
               }}
               viewport={{ once: true, margin: "-100px" }}
               className="text-2xl md:text-3xl font-heading font-bold text-neutral-ink dark:text-dark-text mb-4"
@@ -128,10 +141,10 @@ export function About() {
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.6, 
+              transition={{
+                duration: 0.6,
                 delay: 0.1,
-                ease: [0.4, 0.0, 0.2, 1]
+                ease: [0.4, 0.0, 0.2, 1],
               }}
               viewport={{ once: true, margin: "-100px" }}
               className="text-lg text-neutral-ink-muted dark:text-dark-text/70 max-w-2xl mx-auto"
@@ -146,20 +159,24 @@ export function About() {
                 key={member.name}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.6, 
+                transition={{
+                  duration: 0.6,
                   delay: index * 0.1,
-                  ease: [0.4, 0.0, 0.2, 1]
+                  ease: [0.4, 0.0, 0.2, 1],
                 }}
                 viewport={{ once: true, margin: "-80px" }}
-                whileHover={{ 
+                whileHover={{
                   y: -6,
-                  transition: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] }
+                  transition: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] },
                 }}
                 className="bg-neutral-bg dark:bg-gray-700 p-8 rounded-2xl border border-neutral-ink/10 dark:border-gray-600/50 text-center"
               >
-                <div className="w-20 h-20 bg-primary/10 dark:bg-[#f3ff5a]/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <User className="w-10 h-10 text-primary dark:text-[#f3ff5a]" />
+                <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-6 border-2 border-primary/20 dark:border-[#f3ff5a]/20">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <h3 className="text-xl font-heading font-semibold text-neutral-ink dark:text-dark-text mb-2">
                   {member.name}
@@ -188,45 +205,45 @@ export function About() {
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ 
+              transition={{
                 duration: 0.6,
-                ease: [0.4, 0.0, 0.2, 1]
+                ease: [0.4, 0.0, 0.2, 1],
               }}
               viewport={{ once: true, margin: "-100px" }}
-              whileHover={{ 
+              whileHover={{
                 y: -4,
-                transition: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] }
+                transition: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] },
               }}
               className="bg-white dark:bg-gray-700 p-8 rounded-2xl border border-neutral-ink/10 dark:border-gray-600/50"
             >
               <h2 className="text-2xl font-heading font-bold text-neutral-ink dark:text-dark-text mb-4">
-                {t('about:mission.title')}
+                {t("about:mission.title")}
               </h2>
               <p className="text-neutral-ink-muted dark:text-dark-text/70 leading-relaxed">
-                {t('about:mission.description')}
+                {t("about:mission.description")}
               </p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.6, 
+              transition={{
+                duration: 0.6,
                 delay: 0.1,
-                ease: [0.4, 0.0, 0.2, 1]
+                ease: [0.4, 0.0, 0.2, 1],
               }}
               viewport={{ once: true, margin: "-100px" }}
-              whileHover={{ 
+              whileHover={{
                 y: -4,
-                transition: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] }
+                transition: { duration: 0.2, ease: [0.4, 0.0, 0.2, 1] },
               }}
               className="bg-white dark:bg-gray-700 p-8 rounded-2xl border border-neutral-ink/10 dark:border-gray-600/50"
             >
               <h2 className="text-2xl font-heading font-bold text-neutral-ink dark:text-dark-text mb-4">
-                {t('about:vision.title')}
+                {t("about:vision.title")}
               </h2>
               <p className="text-neutral-ink-muted dark:text-dark-text/70 leading-relaxed">
-                {t('about:vision.description')}
+                {t("about:vision.description")}
               </p>
             </motion.div>
           </div>
@@ -234,38 +251,39 @@ export function About() {
       </section>
 
       {/* CTA Section */}
-      <section id="cta" className="py-section-mobile md:py-section-desktop relative parallax-section bg-[#3b5bdb] dark:bg-[#f3ff5a]">
-        
+      <section
+        id="cta"
+        className="py-section-mobile md:py-section-desktop relative parallax-section bg-[#3b5bdb] dark:bg-[#f3ff5a]"
+      >
         <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-white dark:text-black mb-4">
-              {t('home:cta.title')}
+              {t("home:cta.title")}
             </h2>
             <p className="text-lg text-white/90 dark:text-black/90 mb-8">
-              {t('home:cta.subtitle')}
+              {t("home:cta.subtitle")}
             </p>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="bg-white dark:bg-black text-[#3b5bdb] dark:text-[#f3ff5a] border-white dark:border-black hover:bg-white/90 dark:hover:bg-black/90" 
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-white dark:bg-black text-[#3b5bdb] dark:text-[#f3ff5a] border-white dark:border-black hover:bg-white/90 dark:hover:bg-black/90"
               asChild
             >
-              <Link 
+              <Link
                 to="/contact"
                 onClick={() => {
                   setTimeout(() => {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.scrollTo({ top: 0, behavior: "smooth" });
                   }, 100);
                 }}
               >
-                {t('home:cta.button')}
+                {t("home:cta.button")}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
           </div>
         </div>
       </section>
-
     </div>
   );
 }
