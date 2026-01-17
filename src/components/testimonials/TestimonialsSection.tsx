@@ -35,7 +35,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* Logos Grid */}
-        <div className="testimonials-grid flex flex-wrap justify-center items-center gap-12 lg:gap-16">
+        <div className="testimonials-grid flex flex-wrap justify-center items-center gap-8 sm:gap-12 lg:gap-16">
           {clients.map((client, index) => (
             <a
               key={index}
@@ -49,7 +49,7 @@ export function TestimonialsSection() {
                 alt={client.name}
                 className="w-auto object-contain grayscale invert dark:invert-0 hover:scale-110 transition-all duration-300"
                 style={{
-                  maxHeight: `${client.scale * 64}px`,
+                  maxHeight: `clamp(${client.scale * 48}px, ${client.scale * 8}vw, ${client.scale * 64}px)`,
                 }}
               />
             </a>

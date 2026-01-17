@@ -937,6 +937,7 @@
     .table-header,
     .table-row {
         grid-template-columns: 1.5fr 1fr 1.25fr 1.25fr 0.5fr;
+        transition: all 0.3s ease;
     }
 
     .col-milestone {
@@ -957,6 +958,7 @@
     .table-header,
     .table-row {
         grid-template-columns: 1.5fr 1fr 1.25fr 0.5fr;
+        transition: all 0.3s ease;
     }
 
     .col-tasks {
@@ -979,6 +981,12 @@
     }
 
     .header-user {
+        flex-direction: row;
+        gap: 0;
+    }
+
+    .user-name,
+    .user-role {
         display: none;
     }
 
@@ -1007,7 +1015,15 @@
     .page-header-content h1 {
         font-size: 1.25rem;
     }
+}
 
+@media (max-width: 768px) and (min-width: 640px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
     .articles-grid {
         grid-template-columns: 1fr;
     }

@@ -1,1 +1,2 @@
-export { ValuesCarousel } from './ValuesCarousel';
+export { ValuesSplitScreen } from './ValuesSplitScreen';
+export { ValuesSection } from './ValuesSection';

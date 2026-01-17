@@ -210,181 +210,158 @@
 }
 
 /* ============================================
-   Values Carousel Styles
+   Values Split Screen Styles
    ============================================ */
 
-.values-carousel-wrapper {
-  width: 100%;
+.values-icon-container {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: center;
+  padding: 20px;
 }
 
-.values-carousel-cards {
-  display: flex;
-  padding: 8px;
-  gap: 20px;
-  border-radius: 16px;
+.values-icon {
+  max-width: 200px;
+  width: 100%;
+  aspect-ratio: 1;
+  will-change: transform;
 }
 
-/* Value card base styles */
-.value-card {
-  width: 28vw;
-  min-width: 280px;
-  max-width: 380px;
-  padding: 32px;
+@media (min-width: 640px) {
+  .values-icon {
+    max-width: 225px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .values-icon {
+    max-width: 250px;
+  }
+}
+
+.values-content-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background: white;
-  border: 2px solid #e5e7eb;
-  border-radius: 20px;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  will-change: transform, opacity;
-  backface-visibility: hidden;
 }
 
-.dark .value-card {
-  background: #1f2937;
-  border-color: #4b5563;
-}
-
-.value-card.hide {
-  display: none;
-}
-
-.value-card-icon {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 20px;
-  color: #3b5bdb;
-}
-
-.dark .value-card-icon {
-  color: #f3ff5a;
-}
-
-.value-card-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.value-card-title {
-  font-family: 'Lexend Tera', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  color: #1a1a1a;
+.values-content-area {
+  min-height: clamp(250px, 40vh, 320px);
   margin-bottom: 16px;
 }
 
-.dark .value-card-title {
-  color: #f9fafb;
+.values-content-inner {
+  /* Content will animate inside this area */
 }
 
-.value-card-description {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #6b7280;
-}
-
-.dark .value-card-description {
-  color: #9ca3af;
-}
-
-/* Navigation */
-.values-carousel-nav {
-  margin-top: 24px;
-  display: flex;
-  gap: 20px;
-}
-
-.values-carousel-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
+.values-nav {
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  transition: all 0.2s ease;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nav-dots {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.nav-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #d1d5db;
+  border: none;
   cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 12px;
+  background-clip: content-box;
 }
 
-.values-carousel-btn:hover {
-  transform: scale(1.1);
+.dark .nav-dot {
+  background: #4b5563;
 }
 
-.values-carousel-btn:focus {
+.nav-dot:hover {
+  transform: scale(1.2);
+  background: #9ca3af;
+}
+
+.dark .nav-dot:hover {
+  background: #6b7280;
+}
+
+.nav-dot-active {
+  background: #3b5bdb;
+  transform: scale(1.3);
+}
+
+.dark .nav-dot-active {
+  background: #f3ff5a;
+}
+
+.nav-dot:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.3);
 }
 
-.dark .values-carousel-btn:focus {
+.dark .nav-dot:focus {
   box-shadow: 0 0 0 3px rgba(243, 255, 90, 0.3);
 }
 
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .value-card {
-    width: 30vw;
-    min-width: 240px;
-    padding: 28px;
-  }
-
-  .value-card-icon {
-    width: 64px;
-    height: 64px;
-  }
+.nav-arrows {
+  display: flex;
+  gap: 12px;
 }
 
-@media (max-width: 768px) {
-  .value-card {
-    width: 44vw;
-    min-width: 200px;
-    padding: 24px;
-  }
-
-  .value-card-icon {
-    width: 56px;
-    height: 56px;
-  }
-
-  .value-card-title {
-    font-size: 14px;
-  }
-
-  .value-card-description {
-    font-size: 13px;
-  }
+.nav-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #e5e7eb;
+  color: #3b5bdb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-@media (max-width: 640px) {
-  .values-carousel-cards {
-    gap: 10px;
-  }
-
-  .value-card {
-    width: 70vw;
-    min-width: 260px;
-    max-width: 320px;
-    padding: 24px;
-  }
-
-  .value-card-icon {
-    width: 64px;
-    height: 64px;
-  }
+.dark .nav-arrow {
+  background: #1f2937;
+  border-color: #4b5563;
+  color: #f3ff5a;
 }
 
-/* Reduced motion support for carousel */
+.nav-arrow:hover {
+  transform: scale(1.1);
+  border-color: #3b5bdb;
+}
+
+.dark .nav-arrow:hover {
+  border-color: #f3ff5a;
+}
+
+.nav-arrow:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.3);
+}
+
+.dark .nav-arrow:focus {
+  box-shadow: 0 0 0 3px rgba(243, 255, 90, 0.3);
+}
+
+/* Mobile: Stack vertically - No additional overrides needed, clamp handles responsiveness */
+
+/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-  .value-card {
+  .nav-dot,
+  .nav-arrow {
     transition: none !important;
   }
 
-  .values-carousel-btn {
-    transition: none !important;
+  .values-icon {
+    animation: none !important;
   }
 }

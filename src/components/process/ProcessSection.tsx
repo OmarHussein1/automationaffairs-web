@@ -19,21 +19,21 @@ export const ProcessSection = forwardRef<HTMLDivElement>((_, ref) => {
 
         <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
             <h2
-              className="process-title text-2xl md:text-3xl font-bold text-neutral-ink dark:text-dark-text mb-6 opacity-0"
+              className="process-title text-xl sm:text-2xl md:text-3xl font-bold text-neutral-ink dark:text-dark-text mb-3 sm:mb-4 md:mb-6 opacity-0"
             >
               {t('home:process.title')}
             </h2>
             <p
-              className="process-subtitle text-xl text-neutral-ink/70 dark:text-dark-text/70 max-w-2xl mx-auto opacity-0"
+              className="process-subtitle text-base sm:text-lg md:text-xl text-neutral-ink/70 dark:text-dark-text/70 max-w-2xl mx-auto opacity-0"
             >
               {t('home:process.subtitle')}
             </p>
           </div>
 
           {/* Process Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
             {steps.map((stepKey, index) => (
               <ProcessCard key={stepKey} stepKey={stepKey} index={index} />
             ))}

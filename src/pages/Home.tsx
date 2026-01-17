@@ -4,7 +4,7 @@ import { ArrowRight } from '@phosphor-icons/react';
 import { useRef } from 'react';
 import { Button } from '../components/ui/Button';
 import { SEO } from '../components/SEO';
-import { ValuesCarousel } from '../components/values';
+import { ValuesSection } from '../components/values';
 import { ProcessSection } from '../components/process/ProcessSection';
 import { TestimonialsSection } from '../components/testimonials';
 import { SectionNavigator } from '../components/SectionNavigator';
@@ -173,21 +173,7 @@ export function Home() {
         <section id="values" className="fullpage-section relative">
           <div className="hero-grid-bg h-full flex flex-col justify-center">
             <div className="absolute inset-0 bg-neutral-bg/70 dark:bg-dark-bg/70" />
-            <div className="w-full mx-auto relative z-10 flex flex-col h-full justify-center gap-4">
-              <div className="values-header text-center px-4 sm:px-6 lg:px-8 opacity-0">
-                <h2 className="text-2xl md:text-3xl font-heading font-bold text-neutral-ink dark:text-dark-text mb-2">
-                  {t('home:values.title')}
-                </h2>
-                <p className="text-base md:text-lg text-neutral-ink-muted dark:text-dark-text/70 max-w-2xl mx-auto">
-                  {t('home:values.subtitle')}
-                </p>
-              </div>
-
-              {/* Values Carousel */}
-              <div className="values-carousel-container relative flex items-center justify-center opacity-0">
-                <ValuesCarousel />
-              </div>
-            </div>
+            <ValuesSection />
           </div>
         </section>
 
@@ -230,27 +216,77 @@ export function Home() {
           </div>
 
           {/* Integrated Footer */}
-          <div className="cta-footer py-6 border-t border-white/20 dark:border-black/20 opacity-0">
+          <div className="cta-footer py-8 border-t border-white/20 dark:border-black/20 opacity-0">
             <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/70 dark:text-black/70">
-                <p>
-                  © {new Date().getFullYear()} Automation Affairs.{' '}
-                  {t('common:footer.rights')}
-                </p>
-                <div className="flex gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+                {/* Brand */}
+                <div className="md:col-span-1">
                   <Link
-                    to={getLocalizedPath('/impressum')}
-                    className="hover:text-white dark:hover:text-black transition-colors"
+                    to={getLocalizedPath('/')}
+                    className="flex items-center space-x-3"
                   >
-                    {t('common:footer.impressum')}
+                    <img
+                      src="/logo.svg"
+                      alt="Automation Affairs Logo"
+                      className="w-8 h-8 object-contain filter brightness-0 invert dark:brightness-100 dark:invert-0"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        if (target.src.includes('.svg')) {
+                          target.src = '/logo.png';
+                        } else {
+                          target.style.display = 'none';
+                        }
+                      }}
+                    />
+                    <span className="font-heading text-base font-semibold text-white dark:text-black">
+                      AUTOMATION AFFAIRS
+                    </span>
                   </Link>
-                  <Link
-                    to={getLocalizedPath('/privacy')}
-                    className="hover:text-white dark:hover:text-black transition-colors"
-                  >
-                    {t('common:footer.privacy')}
-                  </Link>
+                  <p className="mt-3 text-sm text-white/70 dark:text-black/70 max-w-xs">
+                    {t('footer.description')}
+                  </p>
                 </div>
+
+                {/* Legal Links */}
+                <div className="md:col-span-1">
+                  <h3 className="font-heading text-xs font-semibold text-white dark:text-black uppercase tracking-wider mb-3">
+                    Legal
+                  </h3>
+                  <div className="space-y-2">
+                    <Link
+                      to={getLocalizedPath('/impressum')}
+                      className="block text-sm text-white/70 hover:text-white dark:text-black/70 dark:hover:text-black transition-colors"
+                    >
+                      {t('footer.legal.impressum')}
+                    </Link>
+                    <Link
+                      to={getLocalizedPath('/privacy')}
+                      className="block text-sm text-white/70 hover:text-white dark:text-black/70 dark:hover:text-black transition-colors"
+                    >
+                      {t('footer.legal.privacy')}
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Contact */}
+                <div className="md:col-span-1">
+                  <h3 className="font-heading text-xs font-semibold text-white dark:text-black uppercase tracking-wider mb-3">
+                    Contact
+                  </h3>
+                  <a
+                    href={`mailto:${t('footer.email')}`}
+                    className="block text-sm text-white/70 hover:text-white dark:text-black/70 dark:hover:text-black transition-colors"
+                  >
+                    {t('footer.email')}
+                  </a>
+                </div>
+              </div>
+
+              {/* Copyright */}
+              <div className="pt-6 border-t border-white/10 dark:border-black/10">
+                <p className="text-xs text-white/50 dark:text-black/50 text-center">
+                  © {new Date().getFullYear()} Automation Affairs. All rights reserved.
+                </p>
               </div>
             </div>
           </div>
