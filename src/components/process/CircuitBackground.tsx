@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
 interface Particle {
   id: number;
@@ -16,8 +16,8 @@ interface CircuitBackgroundProps {
 }
 
 export function CircuitBackground({
-  particleCount = 12,
-  className = ''
+  particleCount = 0,
+  className = "",
 }: CircuitBackgroundProps) {
   // Generate random particles - memoized to prevent re-generation on re-renders
   const particles = useMemo<Particle[]>(() => {
@@ -54,12 +54,15 @@ export function CircuitBackground({
       ))}
 
       {/* Subtle connecting lines - purely decorative */}
-      <svg
-        className="absolute inset-0 w-full h-full"
-        style={{ opacity: 0.08 }}
-      >
+      <svg className="absolute inset-0 w-full h-full" style={{ opacity: 0.08 }}>
         <defs>
-          <linearGradient id="circuit-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient
+            id="circuit-gradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
             <stop offset="0%" className="[stop-color:var(--circuit-start)]" />
             <stop offset="100%" className="[stop-color:var(--circuit-end)]" />
           </linearGradient>

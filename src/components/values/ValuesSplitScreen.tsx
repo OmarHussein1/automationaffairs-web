@@ -1,20 +1,40 @@
-import { useState, useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Users, Target, Crosshair, ShieldCheck, Handshake, CaretLeft, CaretRight } from '@phosphor-icons/react';
-import gsap from 'gsap';
-import type { ValueKey } from './types';
-import { cn } from '../../lib/utils';
+import { useState, useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  UsersIcon,
+  TargetIcon,
+  CrosshairIcon,
+  ShieldCheckIcon,
+  HandshakeIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+} from "@phosphor-icons/react";
+import gsap from "gsap";
+import type { ValueKey } from "./types";
+import { cn } from "../../lib/utils";
 
-const VALUE_ICONS: Record<ValueKey, React.ComponentType<{ className?: string; weight?: 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone' }>> = {
-  humanLed: Users,
-  outcomes: Target,
-  precision: Crosshair,
-  privacy: ShieldCheck,
-  partner: Handshake,
+const VALUE_ICONS: Record<
+  ValueKey,
+  React.ComponentType<{
+    className?: string;
+    weight?: "thin" | "light" | "regular" | "bold" | "fill" | "duotone";
+  }>
+> = {
+  humanLed: UsersIcon,
+  outcomes: TargetIcon,
+  precision: CrosshairIcon,
+  privacy: ShieldCheckIcon,
+  partner: HandshakeIcon,
 };
 
-const VALUES_ORDER: ValueKey[] = ['humanLed', 'outcomes', 'precision', 'privacy', 'partner'];
+const VALUES_ORDER: ValueKey[] = [
+  "humanLed",
+  "outcomes",
+  "precision",
+  "privacy",
+  "partner",
+];
 
 export function ValuesSplitScreen() {
   const { t } = useTranslation();
@@ -38,7 +58,7 @@ export function ValuesSplitScreen() {
     tl.to(iconRef.current, {
       y: -20,
       duration: 2,
-      ease: 'power1.inOut',
+      ease: "power1.inOut",
     });
 
     return () => {
@@ -55,14 +75,16 @@ export function ValuesSplitScreen() {
   };
 
   const goPrev = () => {
-    setCurrentIndex((prev) => (prev - 1 + VALUES_ORDER.length) % VALUES_ORDER.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + VALUES_ORDER.length) % VALUES_ORDER.length,
+    );
   };
 
   const currentValue = VALUES_ORDER[currentIndex];
   const Icon = VALUE_ICONS[currentValue];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
       {/* Left side - Large animated icon */}
       <div className="values-icon-container">
         <AnimatePresence mode="wait">
@@ -72,10 +94,13 @@ export function ValuesSplitScreen() {
             initial={{ opacity: 0, rotate: -10, scale: 0.8 }}
             animate={{ opacity: 1, rotate: 0, scale: 1 }}
             exit={{ opacity: 0, rotate: 10, scale: 0.8 }}
-            transition={{ duration: 0.4, ease: 'easeInOut' }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
             className="values-icon"
           >
-            <Icon className="w-full h-full text-primary dark:text-accent" weight="duotone" />
+            <Icon
+              className="w-full h-full text-primary dark:text-accent"
+              weight="duotone"
+            />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -83,8 +108,8 @@ export function ValuesSplitScreen() {
       {/* Right side - Content */}
       <div className="values-content-wrapper">
         {/* Fixed "Our Values" label - outside animation */}
-        <p className="text-base font-medium text-gray-500 dark:text-gray-400 mb-3 uppercase tracking-wide">
-          {t('home:values.title')}
+        <p className="text-base md:text-base font-medium text-gray-500 dark:text-gray-400 mb-3 md:mb-3 uppercase tracking-wide">
+          {t("home:values.title")}
         </p>
 
         {/* Animated content area with fixed height */}
@@ -95,13 +120,13 @@ export function ValuesSplitScreen() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
               className="values-content-inner"
             >
-              <h3 className="text-3xl md:text-4xl font-heading font-bold mb-6">
+              <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-heading font-bold mb-4 md:mb-6">
                 {t(`home:values.items.${currentValue}.title`)}
               </h3>
-              <p className="text-xl leading-relaxed">
+              <p className="text-base sm:text-base md:text-lg lg:text-xl leading-loose md:leading-relaxed">
                 {t(`home:values.items.${currentValue}.description`)}
               </p>
             </motion.div>
@@ -116,7 +141,10 @@ export function ValuesSplitScreen() {
               <button
                 key={index}
                 onClick={() => goToIndex(index)}
-                className={cn('nav-dot', currentIndex === index && 'nav-dot-active')}
+                className={cn(
+                  "nav-dot",
+                  currentIndex === index && "nav-dot-active",
+                )}
                 aria-label={`Go to value ${index + 1}`}
                 aria-pressed={currentIndex === index}
               />
@@ -130,14 +158,14 @@ export function ValuesSplitScreen() {
               className="nav-arrow"
               aria-label="Previous value"
             >
-              <CaretLeft className="w-5 h-5" weight="bold" />
+              <CaretLeftIcon className="w-4 h-4 sm:w-5 sm:h-5" weight="bold" />
             </button>
             <button
               onClick={goNext}
               className="nav-arrow"
               aria-label="Next value"
             >
-              <CaretRight className="w-5 h-5" weight="bold" />
+              <CaretRightIcon className="w-4 h-4 sm:w-5 sm:h-5" weight="bold" />
             </button>
           </div>
         </div>
