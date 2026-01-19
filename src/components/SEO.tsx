@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
@@ -35,8 +35,8 @@ export function SEO({
   const finalTitle = title ? `${title} | ${t('common:seo.siteName')}` : defaultTitle;
   const finalDescription = description || defaultDescription;
   const finalKeywords = keywords || defaultKeywords;
-  
-  const structuredData = {
+
+  const structuredData = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Automation Affairs",
@@ -58,42 +58,46 @@ export function SEO({
       "https://linkedin.com/company/automation-affairs",
       "https://youtube.com/@automation-affairs"
     ]
-  };
+  }), [siteUrl, finalDescription]);
 
-  const breadcrumbStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": t('common:nav.home'),
-        "item": siteUrl
+  const breadcrumbStructuredData = useMemo(() => {
+    const breadcrumb = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": t('common:nav.home'),
+          "item": siteUrl
+        }
+      ]
+    };
+
+    // Add current page to breadcrumb if not home
+    if (location.pathname !== '/' && location.pathname !== '/de') {
+      const pathSegments = location.pathname.split('/').filter(Boolean);
+      const lastSegment = pathSegments[pathSegments.length - 1];
+
+      if (lastSegment === 'about' || lastSegment === 'uber-uns') {
+        breadcrumb.itemListElement.push({
+          "@type": "ListItem",
+          "position": 2,
+          "name": t('common:nav.about'),
+          "item": currentUrl
+        });
+      } else if (lastSegment === 'contact' || lastSegment === 'kontakt') {
+        breadcrumb.itemListElement.push({
+          "@type": "ListItem",
+          "position": 2,
+          "name": t('common:nav.contact'),
+          "item": currentUrl
+        });
       }
-    ]
-  };
-
-  // Add current page to breadcrumb if not home
-  if (location.pathname !== '/' && location.pathname !== '/de') {
-    const pathSegments = location.pathname.split('/').filter(Boolean);
-    const lastSegment = pathSegments[pathSegments.length - 1];
-    
-    if (lastSegment === 'about' || lastSegment === 'uber-uns') {
-      breadcrumbStructuredData.itemListElement.push({
-        "@type": "ListItem",
-        "position": 2,
-        "name": t('common:nav.about'),
-        "item": currentUrl
-      });
-    } else if (lastSegment === 'contact' || lastSegment === 'kontakt') {
-      breadcrumbStructuredData.itemListElement.push({
-        "@type": "ListItem",
-        "position": 2,
-        "name": t('common:nav.contact'),
-        "item": currentUrl
-      });
     }
-  }
+
+    return breadcrumb;
+  }, [t, siteUrl, location.pathname, currentUrl]);
 
   useEffect(() => {
     // Update document title

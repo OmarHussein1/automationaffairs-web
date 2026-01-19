@@ -32,7 +32,6 @@ export function ProcessCard({ stepKey, index }: ProcessCardProps) {
   });
 
   const Icon = iconConfig[stepKey];
-  const isActive = isHovered || isFocused;
 
   return (
     <>

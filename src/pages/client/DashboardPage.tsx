@@ -8,7 +8,8 @@ import {
     Envelope, ChatCircle, SpinnerGap, Info, Newspaper
 } from '@phosphor-icons/react'
 import GridBackground from '../../components/layout/GridBackground'
-import OnboardingModal, { hasCompletedOnboarding } from '../../components/onboarding/OnboardingModal'
+import OnboardingModal from '../../components/onboarding/OnboardingModal'
+import { hasCompletedOnboarding } from '../../components/onboarding/onboardingUtils'
 import './DashboardPage.css'
 
 // Status mapping for display
