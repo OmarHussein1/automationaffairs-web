@@ -23,7 +23,7 @@ export function Impressum() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
               <div className="bg-neutral-surface dark:bg-dark-surface p-8 rounded-2xl border border-neutral-ink/10 dark:border-dark-text/10">
                 <h2 className="text-xl font-heading font-semibold text-neutral-ink dark:text-dark-text mb-6">
                   Dario Suckfüll
@@ -49,7 +49,7 @@ export function Impressum() {
                   </div>
                   <div>
                     <strong>{t('legal:impressum.email')}:</strong><br />
-                    <a href="mailto:dario@automationaffairs.com" className="text-primary dark:text-[#f3ff5a] hover:text-primary/80 dark:hover:text-[#f3ff5a]/80 transition-colors">
+                    <a href="mailto:dario@automationaffairs.com" className="text-primary dark:text-[#f3ff5a] hover:text-primary/80 dark:hover:text-[#f3ff5a]/80 transition-colors break-words">
                       dario@automationaffairs.com
                     </a>
                   </div>
@@ -85,13 +85,49 @@ export function Impressum() {
                   </div>
                   <div>
                     <strong>{t('legal:impressum.email')}:</strong><br />
-                    <a href="mailto:max@automationaffairs.com" className="text-primary dark:text-[#f3ff5a] hover:text-primary/80 dark:hover:text-[#f3ff5a]/80 transition-colors">
+                    <a href="mailto:max@automationaffairs.com" className="text-primary dark:text-[#f3ff5a] hover:text-primary/80 dark:hover:text-[#f3ff5a]/80 transition-colors break-words">
                       max@automationaffairs.com
                     </a>
                   </div>
                   <div>
                     <strong>{t('legal:impressum.registeredTrade')}:</strong><br />
                     {t('legal:impressum.maxTrade')}
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-neutral-surface dark:bg-dark-surface p-8 rounded-2xl border border-neutral-ink/10 dark:border-dark-text/10">
+                <h2 className="text-xl font-heading font-semibold text-neutral-ink dark:text-dark-text mb-6">
+                  O.H Studios
+                </h2>
+                <div className="space-y-3">
+                  <div>
+                    <strong>{t('legal:impressum.address')}:</strong><br />
+                    Vondelweg 105M<br />
+                    3031PV Rotterdam<br />
+                    Netherlands
+                  </div>
+                  <div>
+                    <strong>{t('legal:impressum.court')}:</strong><br />
+                    Rotterdam
+                  </div>
+                  <div>
+                    <strong>{t('legal:impressum.vatId')}:</strong><br />
+                    NL005388213B45
+                  </div>
+                  <div>
+                    <strong>{t('legal:impressum.phone')}:</strong><br />
+                    +31 626 775305
+                  </div>
+                  <div>
+                    <strong>{t('legal:impressum.email')}:</strong><br />
+                    <a href="mailto:omar@automationaffairs.com" className="text-primary dark:text-[#f3ff5a] hover:text-primary/80 dark:hover:text-[#f3ff5a]/80 transition-colors break-words">
+                      omar@automationaffairs.com
+                    </a>
+                  </div>
+                  <div>
+                    <strong>{t('legal:impressum.registeredTrade')}:</strong><br />
+                    Computer programming activities
                   </div>
                 </div>
               </div>

@@ -351,7 +351,7 @@ const resources = {
       impressum: {
         title: "Legal Notice - Imprint",
         brandDescription:
-          "Automation Affairs is a brand operated by two independent sole proprietors.",
+          "Automation Affairs is a brand operated by three independent sole proprietors.",
         address: "Address",
         court: "Court of jurisdiction",
         vatId: "VAT ID",
@@ -768,7 +768,7 @@ const resources = {
       impressum: {
         title: "Impressum",
         brandDescription:
-          "Automation Affairs ist eine Marke, die von zwei unabhängigen Einzelunternehmern betrieben wird.",
+          "Automation Affairs ist eine Marke, die von drei unabhängigen Einzelunternehmern betrieben wird.",
         address: "Adresse",
         court: "Zuständiges Gericht",
         vatId: "Umsatzsteuer-ID",
